@@ -96,6 +96,23 @@ html body {
     margin-right: 2%;
   }
 }
+@media screen and (max-width: 520px) {
+  .header .nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 60%;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+}
 .info {
   height: 600px;
   background-image: url(https://frankyeah.github.io/Front-Enter/images/key-visual.jpg);
@@ -258,6 +275,15 @@ html body {
           transform: scale(1.12);
 }
 
+@media screen and (max-width: 570px) {
+  .test:hover {
+    height: 660px;
+  }
+  .test {
+    background-size: cover;
+    background-attachment: local;
+  }
+}
 .classroom:hover {
   height: 660px;
 }
@@ -324,6 +350,15 @@ html body {
   background-color: rgba(0, 0, 0, 0);
 }
 
+@media screen and (max-width: 570px) {
+  .classroom:hover {
+    height: 660px;
+  }
+  .classroom {
+    background-size: cover;
+    background-attachment: local;
+  }
+}
 .article-skilltree:hover {
   height: 840px;
 }
@@ -444,6 +479,8 @@ html body {
         -ms-flex-align: center;
             align-items: center;
     gap: 0px;
+    background-size: cover;
+    background-attachment: local;
   }
   .article-skilltree .box_skilltree {
     -webkit-transform: translateX(0%) scale(0.8);
@@ -470,7 +507,7 @@ html body {
   background-attachment: local;
   color: white;
   font-size: 14pt;
-  line-height: 23pt;
+  line-height: 22pt;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -487,7 +524,6 @@ html body {
 }
 .about .about_box {
   width: 600px;
-  margin-bottom: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -501,7 +537,7 @@ html body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 20px;
+  margin: 80px 20px;
 }
 .about .about_box h2 {
   font-weight: 400;
@@ -517,11 +553,8 @@ html body {
     background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: multiply;
   }
-  .about .about_box h2 {
+  .about h2 {
     font-size: 16pt;
-  }
-  .about .about_box p {
-    font-size: 13pt;
   }
 }
 @media screen and (max-width: 420px) {
@@ -557,8 +590,8 @@ html body {
 }
 .top #topwrap:hover {
   cursor: pointer;
-  -webkit-transform: scale(1.3);
-          transform: scale(1.3);
+  -webkit-transform: scale(1.35);
+          transform: scale(1.35);
 }
 .top #topwrap {
   -webkit-transition-duration: 1s;
@@ -627,26 +660,39 @@ html body {
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  margin: 15px;
 }
-.footer .footer_info {
+.footer .footer-info {
   -webkit-box-flex: 3;
       -ms-flex-positive: 3;
           flex-grow: 3;
   letter-spacing: 2pt;
   font-size: 10pt;
-  color: #737373;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
-.footer .footer_info .num, .footer .footer_info .Email {
-  color: #1ad8d3;
-}
-.footer .footer_info span {
+.footer .footer-info a {
   color: #737373;
-  margin-left: 5px;
+  text-decoration: none;
+}
+.footer .footer-info .num {
+  color: #737373;
+}
+.footer .footer-info .num::before {
+  content: "M";
+  color: #1ad8d3;
+  letter-spacing: 20px;
+}
+.footer .footer-info .mail {
+  color: #737373;
+}
+.footer .footer-info .mail::before {
+  content: "E";
+  color: #1ad8d3;
+  letter-spacing: 20px;
 }
 .footer .fb-line {
   -webkit-box-flex: 0.5;
@@ -674,43 +720,43 @@ html body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
     height: 150px;
-    gap: 20px;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-  }
-  .footer .footer_info {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    position: absolute;
-    -webkit-transform: translate(10%, 4%);
-            transform: translate(10%, 4%);
-  }
-  .footer .footer_info .contact, .footer .footer_info .num, .footer .footer_info .Email {
-    margin: 8px;
-  }
-  .footer .fb-line {
-    left: 83%;
-    margin-top: 10%;
-    position: absolute;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .footer .footer-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 20px;
+    margin-left: 20px;
+  }
+  .footer .fb-line {
+    -ms-flex-item-align: end;
+        align-self: end;
+    margin-right: 20px;
+  }
+}
+@media screen and (max-width: 390px) {
+  .footer {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .footer .footer-info, .footer .fb-line {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
   }
 }/*# sourceMappingURL=page1-part2.css.map */
