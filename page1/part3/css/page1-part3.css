@@ -146,7 +146,7 @@ html body {
 }
 .header #black-box {
   position: absolute;
-  margin-top: 20px;
+  margin-top: 0px;
   background-color: rgba(0, 0, 0, 0.6);
   width: 100vw;
   height: 30vh;
@@ -202,22 +202,6 @@ html body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-}
-.info .test-go-round:hover {
-  cursor: pointer;
-  opacity: 0.7;
-  -webkit-transform: translateY(-15%);
-          transform: translateY(-15%);
-}
-.info .test-go-round {
-  width: 80px;
-  bottom: 80%;
-  right: 0px;
-  position: fixed;
-  z-index: 1;
-  opacity: 0.85;
-  -webkit-transition-duration: 1s;
-          transition-duration: 1s;
 }
 .info .words {
   display: -webkit-box;
@@ -283,6 +267,43 @@ html body {
   100% {
     -webkit-transform: translateY(130px) rotate(225deg);
             transform: translateY(130px) rotate(225deg);
+  }
+}
+.test-go-round:hover {
+  cursor: pointer;
+  opacity: 0.7;
+  -webkit-transform: translateY(-15%);
+          transform: translateY(-15%);
+}
+
+.test-go-round {
+  width: 80px;
+  bottom: 100px;
+  right: 0px;
+  position: fixed;
+  z-index: 1;
+  opacity: 0.85;
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-animation: testRound 1s 1.5s;
+          animation: testRound 1s 1.5s;
+}
+
+@-webkit-keyframes testRound {
+  0% {
+    bottom: 800px;
+  }
+  100% {
+    bottom: 100px;
+  }
+}
+
+@keyframes testRound {
+  0% {
+    bottom: 800px;
+  }
+  100% {
+    bottom: 100px;
   }
 }
 .test:hover {
@@ -851,35 +872,11 @@ html body {
   left: 50vw;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  -webkit-animation: logo-jump 1s linear infinite alternate;
-          animation: logo-jump 1s linear infinite alternate;
 }
-#animation .animation-blue {
+#animation #animation-blue {
   position: absolute;
   top: 100vh;
   width: 100vw;
   height: 15vh;
   background-color: #1ad8d3;
-}
-@-webkit-keyframes logo-jump {
-  0% {
-    top: 20vh;
-  }
-  50% {
-    top: 25vh;
-  }
-  100% {
-    top: 20vh;
-  }
-}
-@keyframes logo-jump {
-  0% {
-    top: 20vh;
-  }
-  50% {
-    top: 25vh;
-  }
-  100% {
-    top: 20vh;
-  }
 }/*# sourceMappingURL=page1-part3.css.map */

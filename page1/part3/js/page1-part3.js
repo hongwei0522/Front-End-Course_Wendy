@@ -1,15 +1,46 @@
+//loading effect
+
 
 window.addEventListener('load', function () {
-  const animation = document.querySelector('#animation');
-  const animationBlue = document.querySelector('.animation-blue');
-  const testGoRound = document.querySelector('.test-go-round');
-  animation.style.transition = 'transform 1.5s';
-  animation.style.transform = 'translateY(-120vh)';
-  animation.style.transition = 'transform 1.7s';
-  animation.style.transform = 'translateY(-120vh)';
-  testGoRound.style.transition = 'bottom 1.3s';
-  testGoRound.style.bottom = '20%';
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 });
+
+let logo = document.getElementById('animation-logo');
+
+const logoJump = logo.animate([
+  { top: '20vh' },
+  { top: '25vh' },
+  { top: '20vh' }
+], {
+  duration: 1000,
+  iterations: 3,
+  easing: 'linear',
+  direction: 'alternate', 
+});
+
+let animation = document.getElementById('animation');
+
+const animationOut = animation.animate(
+[
+  { transform: 'translateY(0%)' },
+  { transform: 'translateY(-120vh)' },
+], {
+  duration: 800,
+  iterations: 1,
+  easing: 'linear',
+  delay: 1500
+});
+
+
+
+
+animationOut.onfinish = () => {
+  animation.style.display = 'none';
+};
+
+
+// Top Button
 
 
 const scrollBtn = document.getElementById("topwrap");
@@ -19,6 +50,8 @@ scrollBtn.addEventListener("click", function() {
   document.documentElement.scrollTop = 0;
 });
 
+
+// search-button
 
 let searchBox = document.getElementById('search-box');
 
