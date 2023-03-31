@@ -33,3 +33,14 @@ Outline
 *  Make some transition / animation effect on it.
 
 </p>
+
+
+台北：彭彭、飛肯、台大、AppWorks、五倍、UXabc
+各地：赫綵、Udemy
+高雄：六角
+
+全部：彭彭、飛肯、台大、赫綵、AppWorks、六角、五倍、Udemy、UXabc
+classType 小班制：台大、赫綵、AppWorks、五倍、UXabc
+teachway 放養制：赫綵、AppWorks、Udemy
+classType 一對一：彭彭、六角、Udemy
+
