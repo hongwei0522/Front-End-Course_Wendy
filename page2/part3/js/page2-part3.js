@@ -270,7 +270,9 @@ function searchBarText(value){
         object.element.style.display = isVisible ? 'flex' : 'none';
         });
       }
-  });
+  })
+}
+
   searchGlass.addEventListener('click', e => {
     e.preventDefault();
     searchBox.style.display = 'none';
@@ -281,7 +283,7 @@ function searchBarText(value){
       object.element.style.display = isVisible ? 'flex' : 'none';
       })
   })
-}
+
 
 
 // page2-part3 search bar audio to text
@@ -290,6 +292,7 @@ const micIcon = document.querySelector('.voice');
 
 const speechRecognition = window.webkitSpeechRecognition;
 
+// 因為有用 articles 所以要傳到 fetch 裡面使用
 function searchBarVoice(value){
   if(value){
     searchBox.style.display = 'none';
@@ -325,7 +328,8 @@ function searchBarVoice(value){
         searchBarVoice(transcript);
       }, 1000); // 延遲1秒後
     });
-  }else {
+  }else{
+    micIcon.addEventListener('click', function(){ 
     alert('您的瀏覽器不支援語音辨識功能，請切換瀏覽器')
-  };
-
+  })
+}
