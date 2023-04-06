@@ -54,8 +54,6 @@ let blackBox = document.getElementById('black-box');
 
 let clickGlass = document.getElementById('click-glass');
 
-console.log(document.getElementById('search'));
-
 let clickCount = 0;
 
 clickGlass.addEventListener('click', function() {
@@ -146,6 +144,7 @@ fetch(url)
     remoteClickFunction();
 
     searchBarText();
+    searchBarVoice();
 
   })
 }
@@ -251,12 +250,13 @@ function remoteClickFunction(){
   }
 
 
-// page2-part3 search bar
+// page2-part3 search bar Text 
 
 const searchInput = document.querySelector('[data-search]'); 
 const searchGlass = document.querySelector('.search-glass');
 
-function searchBarText(){
+
+function searchBarText(value){
   searchInput.addEventListener('keydown', e => {
     if (e.keyCode === 13) {
       // 避免頁面重新整理
@@ -282,4 +282,50 @@ function searchBarText(){
       })
   })
 }
+
+
+// page2-part3 search bar audio to text
+
+const micIcon = document.querySelector('.voice');
+
+const speechRecognition = window.webkitSpeechRecognition;
+
+function searchBarVoice(value){
+  if(value){
+    searchBox.style.display = 'none';
+    blackBox.style.display = 'none';
+    searchInput.value = '';
+    micIcon.style.display = 'flex';
+    const value = searchInput.value.toLowerCase().trim();
+    articles.forEach(object => {
+      // 若為空白則全部顯示
+      const isVisible = (object.cityName.toLowerCase().includes(value) || object.classroomName.toLowerCase().includes(value) || object.preface.toLowerCase().includes(value)) && (value.length > 0);
+      object.element.style.display = isVisible ? 'flex' : 'none';
+        })
+      }
+  }
+
+  if (speechRecognition){
+    console.log('my browser supports speech Recognition');
+    const recognition = new speechRecognition();
+    micIcon.addEventListener('click', function micIconClick(){
+      micIcon.style.display = 'none'
+      recognition.start();
+    })
+    recognition.addEventListener('end', function() {
+      recognition.stop();
+    });
+
+    recognition.addEventListener('result', function(event) {
+      const transcript = event.results[0][0].transcript;
+      console.log('Transcript:', transcript);
+      // 處理識別結果
+      searchInput.value = transcript;
+      setTimeout(function() {
+        searchBarVoice(transcript);
+      }, 1000); // 延遲1秒後
+    });
+  }else {
+    alert('您的瀏覽器不支援語音辨識功能，請切換瀏覽器')
+  };
 
