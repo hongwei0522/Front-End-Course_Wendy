@@ -22,7 +22,7 @@ html body
   top: 0
   z-index: 5
   position: sticky
-  #nav 
+  #headerNav
     width: 100vw
     height: 100px
     display: flex
@@ -40,7 +40,7 @@ html body
       opacity: 0.8
       transition: .5s
 
-    nav 
+    nav
       margin-right: 5%
       display: flex
       flex-direction: row
@@ -57,8 +57,9 @@ html body
         font-weight: 500
         color: rgb(153, 153, 153)
         background-color: rgba(0,0,0,0)
-        letter-spacing: 4px
+        letter-spacing: 3px
         border: none
+        white-space: nowrap
       #click-glass:hover
         transform: scale(1.2)
         opacity: 0.5
@@ -69,8 +70,7 @@ html body
         width: 20px
         cursor: pointer
         transition: .5s
-  
-  
+
   #search-box
     position: absolute
     background-color: #f0f0f0
@@ -83,24 +83,35 @@ html body
     align-items: center
     span
       color: $blue
-      margin-top: 30px
-      margin-bottom: 10px
+      margin-top: 45px
+      margin-bottom: 25px
       letter-spacing: 2px
-      font-size: 14px
-    #center-bar
-      width: 50vw
-      background-color: white
-      border-radius: 20px
-      height: 40px
-      display: flex
-      align-items: center
-      justify-content: center
-      input#search
-        width: 90%
+      font-size: 15pt
+    #searchBar
+        width: 60%
+        height: 50px
+        background-color: white
+        border-radius: 20px
         border: none
-      .search-glass
-        width: 20px
-        cursor: pointer  
+        display: flex
+        align-items: center
+        justify-content: space-evenly
+        input#search
+          width: 90%
+          height: 60%
+          border-radius: 10px
+          border: none
+          font-size: 12pt
+          letter-spacing: 2pt
+          padding: 5px
+        input::placeholder
+          color: #929292
+        .voice
+          width: 22px
+          cursor: pointer
+        .search-glass
+          width: 22px
+          cursor: pointer  
 
         
   #black-box
@@ -115,23 +126,37 @@ html body
   #search-box, #black-box
     display: none
         
-
+@media screen and (max-width: 1000px)
+  .header
+    #search-box
+      #searchBar
+        input#search
+          width: 80%
 
 @media screen and (max-width: 660px)
   .header
-    .logo
-      margin-left: 15px
-    .nav
-      margin-right: 2%
+    #headerNav
+      .logo
+        margin-left: 15px
+      nav
+        margin-right: 2%
 
 @media screen and (max-width: 520px)
   .header
-    .nav
-      display: flex
-      flex-direction: row
-      align-items: center
-      width: 60%
-      justify-content: space-around
+    #headerNav
+      .logo
+        margin-left: 15px
+      nav
+        width: 60%
+
+@media screen and (max-width: 480px)
+  .header
+    #search-box
+      #searchBar
+        width: 90vw
+        input#search
+          width: 80%
+
 
 .nav-center-upper:hover
   .slogan
@@ -139,7 +164,7 @@ html body
 
 #nav-center-upper
   width: 100vw
-  height: 40vh
+  height: 380px
   padding: 0px
   display: flex
   flex-direction: row
@@ -169,14 +194,22 @@ html body
       letter-spacing: 10px
       text-align: center
 
+@media screen and (max-width: 580px)
+  #nav-center-upper
+    height: 380px
+    img
+      position: absolute
+      width: auto
+      height: 100%
 
 .nav-center-lower
-  width: 100vw
-  height: 8vh
+  width: 100%
+  height: 70px
   background-color: white
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1)
   display: flex
-  justify-content: space-around
+  justify-content: space-between
+  flex-direction: row
   align-items: center
   flex-wrap: wrap
   position: relative
@@ -210,6 +243,14 @@ html body
     100%
       bottom: 200px
 
+@media screen and (max-width: 600px)
+  .nav-center-lower 
+    justify-content: center
+    gap: 8%
+    flex-wrap: nowrap
+    div 
+      white-space: nowrap
+
 .navCenter
   background-color: white
   display: flex
@@ -228,7 +269,6 @@ html body
     flex-direction: column
     justify-content: flex-start
     align-items: center
-
     .city
       margin-top: 50px
       display: flex
@@ -308,9 +348,8 @@ html body
           border-bottom: solid 1px grey
           transform: rotate(225deg)
 
-
 @media screen and (max-width: 823px)
-  .nav-center
+  .navCenter
     .block
       border: none
       border-bottom: solid 1px $blue

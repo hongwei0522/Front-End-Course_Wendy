@@ -54,13 +54,16 @@ let blackBox = document.getElementById('black-box');
 
 let clickGlass = document.getElementById('click-glass');
 
+console.log(document.getElementById('search'));
+
 let clickCount = 0;
 
 clickGlass.addEventListener('click', function() {
   clickCount += 1;
   if (clickCount === 1) {
   searchBox.style.display = 'flex';
-  blackBox.style.display = 'flex';}
+  blackBox.style.display = 'flex';
+  document.getElementById('search').focus();}
   if (clickCount === 2) {
   searchBox.style.display = 'none';
   blackBox.style.display = 'none';
@@ -73,8 +76,7 @@ blackBox.onclick = () => {
 };
 
 
-
-// slide effect
+// page2-part2 slide effect
 
 var slideIndex = 0;
 showSlides();
@@ -103,6 +105,9 @@ const smallClass = document.getElementById('smallClass');
 const freeRange = document.getElementById('freeRange');
 const oneOnOne = document.getElementById('oneOnOne');
 
+const blue = '#1ad8d3';
+const grey = '#737373';
+
 let articles = [];
 
 window.addEventListener('DOMContentLoaded', allBlock);
@@ -127,6 +132,7 @@ fetch(url)
     classroomName.textContent = object.name;
     preface.textContent = object.preface;
     blockContainer.append(block);
+
     return {cityName: object.city, squareUrl: object.squareUrl, classroomName: object.name, preface: object.preface, classType: object.classType, teachWay: object.teachWay, element: block};  
     })
 
@@ -135,29 +141,23 @@ fetch(url)
     freeRangeClick();
     oneOnOneClick();
     
-    const taipeiCities = articles.filter(article => article.cityName === '台北').map(article => article.element.querySelector('.cityName'));
-    taipeiCities.forEach(ele =>{
-      ele.addEventListener('click', taipeiClick);
-    })
-    
-    const kaoshiungCities = articles.filter(article => article.cityName === '高雄').map(article => article.element.querySelector('.cityName'));
-    kaoshiungCities.forEach(ele =>{
-      ele.addEventListener('click', kaoshiungClick);
-    })
+    taipeiClickFunction();
+    kaoshiungClickFunction();
+    remoteClickFunction();
 
-    const remoteCities = articles.filter(article => article.cityName === '各地').map(article => article.element.querySelector('.cityName'));
-    remoteCities.forEach(ele =>{
-      ele.addEventListener('click', remoteClick);
-    })    
-  
-    })
-  }
+    searchBarText();
+
+  })
+}
 
 // 全部
 function allClassClick(){
   allClass.addEventListener('click', function(){
     articles.forEach((article)=>{
-      article.element.style.display = 'flex'})
+    article.element.style.display = 'flex'})
+
+    allClass.style.color = blue;
+    [smallClass, freeRange, oneOnOne].forEach(el => el.style.color = grey);
 })
 }
 
@@ -168,11 +168,12 @@ function smallClassClick(){
         article.element.style.display = 'flex';
         if(article.classType !== '小班制'){
           article.element.style.display = 'none';}
-      });
+      })
+      smallClass.style.color = blue;
+
+      [freeRange, oneOnOne, allClass].forEach(el => el.style.color = grey);
     })
 }
-
-
 
 // 放養制
 function freeRangeClick(){
@@ -182,6 +183,8 @@ function freeRangeClick(){
       if(article.teachWay !== '放養制'){
         article.element.style.display = 'none';}
     })
+    freeRange.style.color = blue;
+    [smallClass, oneOnOne, allClass].forEach(el => el.style.color = grey);
   })
 }
 
@@ -193,6 +196,8 @@ function oneOnOneClick(){
     if(article.classType !== '一對一'){
         article.element.style.display = 'none';}
     })
+    oneOnOne.style.color = blue;
+    [smallClass, freeRange, allClass].forEach(el => el.style.color = grey);
   })
 }
 
@@ -204,6 +209,13 @@ function taipeiClick(){
       article.element.style.display = 'none'}
   })
 }
+function taipeiClickFunction(){
+  const taipeiCities = articles.filter(article => article.cityName === '台北').map(article => article.element.querySelector('.cityName'));
+
+  taipeiCities.forEach(ele =>{
+    ele.addEventListener('click', taipeiClick);
+  })
+}
 
 // 高雄
 function kaoshiungClick(){
@@ -213,6 +225,13 @@ function kaoshiungClick(){
       article.element.style.display = 'none'}
   })
 }
+function kaoshiungClickFunction(){
+  const kaoshiungCities = articles.filter(article => article.cityName === '高雄').map(article => article.element.querySelector('.cityName'));
+  kaoshiungCities.forEach(ele =>{
+    ele.addEventListener('click', kaoshiungClick);
+  })
+}
+
 
 // 各地
 
@@ -223,3 +242,44 @@ function remoteClick(){
       article.element.style.display = 'none'}
   })
 }
+
+function remoteClickFunction(){
+  const remoteCities = articles.filter(article => article.cityName === '各地').map(article => article.element.querySelector('.cityName'));
+  remoteCities.forEach(ele =>{
+    ele.addEventListener('click', remoteClick);
+  })    
+  }
+
+
+// page2-part3 search bar
+
+const searchInput = document.querySelector('[data-search]'); 
+const searchGlass = document.querySelector('.search-glass');
+
+function searchBarText(){
+  searchInput.addEventListener('keydown', e => {
+    if (e.keyCode === 13) {
+      // 避免頁面重新整理
+      e.preventDefault();
+      searchBox.style.display = 'none';
+      blackBox.style.display = 'none';
+      const value = e.target.value.toLowerCase().trim();
+      articles.forEach(object => {
+        // 若為空白則全部顯示
+        const isVisible = (object.cityName.toLowerCase().includes(value) || object.classroomName.toLowerCase().includes(value) || object.preface.toLowerCase().includes(value)) && (value.length > 0);
+        object.element.style.display = isVisible ? 'flex' : 'none';
+        });
+      }
+  });
+  searchGlass.addEventListener('click', e => {
+    e.preventDefault();
+    searchBox.style.display = 'none';
+    blackBox.style.display = 'none';
+    const value = searchInput.value.toLowerCase().trim();
+    articles.forEach(object => {
+      const isVisible = (object.cityName.toLowerCase().includes(value) || object.classroomName.toLowerCase().includes(value) || object.preface.toLowerCase().includes(value)) && (value.length > 0);
+      object.element.style.display = isVisible ? 'flex' : 'none';
+      })
+  })
+}
+

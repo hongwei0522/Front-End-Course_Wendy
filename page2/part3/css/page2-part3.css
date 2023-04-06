@@ -23,7 +23,7 @@ html body {
   z-index: 5;
   position: sticky;
 }
-.header #nav {
+.header #headerNav {
   width: 100vw;
   height: 100px;
   display: -webkit-box;
@@ -41,20 +41,20 @@ html body {
           justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.8);
 }
-.header #nav .logo:hover {
+.header #headerNav .logo:hover {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
   opacity: 0.5;
   cursor: pointer;
 }
-.header #nav .logo {
+.header #headerNav .logo {
   width: 130px;
   margin-left: 50px;
   opacity: 0.8;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
-.header #nav nav {
+.header #headerNav nav {
   margin-right: 5%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -70,11 +70,11 @@ html body {
       -ms-flex-align: center;
           align-items: center;
 }
-.header #nav nav button:hover {
+.header #headerNav nav button:hover {
   color: #1ad8d3;
   cursor: pointer;
 }
-.header #nav nav button {
+.header #headerNav nav button {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -83,16 +83,17 @@ html body {
   font-weight: 500;
   color: rgb(153, 153, 153);
   background-color: rgba(0, 0, 0, 0);
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   border: none;
+  white-space: nowrap;
 }
-.header #nav nav #click-glass:hover {
+.header #headerNav nav #click-glass:hover {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
   opacity: 0.5;
   cursor: pointer;
 }
-.header #nav nav #click-glass {
+.header #headerNav nav #click-glass {
   height: 20px;
   width: auto;
   width: 20px;
@@ -120,32 +121,57 @@ html body {
 }
 .header #search-box span {
   color: #1ad8d3;
-  margin-top: 30px;
-  margin-bottom: 10px;
+  margin-top: 45px;
+  margin-bottom: 25px;
   letter-spacing: 2px;
-  font-size: 14px;
+  font-size: 15pt;
 }
-.header #search-box #center-bar {
-  width: 50vw;
+.header #search-box #searchBar {
+  width: 60%;
+  height: 50px;
   background-color: white;
   border-radius: 20px;
-  height: 40px;
+  border: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
-.header #search-box #center-bar input#search {
+.header #search-box #searchBar input#search {
   width: 90%;
+  height: 60%;
+  border-radius: 10px;
   border: none;
+  font-size: 12pt;
+  letter-spacing: 2pt;
+  padding: 5px;
 }
-.header #search-box #center-bar .search-glass {
-  width: 20px;
+.header #search-box #searchBar input::-webkit-input-placeholder {
+  color: #929292;
+}
+.header #search-box #searchBar input::-moz-placeholder {
+  color: #929292;
+}
+.header #search-box #searchBar input:-ms-input-placeholder {
+  color: #929292;
+}
+.header #search-box #searchBar input::-ms-input-placeholder {
+  color: #929292;
+}
+.header #search-box #searchBar input::placeholder {
+  color: #929292;
+}
+.header #search-box #searchBar .voice {
+  width: 22px;
+  cursor: pointer;
+}
+.header #search-box #searchBar .search-glass {
+  width: 22px;
   cursor: pointer;
 }
 .header #black-box {
@@ -161,29 +187,33 @@ html body {
   display: none;
 }
 
+@media screen and (max-width: 1000px) {
+  .header #search-box #searchBar input#search {
+    width: 80%;
+  }
+}
 @media screen and (max-width: 660px) {
-  .header .logo {
+  .header #headerNav .logo {
     margin-left: 15px;
   }
-  .header .nav {
+  .header #headerNav nav {
     margin-right: 2%;
   }
 }
 @media screen and (max-width: 520px) {
-  .header .nav {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+  .header #headerNav .logo {
+    margin-left: 15px;
+  }
+  .header #headerNav nav {
     width: 60%;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+  }
+}
+@media screen and (max-width: 480px) {
+  .header #search-box #searchBar {
+    width: 90vw;
+  }
+  .header #search-box #searchBar input#search {
+    width: 80%;
   }
 }
 .nav-center-upper:hover .slogan {
@@ -192,7 +222,7 @@ html body {
 
 #nav-center-upper {
   width: 100vw;
-  height: 40vh;
+  height: 380px;
   padding: 0px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -242,17 +272,32 @@ html body {
   text-align: center;
 }
 
+@media screen and (max-width: 580px) {
+  #nav-center-upper {
+    height: 380px;
+  }
+  #nav-center-upper img {
+    position: absolute;
+    width: auto;
+    height: 100%;
+  }
+}
 .nav-center-lower {
-  width: 100vw;
-  height: 8vh;
+  width: 100%;
+  height: 70px;
   background-color: white;
   -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
           box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -309,6 +354,19 @@ html body {
   }
 }
 
+@media screen and (max-width: 600px) {
+  .nav-center-lower {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    gap: 8%;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+  .nav-center-lower div {
+    white-space: nowrap;
+  }
+}
 .navCenter {
   background-color: white;
   display: -webkit-box;
@@ -463,7 +521,7 @@ html body {
 }
 
 @media screen and (max-width: 823px) {
-  .nav-center .block {
+  .navCenter .block {
     border: none;
     border-bottom: solid 1px #1ad8d3;
   }
