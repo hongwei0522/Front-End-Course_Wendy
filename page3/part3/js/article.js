@@ -1,12 +1,12 @@
 
 // loading effect
+let logo = document.getElementById('animation-logo');
+let animation = document.getElementById('animation');
 
 window.addEventListener('load', function () {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 });
-
-let logo = document.getElementById('animation-logo');
 
 const logoJump = logo.animate([
   { top: '20vh' },
@@ -18,8 +18,6 @@ const logoJump = logo.animate([
   easing: 'linear',
   direction: 'alternate', 
 });
-
-let animation = document.getElementById('animation');
 
 const animationOut = animation.animate(
 [
@@ -37,7 +35,50 @@ animationOut.onfinish = () => {
 };
 
 
-// interactive effect page2-part2
+// search-button
+let searchBox = document.getElementById('search-box');
+let blackBox = document.getElementById('black-box');
+let clickGlass = document.getElementById('click-glass');
+
+let clickCount = 0;
+
+clickGlass.addEventListener('click', function() {
+  clickCount += 1;
+  if (clickCount === 1) {
+  searchBox.style.display = 'flex';
+  blackBox.style.display = 'flex';
+  document.getElementById('search').focus();}
+  if (clickCount === 2) {
+  searchBox.style.display = 'none';
+  blackBox.style.display = 'none';
+  clickCount = 0;}
+});
+
+blackBox.onclick = () => {
+  searchBox.style.display = 'none';
+  blackBox.style.display = 'none';
+};
+
+
+// artilce.html slide effect
+
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementById("nav-center-upper").getElementsByTagName("img");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.opacity = 0;
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.opacity = 1;
+  setTimeout(showSlides, 6000); 
+};
+
+
+// 顯示班別
 
 const blockTemplate = document.querySelector('[data-classroom-block]');
 
@@ -57,7 +98,6 @@ window.addEventListener('DOMContentLoaded', allBlock);
 
 const url = '../json/front-enter-export.json';
 
-// 全部顯示
 function allBlock(){
 fetch(url)
   .then(res => res.json())
@@ -79,8 +119,6 @@ fetch(url)
     return {cityName: object.city, squareUrl: object.squareUrl, classroomName: object.name, preface: object.preface, classType: object.classType, teachWay: object.teachWay, id: object.creatTime,element: block};  
     
     })
-    // console.log(articles[2].id);
-
     allClassClick();
     smallClassClick();
     freeRangeClick();
@@ -89,15 +127,11 @@ fetch(url)
     taipeiClickFunction();
     kaoshiungClickFunction();
     remoteClickFunction();
-
-    searchBarText();
-    searchBarVoice();
     contentLink();
   })
 }
 
-// 全部
-function allClassClick(){
+function allClassClick(){ // 全部
   allClass.addEventListener('click', function(){
     articles.forEach((article)=>{
     article.element.style.display = 'flex'})
@@ -107,8 +141,8 @@ function allClassClick(){
 })
 }
 
-// 小班制
-function smallClassClick(){
+
+function smallClassClick(){ // 小班制
     smallClass.addEventListener("click", function(){
       articles.forEach((article)=>{
         article.element.style.display = 'flex';
@@ -121,8 +155,8 @@ function smallClassClick(){
     })
 }
 
-// 放養制
-function freeRangeClick(){
+
+function freeRangeClick(){ // 放養制
   freeRange.addEventListener("click", function(){
     articles.forEach((article)=>{
       article.element.style.display = 'flex';
@@ -134,8 +168,8 @@ function freeRangeClick(){
   })
 }
 
-// 一對一
-function oneOnOneClick(){
+
+function oneOnOneClick(){ // 一對一
   oneOnOne.addEventListener("click", function(){
     articles.forEach((article)=>{
       article.element.style.display = 'flex';
@@ -147,9 +181,9 @@ function oneOnOneClick(){
   })
 }
 
-// 台北
+
 function taipeiClick(){
-  articles.forEach((article)=>{
+  articles.forEach((article)=>{ // 台北
     article.element.style.display = 'flex';
   if(article.cityName !== '台北'){
       article.element.style.display = 'none'}
@@ -157,14 +191,12 @@ function taipeiClick(){
 }
 function taipeiClickFunction(){
   const taipeiCities = articles.filter(article => article.cityName === '台北').map(article => article.element.querySelector('.cityName'));
-
   taipeiCities.forEach(ele =>{
     ele.addEventListener('click', taipeiClick);
   })
 }
 
-// 高雄
-function kaoshiungClick(){
+function kaoshiungClick(){ // 高雄
   articles.forEach((article)=>{
     article.element.style.display = 'flex';
   if(article.cityName !== '高雄'){
@@ -178,10 +210,7 @@ function kaoshiungClickFunction(){
   })
 }
 
-
-// 各地
-
-function remoteClick(){
+function remoteClick(){// 各地
   articles.forEach((article)=>{
     article.element.style.display = 'flex';
   if(article.cityName !== '各地'){
@@ -196,13 +225,30 @@ function remoteClickFunction(){
   })    
   }
 
+// .test-go 測驗
+
+const testContainer = document.querySelector('.testContainer ');
+const testGo = document.querySelector('.test-go-round')
+const testBackground = document.querySelector('.testBackground');
+const testBox = document.querySelector('.testBox');
+
+testGo.addEventListener('click', function(){
+  testContainer.style.display = 'flex';
+})
+
+testBackground.addEventListener('click', function(){
+  testContainer.style.display = 'none';
+})
+
+testBox.addEventListener('click', function(event){
+  event.stopPropagation();
+});
+
+
 // take id parameter on the URL
 
 function contentLink(){
-  const contentLinks = document.querySelectorAll('.readmore')
-
-  console.log(contentLinks);
-
+  const contentLinks = document.querySelectorAll('.lowerBlock ');
   contentLinks.forEach(link => {
     link.addEventListener( 'click', () => {
       const linkIndex = Array.from(contentLinks).indexOf(link);
@@ -217,16 +263,25 @@ function contentLink(){
   )
 }
 
-
 // search bar Text 
 const searchInput = document.querySelector('[data-search]'); 
 const searchGlass = document.querySelector('.search-glass');
 
+fetch(url)
+.then(res => res.json())
+.then(res => res.article)
+.then(res => Object.values(res))
+.then(data => {
+  articles = data.map(object => {
+  return {cityName: object.city, squareUrl: object.squareUrl, classroomName: object.name, preface: object.preface, classType: object.classType, teachWay: object.teachWay, id: object.creatTime};  
+  })
+  searchBarText();
+  searchBarVoice();
+})
 
 function searchBarText(value){
   searchInput.addEventListener('keydown', e => {
     if (e.keyCode === 13) {
-      // 避免頁面重新整理
       e.preventDefault();
       searchBox.style.display = 'none';
       blackBox.style.display = 'none';
@@ -256,10 +311,8 @@ function searchBarText(value){
 // search bar audio to text
 
 const micIcon = document.querySelector('.voice');
-
 const speechRecognition = window.webkitSpeechRecognition;
 
-// 因為有用 articles 所以要傳到 fetch 裡面使用
 function searchBarVoice(value){
   if(value){
     searchBox.style.display = 'none';
@@ -268,7 +321,6 @@ function searchBarVoice(value){
     micIcon.style.display = 'flex';
     const value = searchInput.value.toLowerCase().trim();
     articles.forEach(object => {
-      // 若為空白則全部顯示
       const isVisible = (object.cityName.toLowerCase().includes(value) || object.classroomName.toLowerCase().includes(value) || object.preface.toLowerCase().includes(value)) && (value.length > 0);
       object.element.style.display = isVisible ? 'flex' : 'none';
         })
@@ -289,11 +341,10 @@ function searchBarVoice(value){
     recognition.addEventListener('result', function(event) {
       const transcript = event.results[0][0].transcript;
       console.log('Transcript:', transcript);
-      // 處理識別結果
       searchInput.value = transcript;
       setTimeout(function() {
         searchBarVoice(transcript);
-      }, 1000); // 延遲1秒後
+      }, 1000); 
     });
   }else{
     micIcon.addEventListener('click', function(){ 
@@ -303,65 +354,15 @@ function searchBarVoice(value){
 
 
 // 導回主頁
-
 const logoBtn = document.querySelector('.logo');
-
 logoBtn.addEventListener('click', function() {
   window.location.href = 'index.html';
 });
 
 
 // Top Button
-
 const scrollBtn = document.getElementById("topwrap");
-
 scrollBtn.addEventListener("click", function() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 });
-
-// search-button
-
-let searchBox = document.getElementById('search-box');
-
-let blackBox = document.getElementById('black-box');
-
-let clickGlass = document.getElementById('click-glass');
-
-let clickCount = 0;
-
-clickGlass.addEventListener('click', function() {
-  clickCount += 1;
-  if (clickCount === 1) {
-  searchBox.style.display = 'flex';
-  blackBox.style.display = 'flex';
-  document.getElementById('search').focus();}
-  if (clickCount === 2) {
-  searchBox.style.display = 'none';
-  blackBox.style.display = 'none';
-  clickCount = 0;}
-});
-
-blackBox.onclick = () => {
-  searchBox.style.display = 'none';
-  blackBox.style.display = 'none';
-};
-
-
-// page2-part2 slide effect
-
-var slideIndex = 0;
-showSlides();
-
-function showSlides() {
-  var i;
-  var slides = document.getElementById("nav-center-upper").getElementsByTagName("img");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.opacity = 0;
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}
-  slides[slideIndex-1].style.opacity = 1;
-  setTimeout(showSlides, 6000); 
-};
-

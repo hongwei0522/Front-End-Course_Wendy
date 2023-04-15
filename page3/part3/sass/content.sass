@@ -200,10 +200,88 @@ html body
     bottom: 140px
     right: 0px
     position: fixed
-    z-index: 19
+    z-index: 8
     opacity: 0.85
     transition: 1.5s
     animation: testRound 1s 1.5s
+  .testContainer
+    display: none
+    position: fixed
+    z-index: 9
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
+    .testBackground 
+      background-color: rgba(158, 157, 157, 0.2)
+      width: 100vw
+      height: 100vh
+      top: 0px
+      left: 0px
+      position: fixed
+      display: flex
+      justify-content: center
+      align-items: center
+      align-content: center
+      z-index: 9
+      .testBox
+        width: 350px
+        height: 450px
+        opacity: 1
+        background-color: $blue
+        filter: none
+        border-radius: 4px
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        align-items: center
+        position: relative
+      .testBox::before
+        background: url('https://frankyeah.github.io/Front-Enter/images/Staff-Selection-.jpg') no-repeat center center/cover
+        filter: grayscale(100%)
+        opacity: .1
+        content: ""
+        display: flex
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        position: absolute
+      .testBox
+        .testHeader
+          position: absolute
+          font-size: 24px
+          font-weight: bold
+          color: white
+          letter-spacing: 3px
+          margin-top: 60px
+        .testIntro
+          position: absolute
+          font-size: 16px
+          color: white
+          letter-spacing: 1px
+          line-height: 30px
+          margin: 120px 50px
+        .testBtn
+          position: absolute
+          font-size: 18px
+          margin-top: 280px
+          padding: 10px 30px
+          border-radius: 8px
+          color: $blue
+          background-color: white
+          letter-spacing: 3px
+        .testBtn:hover
+          position: absolute
+          font-size: 18px
+          margin-top: 280px
+          padding: 10px 30px
+          border-radius: 8px
+          background-color: rgba(255, 255, 255, .5)
+          letter-spacing: 3px 
+          color: white
+          cursor: pointer
+  
 
 @keyframes testRound 
     0% 
@@ -275,7 +353,6 @@ html body
           z-index: 10
           width: 50px
           height: 50px
-          // border: 1px solid white
           display: flex
           justify-content: center
           align-items: center
@@ -331,6 +408,7 @@ html body
           .popUpImg
             width: 220px
             height: 340px
+
 
   .navCenterRight
     margin-left: 60px
