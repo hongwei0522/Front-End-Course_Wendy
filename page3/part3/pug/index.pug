@@ -10,7 +10,7 @@ html(lang="en")
         
     body 
         .header 
-            section#nav
+            section#headerNav
                 img.logo(src="https://frankyeah.github.io/Front-Enter/images/FE_logo-4.png", alt="")
                 nav
                     button#search-button(type="button") 探索
@@ -20,12 +20,12 @@ html(lang="en")
                     
             section#search-box
                 span SEARCH
-                section#center-bar
-                    input#search(type="search")
+                form#searchBar(action="") 
+                    input#search(type='search' placeholder='搜尋課程名稱、所在城市或簡介' data-search)
+                    img.voice(src="https://frankyeah.github.io/Front-Enter/images/microphone.svg", alt="")
                     img.search-glass(src="https://frankyeah.github.io/Front-Enter/images/FE_search_green.png")
-                
             section#black-box
-
+            
         .info 
             .words 
                 h3 FRONT-ENTER 

@@ -11,12 +11,13 @@ html body
   margin: 0px
   box-sizing: border-box
   background-color: #f0f0f0
+
 .header 
   display: flex
   top: 0
-  z-index: 2
+  z-index: 5
   position: sticky
-  #nav 
+  #headerNav
     width: 100vw
     height: 100px
     display: flex
@@ -33,7 +34,8 @@ html body
       margin-left: 50px
       opacity: 0.8
       transition: .5s
-    nav 
+
+    nav
       margin-right: 5%
       display: flex
       flex-direction: row
@@ -50,8 +52,9 @@ html body
         font-weight: 500
         color: rgb(153, 153, 153)
         background-color: rgba(0,0,0,0)
-        letter-spacing: 4px
+        letter-spacing: 3px
         border: none
+        white-space: nowrap
       #click-glass:hover
         transform: scale(1.2)
         opacity: 0.5
@@ -62,7 +65,6 @@ html body
         width: 20px
         cursor: pointer
         transition: .5s
-
 
   #search-box
     position: absolute
@@ -76,24 +78,35 @@ html body
     align-items: center
     span
       color: $light-blue
-      margin-top: 30px
-      margin-bottom: 10px
+      margin-top: 45px
+      margin-bottom: 25px
       letter-spacing: 2px
-      font-size: 14px
-    #center-bar
-      width: 50vw
-      background-color: white
-      border-radius: 20px
-      height: 40px
-      display: flex
-      align-items: center
-      justify-content: center
-      input#search
-        width: 90%
+      font-size: 15pt
+    #searchBar
+        width: 60%
+        height: 50px
+        background-color: white
+        border-radius: 20px
         border: none
-      .search-glass
-        width: 20px
-        cursor: pointer  
+        display: flex
+        align-items: center
+        justify-content: space-evenly
+        input#search
+          width: 90%
+          height: 60%
+          border-radius: 10px
+          border: none
+          font-size: 12pt
+          letter-spacing: 2pt
+          padding: 5px
+        input::placeholder
+          color: #929292
+        .voice
+          width: 22px
+          cursor: pointer
+        .search-glass
+          width: 22px
+          cursor: pointer  
 
         
   #black-box
@@ -108,23 +121,36 @@ html body
   #search-box, #black-box
     display: none
         
-
+@media screen and (max-width: 1000px)
+  .header
+    #search-box
+      #searchBar
+        input#search
+          width: 80%
 
 @media screen and (max-width: 660px)
   .header
-    .logo
-      margin-left: 15px
-    .nav
-      margin-right: 2%
+    #headerNav
+      .logo
+        margin-left: 15px
+      nav
+        margin-right: 2%
 
 @media screen and (max-width: 520px)
   .header
-    .nav
-      display: flex
-      flex-direction: row
-      align-items: center
-      width: 60%
-      justify-content: space-around
+    #headerNav
+      .logo
+        margin-left: 15px
+      nav
+        width: 60%
+
+@media screen and (max-width: 480px)
+  .header
+    #search-box
+      #searchBar
+        width: 90vw
+        input#search
+          width: 80%
         
 .info
   height: 600px
@@ -185,7 +211,6 @@ html body
 
 
   .testContainer
-    
     position: fixed
     z-index: 9
     top: 0

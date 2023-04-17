@@ -444,13 +444,16 @@ animationOut.onfinish = () => {
   });
 
 
+
 // search-button
 
   let searchBox = document.getElementById('search-box');
-
   let blackBox = document.getElementById('black-box');
-
   let clickGlass = document.getElementById('click-glass');
+  const searchInput = document.querySelector('[data-search]'); 
+  const searchGlass = document.querySelector('.search-glass');
+
+  console.log(searchGlass);
 
   let clickCount = 0;
 
@@ -458,7 +461,8 @@ animationOut.onfinish = () => {
     clickCount += 1;
     if (clickCount === 1) {
     searchBox.style.display = 'flex';
-    blackBox.style.display = 'flex';}
+    blackBox.style.display = 'flex';
+    document.getElementById('search').focus();}
     if (clickCount === 2) {
     searchBox.style.display = 'none';
     blackBox.style.display = 'none';
@@ -470,32 +474,19 @@ animationOut.onfinish = () => {
     blackBox.style.display = 'none';
   };
 
-  // function searchBarText(value){
-  //   searchInput.addEventListener('keydown', e => {
-  //     if (e.keyCode === 13) {
-  //       e.preventDefault();
-  //       searchBox.style.display = 'none';
-  //       blackBox.style.display = 'none';
-  //       const value = e.target.value.toLowerCase().trim();
-  //       articles.forEach(object => {
-  //         // 若為空白則全部顯示
-  //         const isVisible = (object.cityName.toLowerCase().includes(value) || object.classroomName.toLowerCase().includes(value) || object.preface.toLowerCase().includes(value)) && (value.length > 0);
-  //         object.element.style.display = isVisible ? 'flex' : 'none';
-  //         });
-  //       }
-  //   })
-  // }
+
+
+  searchInput.addEventListener('keydown', e => {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      window.location.href = 'article.html';
+      }
+  })
   
-  //   searchGlass.addEventListener('click', e => {
-  //     e.preventDefault();
-  //     searchBox.style.display = 'none';
-  //     blackBox.style.display = 'none';
-  //     const value = searchInput.value.toLowerCase().trim();
-  //     articles.forEach(object => {
-  //       const isVisible = (object.cityName.toLowerCase().includes(value) || object.classroomName.toLowerCase().includes(value) || object.preface.toLowerCase().includes(value)) && (value.length > 0);
-  //       object.element.style.display = isVisible ? 'flex' : 'none';
-  //       })
-  //   })
+  searchGlass.addEventListener('click', e => {
+    e.preventDefault();
+    window.location.href = 'article.html';
+  })
   
   
 

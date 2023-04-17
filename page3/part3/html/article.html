@@ -29,14 +29,44 @@
         <p>蒐羅前端學校 </p>
       </div>
     </div>
-    <div class="nav-center-lower"><span id="allClass">全部</span><span id="smallClass">小班制</span><span id="freeRange">放養制</span><span id="oneOnOne">一對一</span><img class="test-go test-go-round" src="https://frankyeah.github.io/Front-Enter/images/FE_test_go.png">
+    <div class="nav-center-lower"><span id="allClass">全部</span><span id="smallClass">小班制</span><span id="freeRange">放養制</span><span id="oneOnOne">一對一</span>
+      <div class="test-go test-go-container"><img class="test-go-round" src="https://frankyeah.github.io/Front-Enter/images/FE_test_go.png"></div>
       <div class="testContainer"> 
         <div class="testBackground"> 
-          <div class="testBox">
-            <div class="testBoxBlue"></div>
+          <div class="boxContainer"> 
             <div class="testHeader">測驗說明</div>
             <div class="testIntro">點選「開始測驗」後，系統將根據你的回答，找出最適合你的學習環境，並顯示有多少百分比的合適度。</div>
-            <div class="testBtn">開始測驗</div>
+            <div class="startBtn">開始測驗</div>
+            <div class="testQuestion">Question Test</div>
+            <div class="testNumber">0/5</div>
+            <ul> 
+              <li> 
+                <input class="answer" id="1" type="radio" name="answer">
+                <label id="1-text" for="1">台北</label>
+              </li>
+              <li>
+                <input class="answer" id="2" type="radio" name="answer">
+                <label id="2-text" for="2">台北                           </label>
+              </li>
+              <li>
+                <input class="answer" id="3" type="radio" name="answer">
+                <label id="3-text" for="3">台北                           </label>
+              </li>
+              <li> 
+                <input class="answer" id="4" type="radio" name="answer">
+                <label id="4-text" for="4">台北</label>
+              </li>
+              <li> 
+                <input class="answer" id="5" type="radio" name="answer">
+                <label id="5-text" for="5">台北</label>
+              </li>
+            </ul>
+            <button id="newURL">學校 ABC</button>
+            <div class="pieContainer">
+              <div class="pieChart">
+                <div class="pieNum">20%</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -49,7 +79,7 @@
         </div>
         <div class="lowerBlock"> 
           <div class="squareOuter"><img class="squareInner" src="https://frankyeah.github.io/Front-Enter/images/2.jpg"></div>
-          <div class="classroomName"> </div>
+          <div class="className"> </div>
           <div class="preface"> </div><a class="readmore">
             <div class="readmoreGuide">read more</div>
             <div class="readmoreArrow"></div></a>

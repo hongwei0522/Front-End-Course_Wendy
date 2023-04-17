@@ -1,5 +1,6 @@
 
-$blue: #1ad8d3
+$dark-blue: #1cb5e0
+$light-blue: #1ad8d3
 $grey: #737373
 $darkGrey: rgb(128, 128, 128)
   
@@ -49,7 +50,7 @@ html body
       align-items: center
 
       button:hover
-        color: $blue
+        color: $light-blue
         cursor: pointer  
       button
         flex-direction: row
@@ -82,7 +83,7 @@ html body
     flex-direction: column
     align-items: center
     span
-      color: $blue
+      color: $light-blue
       margin-top: 45px
       margin-bottom: 25px
       letter-spacing: 2px
@@ -213,7 +214,6 @@ html body
   align-items: center
   flex-wrap: wrap
   position: relative
-  z-index: 2
   span:hover
     cursor: pointer
     opacity: .5
@@ -223,30 +223,39 @@ html body
     margin-left: 25vw
   #oneOnOne
     margin-right: 25vw
-  .test-go-round:hover
-    cursor: pointer
-    opacity: 0.7
-    transform: translateY(-15%)
-  .test-go-round
-    width: 80px
-    bottom: 200px
-    right: 0px
+  .test-go-container
+    width: 100px
+    height: 100px
+    opacity: 0
+    bottom: 100px
+    right: -10px
     position: fixed
     z-index: 6
     opacity: 0.85
-    transition-duration: 1s
     animation: testRound 1s 1.5s
-    
+    display: flex
+    justify-content: center
+    align-items: center
+    .test-go-round:hover
+      cursor: pointer
+      opacity: 0.7
+      transform: translateY(-25%)
+    .test-go-round
+      width: 80px
+      transition: transform 1s ease
+
   .testContainer
-    display: none
     position: fixed
     z-index: 9
     top: 0
     left: 0
     width: 100vw
     height: 100vh
+    display: none
     .testBackground 
-      background-color: rgba(158, 157, 157, 0.2)
+      position: fixed
+      margin-top: 0px
+      background-color: rgba(158, 157, 157, 0.1)
       width: 100vw
       height: 100vh
       top: 0px
@@ -256,22 +265,9 @@ html body
       justify-content: center
       align-items: center
       align-content: center
-      z-index: 9
-      .testBox
-        width: 350px
-        height: 450px
-        opacity: 1
-        background-color: $blue
-        filter: none
-        border-radius: 4px
-        display: flex
-        flex-direction: column
-        justify-content: flex-start
-        align-items: center
-        position: relative
-      .testBox::before
+      .boxContainer::before
         background: url('https://frankyeah.github.io/Front-Enter/images/Staff-Selection-.jpg') no-repeat center center/cover
-        filter: grayscale(100%)
+        filter: grayscale(50%)
         opacity: .1
         content: ""
         display: flex
@@ -280,7 +276,20 @@ html body
         top: 0
         left: 0
         position: absolute
-      .testBox
+
+      .boxContainer
+        width: 350px
+        height: 450px
+        opacity: 1
+        background-color: $light-blue
+        filter: none
+        border-radius: 4px
+        overflow: hidden
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        align-items: center
+        position: relative
         .testHeader
           position: absolute
           font-size: 24px
@@ -295,16 +304,16 @@ html body
           letter-spacing: 1px
           line-height: 30px
           margin: 120px 50px
-        .testBtn
+        .startBtn
           position: absolute
           font-size: 18px
           margin-top: 280px
           padding: 10px 30px
           border-radius: 8px
-          color: $blue
+          color: $light-blue
           background-color: white
           letter-spacing: 3px
-        .testBtn:hover
+        .startBtn:hover
           position: absolute
           font-size: 18px
           margin-top: 280px
@@ -314,12 +323,169 @@ html body
           letter-spacing: 3px 
           color: white
           cursor: pointer
-  
+        .testQuestion
+          font-size: 18px
+          letter-spacing: 1px
+          line-height: 20px
+          position: absolute
+          margin-top: 40px
+          display: none
+          color: white
+        .testNumber
+          color: rgba(255, 255, 255,.7)
+          letter-spacing: 3px
+          position: absolute
+          margin-top: 90px
+          display: none
+        ul
+          margin-top: 130px
+          list-style-type: none
+          padding: 0
+          display: flex
+          flex-direction: column
+          justify-content: center
+          align-items: center
+          display: none
+          li:hover
+            color: white
+            background-color: rgba(256, 256, 256, .5)
+            cursor: pointer
+          li
+            width: 180px
+            font-size: 18px
+            margin-top: 10px
+            border-radius: 5px
+            text-align: center
+            line-height: 40px
+            position: relative
+            display: flex
+            align-items: center
+            justify-content: center
+            background-color: white
+            color: $light-blue
+            
+            input[type="radio"]
+              opacity: 0
+              position: absolute
+              left: 0
+              top: 0
+              width: 100%
+              border-radius: 10px
+              cursor: pointer
+            label
+              border-radius: 10px
+              width: 100%
+              height: 100%
+              padding: 0
+              margin: 0
+              word-wrap: nowrap
+        button:hover
+          cursor: pointer
+          color: white
+          background-color: rgba(256, 256, 256, .5)
+        button
+          width: 180px
+          background-color: white
+          position: absolute
+          line-height: 40px
+          font-size: 18px
+          color: $light-blue
+          letter-spacing: 3px
+          padding: 5px 0px
+          border-radius: 8px
+          border: none
+          left: 50%
+          top: 75%
+          transform: translateX(-50%)
+          display: flex
+          display: none
+          align-items: center
+          justify-content: center
+        .pieContainer
+          width: 200px
+          height: 200px
+          position: absolute
+          display: flex
+          justify-content: center
+          left: 50%
+          top: 30%
+          transform: translateX(-50%)
+          display: none
+          .pieChart
+            width: 150px
+            height: 150px
+            background-color: $dark-blue
+            border-radius: 100px
+            border: 3px solid white
+            position: absolute
+            .pieNum
+              position: absolute
+              top: 50%
+              left: 50%
+              transform: translate(-50%, -50%)
+              background-color: white
+              width: calc(150px* .85)
+              height: calc(150px* .85)
+              border-radius: 100px
+              font-size: 22pt
+              color: $dark-blue
+              position: absolute
+              display: flex
+              align-items: center
+              justify-content: center
+              z-index: 12
+          .pieChart::before
+            content: ""
+            position: absolute
+            width: 150px
+            height: 75px
+            border-radius: 75px 75px 0px 0px
+            transform-origin: 75px 75px 
+            background-color: var(--before-background-color, transparent)
+            animation: rotate-circle 4s linear
+            transform: rotate(var(--before-rotation, 0deg))
+            
+          .pieChart::after
+            content: ""
+            position: absolute
+            background-color: var(--after-background-color, transparent)
+            width: 150px
+            height: 75px
+            border-radius: 75px 75px 0px 0px
+            transform-origin: 75px 75px 
+            animation: rotate-circle 4s linear
+            transform: rotate(var(--after-rotation, 0deg))
+
+
+@keyframes rotate-circle
+  0%
+    transform: rotate(10deg)
+  10%
+    transform: rotate(40deg)
+  20%
+    transform: rotate(60deg)
+  30%
+    transform: rotate(100deg)
+  40%
+    transform: rotate(150deg)
+  50%
+    transform: rotate(180deg)
+  60%
+    transform: rotate(140deg)
+  70%
+    transform: rotate(110deg)
+  80%
+    transform: rotate(80deg)
+  90%
+    transform: rotate(50deg)
+  100%
+    transform: rotate(20deg)
+
 @keyframes testRound 
-    0% 
-      bottom: 800px
-    100%
-      bottom: 200px
+  0% 
+    bottom: 800px
+  100%
+    bottom: 100px
 
 @media screen and (max-width: 600px)
   .nav-center-lower 
@@ -341,7 +507,7 @@ html body
   .block
     width: 330px
     height: 520px
-    border: solid 1px $blue
+    border: solid 1px $light-blue
     margin: 10px 10px
     display: flex
     flex-direction: column
@@ -390,13 +556,13 @@ html body
           position: absolute
           transition: transform 1s ease
           
-      .classroomName:hover
+      .className:hover
         opacity: .5
 
-      .classroomName
+      .className
         margin-top: 30px 
         font-size: 20pt
-        color: $blue
+        color: $light-blue
       .preface:hover
         opacity: .5
 
@@ -416,7 +582,7 @@ html body
           opacity: .5
           margin-right: 20px 
         .readmoreGuide
-          color: $blue
+          color: $light-blue
           transition: 1s ease
         .readmoreArrow
           width: 5px
@@ -430,7 +596,7 @@ html body
   .navCenter
     .block
       border: none
-      border-bottom: solid 1px $blue
+      border-bottom: solid 1px $light-blue
 
 
 .top
@@ -455,15 +621,15 @@ html body
     width: 100px
     opacity: 1 
     .top-arrow
-      border-top: solid 1px $blue
-      border-left: solid 1px $blue
+      border-top: solid 1px $light-blue
+      border-left: solid 1px $light-blue
       transform: rotate(45deg)
       width: 10px
       height: 10px
 
     .top-icon 
       transition-duration: 1s
-      border: solid 1px $blue
+      border: solid 1px $light-blue
       border-radius: 30px
       width: 32px
       height: 32px
@@ -473,7 +639,7 @@ html body
       align-items: center
       h3
         font-weight: 250
-        color:$blue
+        color:$light-blue
         font-size: 8pt
 
     
@@ -499,7 +665,7 @@ html body
       color: $grey
     .num::before
       content: "M"
-      color: $blue
+      color: $light-blue
       
       letter-spacing: 20px
 
@@ -508,7 +674,7 @@ html body
 
     .mail::before
       content: "E"
-      color: $blue
+      color: $light-blue
       
       letter-spacing: 20px
   .fb-line    
@@ -570,4 +736,4 @@ html body
     top: 100vh
     width: 100vw
     height: 15vh
-    background-color: $blue
+    background-color: $light-blue

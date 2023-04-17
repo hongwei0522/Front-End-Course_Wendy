@@ -30,15 +30,36 @@ html(lang="en")
         #nav-upper
             img.nav-upper-background(src="", alt="")
             .className 
-            img.test-go-round(src="https://frankyeah.github.io/Front-Enter/images/FE_test_go.png")
+            .test-go.test-go-container
+                img.test-go-round(src="https://frankyeah.github.io/Front-Enter/images/FE_test_go.png")
             .testContainer 
                 .testBackground 
-                    .testBox
-                        .testBoxBlue
+                    .boxContainer  
                         .testHeader 測驗說明
                         .testIntro 點選「開始測驗」後，系統將根據你的回答，找出最適合你的學習環境，並顯示有多少百分比的合適度。
-                        .testBtn 開始測驗
-
+                        .startBtn 開始測驗
+                        .testQuestion 
+                        .testNumber 
+                        ul 
+                            li 
+                                input#1.answer(type='radio' name='answer') 
+                                label#1-text(for='1') 
+                            li
+                                input#2.answer(type='radio' name='answer')
+                                label#2-text(for='2')                            
+                            li
+                                input#3.answer(type='radio' name='answer')
+                                label#3-text(for='3')                            
+                            li 
+                                input#4.answer(type='radio' name='answer')
+                                label#4-text(for='4') 
+                            li 
+                                input#5.answer(type='radio' name='answer')
+                                label#5-text(for='5') 
+                        button#newURL 
+                        .pieContainer
+                            .pieChart
+                                .pieNum
 
         .navCenter
             .navCenterLeft 

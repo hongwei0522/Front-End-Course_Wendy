@@ -25,14 +25,44 @@
       <section id="black-box"></section>
     </div>
     <div id="nav-upper"><img class="nav-upper-background" src="" alt="">
-      <div class="className"> </div><img class="test-go-round" src="https://frankyeah.github.io/Front-Enter/images/FE_test_go.png">
+      <div class="className"> </div>
+      <div class="test-go test-go-container"><img class="test-go-round" src="https://frankyeah.github.io/Front-Enter/images/FE_test_go.png"></div>
       <div class="testContainer"> 
         <div class="testBackground"> 
-          <div class="testBox">
-            <div class="testBoxBlue"></div>
+          <div class="boxContainer"> 
             <div class="testHeader">測驗說明</div>
             <div class="testIntro">點選「開始測驗」後，系統將根據你的回答，找出最適合你的學習環境，並顯示有多少百分比的合適度。</div>
-            <div class="testBtn">開始測驗</div>
+            <div class="startBtn">開始測驗</div>
+            <div class="testQuestion"> </div>
+            <div class="testNumber"> </div>
+            <ul> 
+              <li> 
+                <input class="answer" id="1" type="radio" name="answer">
+                <label id="1-text" for="1"> </label>
+              </li>
+              <li>
+                <input class="answer" id="2" type="radio" name="answer">
+                <label id="2-text" for="2">                           </label>
+              </li>
+              <li>
+                <input class="answer" id="3" type="radio" name="answer">
+                <label id="3-text" for="3">                           </label>
+              </li>
+              <li> 
+                <input class="answer" id="4" type="radio" name="answer">
+                <label id="4-text" for="4"> </label>
+              </li>
+              <li> 
+                <input class="answer" id="5" type="radio" name="answer">
+                <label id="5-text" for="5"> </label>
+              </li>
+            </ul>
+            <button id="newURL"> </button>
+            <div class="pieContainer">
+              <div class="pieChart">
+                <div class="pieNum"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
