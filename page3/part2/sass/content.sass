@@ -1,0 +1,628 @@
+
+$blue: #1ad8d3
+$grey: #737373
+$darkGrey: #808080cc
+  
+*
+    font-family: 微軟正黑體
+    // border: solid 1px #b3b3b3
+
+
+html body
+  padding: 0px
+  margin: 0px
+  box-sizing: border-box
+  background-color: #f0f0f0
+
+.hide
+  display: none
+
+.header 
+  display: flex
+  top: 0
+  z-index: 5
+  position: sticky
+  #headerNav
+    width: 100vw
+    height: 100px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    background-color: rgba(255, 255, 255, 0.80)
+    .logo:hover
+      transform: scale(1.2)
+      opacity: 0.5
+      cursor: pointer
+    .logo
+      width: 130px
+      margin-left: 50px
+      opacity: 0.8
+      transition: .5s
+
+    nav
+      margin-right: 5%
+      display: flex
+      flex-direction: row
+      width: 40%
+      justify-content: space-around
+      align-items: center
+
+      button:hover
+        color: $blue
+        cursor: pointer  
+      button
+        flex-direction: row
+        font-size: 12pt
+        font-weight: 500
+        color: rgb(153, 153, 153)
+        background-color: rgba(0,0,0,0)
+        letter-spacing: 3px
+        border: none
+        white-space: nowrap
+      #click-glass:hover
+        transform: scale(1.2)
+        opacity: 0.5
+        cursor: pointer
+      #click-glass
+        height: 20px
+        width: auto
+        width: 20px
+        cursor: pointer
+        transition: .5s
+
+  #search-box
+    position: absolute
+    background-color: #f0f0f0
+    width: 100vw
+    height: 60vh
+    top: 100px
+    left: 0px
+    display: flex
+    flex-direction: column
+    align-items: center
+    span
+      color: $blue
+      margin-top: 45px
+      margin-bottom: 25px
+      letter-spacing: 2px
+      font-size: 15pt
+    #searchBar
+      width: 60%
+      height: 50px
+      background-color: white
+      border-radius: 20px
+      border: none
+      display: flex
+      align-items: center
+      justify-content: space-evenly
+      input#search
+        width: 90%
+        height: 60%
+        border-radius: 10px
+        border: none
+        font-size: 12pt
+        letter-spacing: 2pt
+        padding: 5px
+      input::placeholder
+        color: #929292
+      .voice
+        width: 22px
+        cursor: pointer
+      .search-glass
+        width: 22px
+        cursor: pointer  
+
+        
+  #black-box
+    position: absolute
+    margin-top: 0px
+    background-color: rgba(0,0,0,0.6)
+    width: 100vw
+    height: 30vh
+    top: calc(100px + 60vh)
+    left: 0px
+
+  #search-box, #black-box
+    display: none
+        
+@media screen and (max-width: 1000px)
+  .header
+    #search-box
+      #searchBar
+        input#search
+          width: 80%
+
+@media screen and (max-width: 660px)
+  .header
+    #headerNav
+      .logo
+        margin-left: 15px
+      nav
+        margin-right: 2%
+
+@media screen and (max-width: 520px)
+  .header
+    #headerNav
+      .logo
+        margin-left: 15px
+      nav
+        width: 60%
+
+@media screen and (max-width: 480px)
+  .header
+    #search-box
+      #searchBar
+        width: 90vw
+        input#search
+          width: 80%
+
+
+.nav-center-upper:hover
+  .slogan
+    opacity: 0.5
+
+#nav-upper
+  width: 100vw
+  height: 380px
+  padding: 0px
+  display: flex
+  flex-direction: row
+  justify-content: center
+  align-items: center
+  position: relative
+  overflow: hidden
+  .nav-upper-background
+    position: absolute
+    width: 100%
+    opacity: 1
+    transition: opacity 1s
+  .className
+    position: absolute
+    background-color: $darkGrey
+    border-radius: 8px
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: 6px
+    letter-spacing: 10px
+    color: white
+    font-size: 18pt
+    font-weight: 650
+    white-space: nowrap 
+    padding: 10px 15px
+  .test-go-round:hover
+    cursor: pointer
+    opacity: 0.5
+    transform: translateY(-40%)
+  .test-go-round
+    width: 80px
+    bottom: 140px
+    right: 0px
+    position: fixed
+    z-index: 19
+    opacity: 0.85
+    transition: 1.5s
+    animation: testRound 1s 1.5s
+
+@keyframes testRound 
+    0% 
+        bottom: 800px
+    100%
+        bottom: 140px
+
+@media screen and (max-width: 580px)
+  #nav-upper
+    height: 380px
+    .nav-upper-background
+      position: absolute
+      width: auto
+      height: 100%
+
+
+.navCenter
+  background-color: white
+  padding: 100px 5%
+  z-index: 3
+  display: flex
+  .navCenterLeft
+    height: auto
+    width: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    .leftImg:hover
+      cursor: pointer
+      transform: scale(1.05)
+      transform-origin: top center
+      margin-bottom: 55px
+    .leftImg:not(:hover)
+      transform: scale(1)
+      margin-bottom: 40px
+      transition: .6s
+      position: relative
+    .leftImg
+      width: 400px
+      height: 266px
+      border-radius: 5px 
+      margin-bottom: 40px
+      transition: .6s
+      position: relative
+
+    .popUpImgContainer
+      display: none
+      position: fixed
+      z-index: 9
+      top: 0
+      left: 0
+      width: 100vw
+      height: 100vh
+      .popUpImgBackgroud
+        position: fixed
+        margin-top: 0px
+        background-color: rgba(0,0,0,0.8)
+        width: 100vw
+        height: 100vh
+        top: 0px
+        left: 0px
+        position: fixed
+        display: flex
+        justify-content: center
+        align-items: center
+        align-content: center
+        .TriLeft
+          z-index: 10
+          width: 50px
+          height: 50px
+          // border: 1px solid white
+          display: flex
+          justify-content: center
+          align-items: center
+          .popUpTriLeft
+            width: 0
+            height: 0
+            border-top: 12px solid transparent
+            border-right: 12px solid transparent
+            border-left: solid 12px grey
+            border-bottom: solid 12px grey
+            transform: rotate(45deg)
+        .popUpImg
+          width: 750px
+          height: 550px
+          // background: url('') 50% / cover no-repeat
+        .TriRight
+          z-index: 10
+          width: 50px
+          height: 50px
+          // border: 1px solid white
+          display: flex
+          justify-content: center
+          align-items: center
+          .popUpTriRight
+            width: 0
+            height: 0
+            border-top: 12px solid transparent
+            border-right: 12px solid transparent
+            border-left: solid 12px grey
+            border-bottom: solid 12px grey
+            transform: rotate(225deg)
+
+
+  @media screen and (max-width: 960px)
+    .navCenterLeft
+      .popUpImgContainer
+        .popUpImgBackgroud
+          .popUpImg
+            width: 400px
+            height: 400px
+  @media screen and (max-width: 530px)
+    .navCenterLeft
+      .popUpImgContainer
+        .popUpImgBackgroud
+          .popUpImg
+            width: 300px
+            height: 300px
+
+  @media screen and (max-width: 410px)
+    .navCenterLeft
+      .popUpImgContainer
+        .popUpImgBackgroud
+          .popUpImg
+            width: 220px
+            height: 340px
+
+
+  .navCenterRight
+    margin-left: 60px
+    margin-right: 80px
+    .mainContent
+      display: flex
+      flex-direction: column
+      align-items: center
+      #mainContentText
+        #mainTitle
+          font-size: 20px
+          color: $blue
+          line-height: 28px
+          font-weight: bold
+          letter-spacing: 3px
+        p        
+          margin-top: 20px
+          font-size: 16px
+          color: $grey
+          line-height: 28px
+          letter-spacing: 3px
+      #boxTitle
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: flex-end
+        height: 140px
+        p
+          font-size: 18px
+          color: $blue
+          letter-spacing: 3px
+          display: flex
+        .underline
+          width: 20px
+          border-top: .8px solid $blue 
+          transform: translateY(-10px)
+
+      #boxTable
+        margin-top: 30px
+        flex-direction: column
+        // border: 1px solid blue
+        display: flex
+        align-items: flex-start
+        font-size: 16px
+        letter-spacing: 3px
+        width: 400px
+        .row
+          width: 100%
+          border-bottom: 1px solid #73737358
+          line-height: 70px
+          display: flex
+          flex-direction: row
+          // border: 1px solid red
+          .row-left
+            color: $blue
+            font-weight: bold
+            white-space: nowrap
+          .row-right
+              color: $grey
+              white-space: nowrap
+              // border-left: 1px solid #73737358
+              color: #8f8f8f
+              margin-left: 60px
+
+                        
+                      
+@media screen and (max-width: 1200px)
+  .navCenter
+    flex-wrap: wrap
+    justify-content: center
+    padding: 100px 0px
+    .navCenterLeft
+      display: flex
+      justify-content: center
+      align-items: center
+      .leftImg
+        display: none
+      .leftImgOne 
+        display: flex
+
+@media screen and (max-width: 700px)
+  .navCenter
+    .navCenterRight
+      .mainContent
+        #boxTable
+          margin-top: 30px
+          flex-direction: column
+          display: flex
+          align-items: flex-start
+          font-size: 14px
+          letter-spacing: 3px
+          width: 100%
+          .row
+            width: 100%
+
+@media screen and (max-width: 650px)
+  .navCenter
+    .navCenterLeft
+      .leftImg
+          display: none
+      .leftImgOne 
+          display: flex
+          scale: .85
+          transform-origin: top center
+      .leftImgOne:hover
+          cursor: pointer
+          transform: scale(1.15)
+          margin-bottom: 55px
+          transform-origin: top center
+    .navCenterRight
+      margin-top: -35px
+
+@media screen and (max-width: 470px)
+  .navCenter
+    .navCenterLeft
+      height: auto
+      flex-direction: column
+      .leftImg:hover
+        transform: scale(1)
+        height: 320px
+        cursor: pointer
+        transform-origin: top center
+        margin-bottom: 40px
+      .leftImg:not(:hover)
+        transform: scale(1)
+        margin-bottom: 40px
+        transition: .6s
+        position: relative
+      .leftImg
+        background: url('https://frankyeah.github.io/Front-Enter/images/15.jpg') 50% / cover no-repeat
+        width: 80%
+        max-width: 400px
+        height: 266px
+        border-radius: 5px 
+        margin-bottom: 40px
+        transition: .6s
+        position: relative
+
+    .navCenterRight
+      margin-left: 0px
+      margin-right: 0px
+      .mainContent
+        margin-left: 0px
+        margin-right: 0px
+        #mainContentText
+          margin-left: 60px
+          margin-right: 80px
+        #boxTable
+          font-size: 12px
+          width: 80%
+          .row
+            width: 100%
+            .row-right
+              margin-left: 60px
+
+
+
+.top
+  height: 186px
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  background-color: white
+
+  #topwrap:hover
+    cursor: pointer
+    transform: scale(1.35)
+  
+  #topwrap
+    transition-duration: 1s
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    border: none
+    width: 100px
+    opacity: 1 
+    .top-arrow
+      border-top: solid 1px $blue
+      border-left: solid 1px $blue
+      transform: rotate(45deg)
+      width: 10px
+      height: 10px
+
+    .top-icon 
+      transition-duration: 1s
+      border: solid 1px $blue
+      border-radius: 30px
+      width: 32px
+      height: 32px
+      position: relative
+      display: flex
+      justify-content: center
+      align-items: center
+      h3
+        font-weight: 250
+        color:$blue
+        font-size: 8pt
+
+.footer
+  display: flex
+  flex-direction: row
+  height: 80px
+  background-color: #f0f0f0
+  align-items: center
+  justify-content: space-around
+  margin: 15px
+
+  .footer-info
+    flex-grow: 3
+    letter-spacing: 2pt    
+    font-size: 10pt
+    display: flex
+    justify-content: space-around
+    a 
+      color: $grey
+      text-decoration: none
+    .num
+      color: $grey
+    .num::before
+      content: "M"
+      color: $blue
+      
+      letter-spacing: 20px
+
+    .mail
+      color: $grey
+
+    .mail::before
+      content: "E"
+      color: $blue
+      
+      letter-spacing: 20px
+  .fb-line    
+    flex-grow: 0.5
+    display: flex
+    justify-content: center
+    
+    img
+      width: 30px
+      margin: 3px
+      opacity: 0.8
+    img:hover
+      cursor: pointer
+      opacity: 0.6
+    
+
+
+@media screen and (max-width: 750px)
+  .footer
+    display: flex
+    height: 150px
+    flex-direction: row
+    align-items: center
+    justify-content: space-around
+
+    .footer-info
+      display: flex
+      flex-direction: column
+      gap: 20px
+      margin-left: 20px
+      
+    .fb-line
+      align-self: end
+      margin-right: 20px
+
+@media screen and (max-width: 390px)
+  .footer
+    flex-direction: row
+    .footer-info, .fb-line
+      transform: scale(0.8)
+      
+    
+#animation
+  position: absolute
+  background-color: rgb(230,230,230)
+  width: 100vw
+  height: 100vh
+  top: 0
+  z-index: 20
+  #animation-logo
+    position: absolute
+    display: flex
+    width: 300px
+    top: 30vh
+    left: 50vw
+    transform: translateX(-50%)
+  #animation-blue
+    position: absolute
+    top: 100vh
+    width: 100vw
+    height: 15vh
+    background-color: $blue
