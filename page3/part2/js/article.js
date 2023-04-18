@@ -218,8 +218,6 @@ function contentLink(){
 }
 
 
-
-
 // search bar Text 
 const searchInput = document.querySelector('[data-search]'); 
 const searchGlass = document.querySelector('.search-glass');
