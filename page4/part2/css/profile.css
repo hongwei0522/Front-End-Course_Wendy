@@ -907,13 +907,6 @@ html body {
   display: flex;
   height: 100%;
   width: 100%;
-}
-.navCenter .navCenterDiv {
-  height: 100%;
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
@@ -924,8 +917,9 @@ html body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 60px;
 }
-.navCenter .navCenterDiv .buttonList {
+.navCenter .buttonList {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -937,21 +931,29 @@ html body {
       -ms-flex-pack: center;
           justify-content: center;
 }
-.navCenter .navCenterDiv .buttonList button {
-  margin: 20px;
+.navCenter .buttonList .buttonListDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.navCenter .buttonList .buttonListDiv button {
+  margin: 15px;
   width: 105px;
   background-color: #1ad8d3;
   color: white;
   font-size: 16px;
-  padding: 10px;
-  line-height: 20px;
+  padding: 8px;
   border-radius: 5px;
   text-align: center;
   border: none;
   letter-spacing: 3px;
   cursor: pointer;
 }
-.navCenter .navCenterDiv .displayProfile {
+.navCenter .displayProfile {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -966,14 +968,13 @@ html body {
       -ms-flex-align: center;
           align-items: center;
   width: 600px;
-  border: 1px solid black;
 }
-.navCenter .navCenterDiv .displayProfile #inputPhoto {
+.navCenter .displayProfile #inputPhoto {
   width: 120px;
   height: 120px;
   border-radius: 50%;
 }
-.navCenter .navCenterDiv .displayProfile ul#profile {
+.navCenter .displayProfile ul#profile {
   list-style-type: none;
   padding: 0;
   display: -webkit-box;
@@ -992,31 +993,37 @@ html body {
   color: black;
   width: auto;
 }
-.navCenter .navCenterDiv .displayProfile ul#profile li {
+.navCenter .displayProfile ul#profile li {
   color: #737373;
   font-size: 16px;
   letter-spacing: 3px;
-  margin: 20px;
+  margin: 15px;
 }
-.navCenter .navCenterDiv .displayProfile ul#profile li label {
+.navCenter .displayProfile ul#profile li label {
   margin: 20px;
+  opacity: 0.8;
 }
-.navCenter .navCenterDiv .displayProfile ul#profile li input:focus {
+.navCenter .displayProfile ul#profile li input:focus {
   outline: none;
 }
-.navCenter .navCenterDiv .displayProfile ul#profile li input {
+.navCenter .displayProfile ul#profile li input {
   font-size: 16px;
   letter-spacing: 3px;
   border: none;
   padding: 1px;
   width: 300px;
+  color: #737373;
 }
-.navCenter .navCenterDiv .displayProfile .modifyBtn button {
+.navCenter .displayProfile .modifyBtn {
+  margin-top: 15px;
+}
+.navCenter .displayProfile .modifyBtn button {
   width: 95px;
   background-color: #1ad8d3;
   color: white;
   font-size: 16px;
-  padding: 8px;
+  padding: 10px;
+  white-space: nowrap;
   line-height: 20px;
   border-radius: 5px;
   text-align: center;
@@ -1024,19 +1031,85 @@ html body {
   letter-spacing: 3px;
   cursor: pointer;
 }
-.navCenter .navCenterDiv .displayProfile .modifyBtn .modified, .navCenter .navCenterDiv .displayProfile .modifyBtn .cancel {
+.navCenter .displayProfile .modifyBtn .modified, .navCenter .displayProfile .modifyBtn .cancel {
   display: none;
   margin: 10px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 880px) {
   .navCenter {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    padding: 100px 0px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+    padding: 60px 0px;
+  }
+  .navCenter .buttonList {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    width: 100%;
+    margin-top: 30px;
+    padding: 20px;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .navCenter .buttonList .line {
+    width: 380px;
+    border-top: 1px solid #737373;
+    opacity: 0.2;
+    margin-bottom: 30px;
+  }
+  .navCenter .buttonList .buttonListDiv {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .navCenter .displayProfile {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 630px) {
+  .navCenter .buttonList .buttonListDiv {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .navCenter .buttonList .buttonListDiv button {
+    font-size: 14px;
+  }
+  .navCenter .displayProfile #inputPhoto {
+    width: 60px;
+    height: 60px;
+  }
+  .navCenter .displayProfile ul#profile {
+    margin-top: 80px;
+  }
+  .navCenter .displayProfile ul#profile li {
+    font-size: 14px;
+  }
+  .navCenter .displayProfile ul#profile li label {
+    font-size: 14px;
+  }
+  .navCenter .displayProfile ul#profile li input {
+    font-size: 14px;
+  }
+  .navCenter .displayProfile .modifyBtn button {
+    font-size: 14px;
   }
 }
 .top {

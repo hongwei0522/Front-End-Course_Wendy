@@ -82,27 +82,28 @@ html(lang="en")
                                 .pieNum
 
         .navCenter
-            .navCenterDiv 
-                .buttonList 
+            .buttonList
+                .line
+                .buttonListDiv
                     button.personalData 個人資料
                     button.collection 收藏
                     button.logout 登出
-                .displayProfile
-                    #inputPhoto 
-                    ul#profile(action="")
-                        li 
-                            label#labelName(for="profileName") 名字
-                            input#profileName(type="text", maxlength='10' value="" placeholder='請輸入名字')
-                        li 
-                            label#labelPhone(for="profilePhone") 手機
-                            input#profilePhone(type="text" maxlength='15' value="" placeholder='請輸入電話') 
-                        li 
-                            label#labelEmail(for="profileEmail") 信箱
-                            input#profileEmail(type="text" maxlength='40' value="" placeholder='請輸入信箱')  
-                    .modifyBtn
-                        button.modifyData 修改資料
-                        button.modified 確定
-                        button.cancel 取消
+            .displayProfile
+                #inputPhoto 
+                ul#profile(action="")
+                    li 
+                        label#labelName(for="profileName") 名字
+                        input#profileName(type="text", maxlength='10' value="" placeholder='請輸入名字')
+                    li 
+                        label#labelPhone(for="profilePhone") 手機
+                        input#profilePhone(type="text" maxlength='15' value="" placeholder='請輸入電話') 
+                    li 
+                        label#labelEmail(for="profileEmail") 信箱
+                        input#profileEmail(type="text" maxlength='40' value="" placeholder='請輸入信箱')  
+                .modifyBtn
+                    button.modifyData 修改資料
+                    button.modified 確定
+                    button.cancel 取消
 
         .top
             #topwrap(onclick="toTop()") 

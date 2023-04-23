@@ -215,7 +215,7 @@ loginBackground.addEventListener('click', function(event){
           remindBackground.style.display = 'flex';
           remindBoxContent.innerText = '登入成功';
           if(user.photoURL){
-            headerLogin.innerHTML = `<img src="${user.photoURL}" alt="會員照片" />`;
+            headerLogin.innerHTML = `<img src="${user.photoURL}" alt="會員照片" style="width: 40px; height: 40px; border-radius: 50%;"/>`;
           }else{
           headerLogin.innerText = '會員';
           // 在 headerLogin 更新為 "會員" 之後，設定點擊事件監聽器

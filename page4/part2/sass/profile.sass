@@ -595,100 +595,135 @@ html body
 
 
 .navCenter
-    background-color: white
+  background-color: white
+  display: flex
+  height: 100%
+  width: 100%
+  flex-direction: row
+  justify-content: center
+  align-items: center
+  padding: 60px
+  .buttonList 
     display: flex
-    height: 100%
-    width: 100%
-    // border: 1px solid blue 
-    .navCenterDiv    
-      height: 100%
-      width: 100%
+    flex-direction: column 
+    justify-content: center
+    .buttonListDiv
       display: flex
-      flex-direction: row
+      flex-direction: column 
+      button
+        margin: 15px
+        width: 105px
+        background-color: $light-blue
+        color: white
+        font-size: 16px
+        padding: 8px
+        border-radius: 5px
+        text-align: center
+        border: none
+        letter-spacing: 3px
+        cursor: pointer
+  .displayProfile      
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    width: 600px
+    #inputPhoto
+      width: 120px
+      height: 120px
+      border-radius: 50%
+    ul#profile
+      list-style-type: none
+      padding: 0
+      display: flex
+      flex-direction: column
       justify-content: center
       align-items: center
-      // border: 1px solid red
-      .buttonList 
-        display: flex
-        flex-direction: column
-        // border: 1px solid black  
-        justify-content: center
-        button
-            margin: 20px
-            width: 105px
-            background-color: $light-blue
-            color: white
-            font-size: 16px
-            padding: 10px
-            line-height: 20px
-            border-radius: 5px
-            text-align: center
-            border: none
-            letter-spacing: 3px
-            cursor: pointer
-      .displayProfile      
-        display: flex
-        flex-direction: column
-        justify-content: center
-        align-items: center
-        width: 600px
-        border: 1px solid black
-        // margin-top: 40px  
-        #inputPhoto
-            width: 120px
-            height: 120px
-            // border: 1px solid black
-            border-radius: 50%
-        ul#profile
-          list-style-type: none
-          padding: 0
-          display: flex
-          flex-direction: column
-          justify-content: center
-          align-items: center
-          color: black 
-          width: auto
-          li 
-            color: $grey
-            font-size: 16px
-            letter-spacing: 3px
-            margin: 20px
-            // width: auto
-            // padding: 5px
-            label
-                margin: 20px
-            input:focus
-              outline: none
-            input 
-                font-size: 16px
-                letter-spacing: 3px                
-                border: none
-                padding: 1px
-                width: 300px
-        .modifyBtn
-          button
-            width: 95px
-            background-color: $light-blue
-            color: white
-            font-size: 16px
-            padding: 8px
-            line-height: 20px
-            border-radius: 5px
-            text-align: center
-            border: none
-            letter-spacing: 3px
-            cursor: pointer
-          .modified, .cancel
-            display: none
-            margin: 10px
+      color: black 
+      width: auto
+      li 
+        color: $grey
+        font-size: 16px
+        letter-spacing: 3px
+        margin: 15px
+        label
+          margin: 20px
+          opacity: .8
+        input:focus
+          outline: none
+        input 
+          font-size: 16px
+          letter-spacing: 3px                
+          border: none
+          padding: 1px
+          width: 300px
+          color: $grey
+    .modifyBtn
+      margin-top: 15px
+      button
+        width: 95px
+        background-color: $light-blue
+        color: white
+        font-size: 16px
+        padding: 10px
+        white-space: nowrap
+        line-height: 20px
+        border-radius: 5px
+        text-align: center
+        border: none
+        letter-spacing: 3px
+        cursor: pointer
+      .modified, .cancel
+        display: none
+        margin: 10px
 
                       
-@media screen and (max-width: 1200px)
+@media screen and (max-width: 880px)
   .navCenter
-    flex-wrap: wrap
-    justify-content: center
-    padding: 100px 0px
+    flex-direction: column
+    width: 100%
+    padding: 60px 0px
+    .buttonList
+      flex-direction: column
+      order: 2
+      width: 100%
+      margin-top: 30px
+      padding: 20px
+      justify-content: flex-start
+      align-items: center
+      .line
+        width: 380px
+        border-top: 1px solid $grey 
+        opacity: .2
+        margin-bottom: 30px
+      .buttonListDiv
+        flex-direction: row
+    .displayProfile
+      width: 100%
 
+@media screen and (max-width: 630px)
+  .navCenter
+    .buttonList
+      .buttonListDiv
+        display: flex
+        flex-direction: column
+        button
+          font-size: 14px
+    .displayProfile
+      #inputPhoto 
+        width: 60px
+        height: 60px
+      ul#profile
+        margin-top: 80px
+        li
+          font-size: 14px
+          label
+            font-size: 14px
+          input
+            font-size: 14px
+      .modifyBtn
+        button
+          font-size: 14px
 
 .top
   height: 186px
