@@ -1,42 +1,160 @@
-//loading effect
 
-let logo = document.getElementById('animation-logo');
-let animation = document.getElementById('animation');
+// loading effect
 
 window.addEventListener('load', function () {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-});
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  });
+  
+  let logo = document.getElementById('animation-logo');
+  
+  const logoJump = logo.animate([
+    { top: '20vh' },
+    { top: '25vh' },
+    { top: '20vh' }
+  ], {
+    duration: 1000,
+    iterations: 3,
+    easing: 'linear',
+    direction: 'alternate', 
+  });
+  
+  let animation = document.getElementById('animation');
+  
+  const animationOut = animation.animate(
+  [
+    { transform: 'translateY(0%)' },
+    { transform: 'translateY(-120vh)' },
+  ], {
+    duration: 800,
+    iterations: 1,
+    easing: 'linear',
+    delay: 1500
+  });
+  
+  animationOut.onfinish = () => {
+    animation.style.display = 'none';
+  };
+  
+  
+// log in 
 
-const logoJump = logo.animate([
-  { top: '20vh' },
-  { top: '25vh' },
-  { top: '20vh' }
-], {
-  duration: 1000,
-  iterations: 3,
-  easing: 'linear',
-  direction: 'alternate', 
-});
-
-const animationOut = animation.animate(
-[
-  { transform: 'translateY(0%)' },
-  { transform: 'translateY(-120vh)' },
-], {
-  duration: 800,
-  iterations: 1,
-  easing: 'linear',
-  delay: 1500
-});
-
-animationOut.onfinish = () => {
-  animation.style.display = 'none';
-};
+  const headerLogin = document.getElementById('header-login')
+  const loginContainer = document.getElementById('loginContainer')
+  const loginBackground = document.querySelector('.loginBackground') 
 
 
+  headerLogin.addEventListener('click', function(){
+      loginContainer.style.display = 'flex';
+    })
 
-// .test-go 測驗
+
+  loginBackground.addEventListener('click', function(event){
+        if (event.target === loginBackground) {
+          loginContainer.style.display = 'none';          
+        }
+      }
+    )
+
+
+  // 導回 index.html 與 article.html
+  
+  const logoBtn = document.querySelector('.logo');
+  
+  logoBtn.addEventListener('click', function(){
+    window.location.href = 'index.html';
+  });
+  
+  const searchButton = document.getElementById('search-button');
+
+  searchButton.addEventListener('click', function() {
+    window.location.href = 'article.html';
+  });
+
+  // Top Button
+  
+  const scrollBtn = document.getElementById("topwrap");
+  
+  scrollBtn.addEventListener("click", function() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  });
+
+
+// show content dynamically based on URL.
+
+  let articles = [];
+  const url = '../json/front-enter-export.json';
+
+  fetch(url)
+    .then(res => res.json())
+    .then(res => res.article)
+    .then(res => Object.values(res))
+    .then(data => {
+      articles = data.map(object => {
+      return {
+        cityName: object.city, 
+        squareUrl: object.squareUrl, 
+        className: object.name, 
+        preface: object.preface, 
+        classType: object.classType, 
+        teachWay: object.teachWay, 
+        id: object.creatTime, 
+        topic: object.topic, 
+        content: object.content, 
+        rectangleUrl: object.rectangleUrl, 
+        totalDay: object.totalDay, 
+        weekHour: object.weekHour, 
+        technology: object.technology, 
+        mail: object.mail, 
+        phone: object.phone};  
+
+      })
+
+    const navUpper = document.getElementById('nav-upper');
+    const navUpperBackground = navUpper.querySelector('.nav-upper-background') 
+    const className = navUpper.querySelector('.className') 
+    const mainTitle = document.getElementById('mainTitle');
+    const mainContent = document.getElementById('mainContentText').querySelector('p') 
+    const boxTable = document.getElementById('boxTable')
+    const city = boxTable.querySelector('.city') 
+    const classType = boxTable.querySelector('.classType') 
+    const teachWay = boxTable.querySelector('.teachType') 
+    const totalDay = boxTable.querySelector('.totalDay') 
+    const weekHour = boxTable.querySelector('.weekHour') 
+    const tech = boxTable.querySelector('.tech') 
+    const mail = boxTable.querySelector('.mail') 
+    const phone = boxTable.querySelector('.phone') 
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id'); // get id parameter on the URL
+
+    const object = articles.find(article => article.id === parseInt(id)); // 將字符串轉換成整數
+    navUpperBackground.setAttribute('src', object.rectangleUrl);
+    className.textContent = object.className;
+    mainTitle.textContent = object.topic;
+    mainContent.innerHTML = object.content;
+    city.textContent = object.cityName;
+    classType.textContent = object.classType;
+    teachWay.textContent = object.teachWay;
+    totalDay.textContent = `${object.totalDay}天`;
+    weekHour.textContent = `${object.weekHour}小時`;
+    tech.textContent = `${object.technology}小時`;
+    mail.textContent = object.mail;
+    phone.textContent = object.phone;
+
+    localStorage.setItem('articles', JSON.stringify(articles));
+  });
+
+  // 將 articles 存在瀏覽器
+  const storedArticles = localStorage.getItem('articles');
+  
+  if (storedArticles) {
+    articles = JSON.parse(storedArticles);
+  }
+
+  // .test-go 測驗
+  
   const testGo = document.querySelectorAll('.test-go')
   const testContainer = document.querySelector('.testContainer ');
   
@@ -63,7 +181,6 @@ animationOut.onfinish = () => {
   let pieNum = document.querySelector('.pieNum');
   let urlButton = document.getElementById("newURL");
 
-  // 五個題目
   let quizData = [
     {
       question: "選擇在哪座城市學習",
@@ -112,37 +229,7 @@ animationOut.onfinish = () => {
   },
   ];
 
-  // 整理出九個物件的屬性
-  const url = '../json/front-enter-export.json';
-  let articles = {};
-
-  fetch(url)
-  .then(res => res.json())
-  .then(res => res.article)
-  .then(res => Object.values(res))
-  .then(data => {
-    articles = data.map(object => {
-      return {
-        className: object.name,
-        cityName: object.city,
-        fee: object.fee, 
-        weekHour: object.weekHour, 
-        classType: object.classType, 
-        teachWay: object.teachWay,
-        id: object.creatTime,
-      };  
-    });
-    localStorage.setItem('articles', JSON.stringify(articles));
-  });
-
-  // 將 articles 存在瀏覽器
-  const storedArticles = localStorage.getItem('articles');
-  
-  if (storedArticles) {
-    articles = JSON.parse(storedArticles);
-  }
-
-  // 比較屬性與題目的相符程度
+    // 比較屬性與題目的相符程度
   compareSchools(quizData, articles);
   let answerData = compareSchools(quizData, articles);
 
@@ -260,10 +347,9 @@ animationOut.onfinish = () => {
         }, 0);
       }
       else if(event.target === boxContainer){('click', function(event) {event.stopPropagation()})
-    }
+      }
     })
   }
-
 
     testEnd();
 
@@ -419,74 +505,122 @@ animationOut.onfinish = () => {
             console.log(id); 
         }
       }
-   ))
+    ))
+  
 
 
-// 轉到 article.html
 
-  const searchButton = document.getElementById('search-button');
 
-  searchButton.addEventListener('click', function() {
-    window.location.href = 'article.html';
+// 按下圖片時會跳出大圖片
+
+  let leftImgs = document.querySelectorAll('.leftImg');
+  const leftImgOne = document.querySelector('.leftImgOne');
+  const leftImgTwo = document.querySelector('.leftImgTwo');
+  const leftImgThree = document.querySelector('.leftImgThree');
+  const leftImgFour = document.querySelector('.leftImgFour');
+  const leftImgFive = document.querySelector('.leftImgFive');
+  let popUpImgContainer = document.querySelector('.popUpImgContainer');
+  let popUpImgBackgroud = document.querySelector('.popUpImgBackgroud');
+  let triLeft = document.querySelector('.TriLeft');
+  let popUpImg = document.querySelector('.popUpImg');
+  let triRight = document.querySelector('.TriRight');
+
+  
+  var imageUrls = [
+    'https://frankyeah.github.io/Front-Enter/images/2.jpg',
+    'https://frankyeah.github.io/Front-Enter/images/13.jpg',
+    'https://frankyeah.github.io/Front-Enter/images/15.jpg',
+    'https://frankyeah.github.io/Front-Enter/images/7.jpg',
+    'https://frankyeah.github.io/Front-Enter/images/AppWorksShool-rectangle.jpg'
+  ]
+  
+  const leftImages = [leftImgOne, leftImgTwo, leftImgThree, leftImgFour, leftImgFive]; 
+
+  leftImages.forEach((leftImg, index) => {
+    leftImg.style.background = `url('${imageUrls[index]}') 50% / cover no-repeat`;
+  });
+  
+  leftImgs.forEach((leftImg, index) => {
+    leftImg.addEventListener('click', function(){
+      currentImageIndex = index;
+      popUpImgContainer.style.display = 'flex';
+      popUpImg.style.background = this.style.background;
+    })
+  })
+
+  popUpImg.addEventListener('click', function(event){
+    event.stopPropagation();
   });
 
-  const logoBtn = document.querySelector('.logo');
-  logoBtn.addEventListener('click', function() {
-    window.location.href = 'index.html';
-  });
-
-// Top Button
-
-  const scrollBtn = document.getElementById("topwrap");
-
-  scrollBtn.addEventListener("click", function() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  });
-
-
-
-// search-button
-
-  let searchBox = document.getElementById('search-box');
-  let blackBox = document.getElementById('black-box');
-  let clickGlass = document.getElementById('click-glass');
-  const searchInput = document.querySelector('[data-search]'); 
-  const searchGlass = document.querySelector('.search-glass');
-
-  console.log(searchGlass);
-
-  let clickCount = 0;
-
-  clickGlass.addEventListener('click', function() {
-    clickCount += 1;
-    if (clickCount === 1) {
-    searchBox.style.display = 'flex';
-    blackBox.style.display = 'flex';
-    document.getElementById('search').focus();}
-    if (clickCount === 2) {
-    searchBox.style.display = 'none';
-    blackBox.style.display = 'none';
-    clickCount = 0;}
-  });
-
-  blackBox.onclick = () => {
-    searchBox.style.display = 'none';
-    blackBox.style.display = 'none';
-  };
-
-
-  searchInput.addEventListener('keydown', e => {
-    if (e.keyCode === 13) {
-      e.preventDefault();
-      window.location.href = 'article.html';
-      }
+  popUpImgBackgroud.addEventListener('click', function(){
+    popUpImgContainer.style.display = 'none';
   })
   
-  searchGlass.addEventListener('click', e => {
+ // 跳出大圖片後可以左右輪播
+
+ let currentImageIndex = null;
+
+triLeft.addEventListener('click', () => {
+  event.stopPropagation();
+  if (currentImageIndex !== null) {
+    currentImageIndex--;
+    if (currentImageIndex < 0) {
+      currentImageIndex = imageUrls.length - 1;
+    }
+    popUpImg.style.background = `url('${imageUrls[currentImageIndex]}') 50% / cover no-repeat`;
+  }
+});
+
+  triRight.addEventListener('click', function(event){
+    event.stopPropagation();
+    if (currentImageIndex !== null) {
+      currentImageIndex++;
+      if (currentImageIndex >= imageUrls.length) {
+        currentImageIndex = 0;
+      }
+      popUpImg.style.background = `url('${imageUrls[currentImageIndex]}') 50% / cover no-repeat`;
+    }
+  });
+
+
+// search bar 
+
+let searchBox = document.getElementById('search-box');
+let blackBox = document.getElementById('black-box');
+let clickGlass = document.getElementById('click-glass');
+const searchInput = document.querySelector('[data-search]'); 
+const searchGlass = document.querySelector('.search-glass');
+
+console.log(searchGlass);
+
+let clickCount = 0;
+
+clickGlass.addEventListener('click', function() {
+  clickCount += 1;
+  if (clickCount === 1) {
+  searchBox.style.display = 'flex';
+  blackBox.style.display = 'flex';
+  document.getElementById('search').focus();}
+  if (clickCount === 2) {
+  searchBox.style.display = 'none';
+  blackBox.style.display = 'none';
+  clickCount = 0;}
+});
+
+blackBox.onclick = () => {
+  searchBox.style.display = 'none';
+  blackBox.style.display = 'none';
+};
+
+
+searchInput.addEventListener('keydown', e => {
+  if (e.keyCode === 13) {
     e.preventDefault();
     window.location.href = 'article.html';
-  })
-  
-  
+    }
+})
 
+searchGlass.addEventListener('click', e => {
+  e.preventDefault();
+  window.location.href = 'article.html';
+})

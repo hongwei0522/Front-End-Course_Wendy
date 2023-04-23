@@ -1,38 +1,57 @@
 //loading effect
 
-let logo = document.getElementById('animation-logo');
-let animation = document.getElementById('animation');
+  let logo = document.getElementById('animation-logo');
+  let animation = document.getElementById('animation');
 
-window.addEventListener('load', function () {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-});
+  window.addEventListener('load', function () {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  });
 
-const logoJump = logo.animate([
-  { top: '20vh' },
-  { top: '25vh' },
-  { top: '20vh' }
-], {
-  duration: 1000,
-  iterations: 3,
-  easing: 'linear',
-  direction: 'alternate', 
-});
+  const logoJump = logo.animate([
+    { top: '20vh' },
+    { top: '25vh' },
+    { top: '20vh' }
+  ], {
+    duration: 1000,
+    iterations: 3,
+    easing: 'linear',
+    direction: 'alternate', 
+  });
 
-const animationOut = animation.animate(
-[
-  { transform: 'translateY(0%)' },
-  { transform: 'translateY(-120vh)' },
-], {
-  duration: 800,
-  iterations: 1,
-  easing: 'linear',
-  delay: 1500
-});
+  const animationOut = animation.animate(
+  [
+    { transform: 'translateY(0%)' },
+    { transform: 'translateY(-120vh)' },
+  ], {
+    duration: 800,
+    iterations: 1,
+    easing: 'linear',
+    delay: 1500
+  });
 
-animationOut.onfinish = () => {
-  animation.style.display = 'none';
-};
+  animationOut.onfinish = () => {
+    animation.style.display = 'none';
+  };
+
+// log in 
+
+  const headerLogin = document.getElementById('header-login')
+  const loginContainer = document.getElementById('loginContainer')
+  const loginBackground = document.querySelector('.loginBackground') 
+
+
+  headerLogin.addEventListener('click', function(){
+      loginContainer.style.display = 'flex';
+    })
+
+
+  loginBackground.addEventListener('click', function(event){
+        if (event.target === loginBackground) {
+          loginContainer.style.display = 'none';          
+        }
+      }
+    )
 
 
 
@@ -137,7 +156,6 @@ animationOut.onfinish = () => {
 
   // 將 articles 存在瀏覽器
   const storedArticles = localStorage.getItem('articles');
-  
   if (storedArticles) {
     articles = JSON.parse(storedArticles);
   }
@@ -316,19 +334,19 @@ animationOut.onfinish = () => {
     }
 
     // 從首頁開啟測驗介紹
-    testGo.forEach((e)=>{
-        e.addEventListener('click', function(){
-          currentQuiz = 0;
-          testContainer.style.display = 'flex';
-          testHeader.style.display = 'flex';
-          testIntro.style.display = 'flex';
-          startBtn.style.display = 'flex';
-          ul.style.display = 'none';
-          console.log(currentQuiz);
-        })
-        
-      })  
-  
+      testGo.forEach((e)=>{
+          e.addEventListener('click', function(){
+            currentQuiz = 0;
+            testContainer.style.display = 'flex';
+            testHeader.style.display = 'flex';
+            testIntro.style.display = 'flex';
+            startBtn.style.display = 'flex';
+            ul.style.display = 'none';
+            console.log(currentQuiz);
+          })
+          
+        })  
+    
     // 從測驗介紹開始測驗
       startBtn.addEventListener('click', function(){
         currentQuiz = 0;
@@ -474,6 +492,7 @@ animationOut.onfinish = () => {
     searchBox.style.display = 'none';
     blackBox.style.display = 'none';
   };
+
 
 
   searchInput.addEventListener('keydown', e => {
