@@ -10,22 +10,35 @@ html(lang="en")
         
     body 
         .header 
-            section#headerNav
+            #headerNav
                 img.logo(src="https://frankyeah.github.io/Front-Enter/images/FE_logo-4.png", alt="")
                 nav
                     button#search-button(type="button") 探索
                     button#skilltree-button(type="button") 技能樹
-                    button#login-button(type="button") 登入
+                    button#header-login(type="button") 登入
                     img#click-glass(src="https://frankyeah.github.io/Front-Enter/images/FE_search_green.png", alt="")
-                    
-            section#search-box
+
+            #loginContainer 
+                .loginBackground 
+                    .loginBox
+                        img.login(src="https://frankyeah.github.io/Front-Enter/images/FE_logo-2.png", alt="") 
+                        form
+                            input#email(type="email" name="email" placeholder="Email" required)
+                            input#password(type="password" name="password" placeholder="******" required)
+                        span.forgetPW 忘記密碼？
+                        .blueBtn
+                            button#register 註冊
+                            button#login 登入
+                        button#loginEmail log in with Gmail
+
+            #search-box
                 span SEARCH
                 form#searchBar(action="") 
                     input#search(type='search' placeholder='搜尋課程名稱、所在城市或簡介' data-search)
                     img.voice(src="https://frankyeah.github.io/Front-Enter/images/microphone.svg", alt="")
                     img.search-glass(src="https://frankyeah.github.io/Front-Enter/images/FE_search_green.png")
 
-            section#black-box
+            #black-box
 
         #nav-center-upper
             img.slide1(src="https://firebasestorage.googleapis.com/v0/b/front-enter.appspot.com/o/images%2Frotate-img-2.jpg?alt=media&token=f28dbea4-af0c-4743-a75a-426198fe409e", alt="")
@@ -48,28 +61,28 @@ html(lang="en")
                         .testHeader 測驗說明
                         .testIntro 點選「開始測驗」後，系統將根據你的回答，找出最適合你的學習環境，並顯示有多少百分比的合適度。
                         .startBtn 開始測驗
-                        .testQuestion 
-                        .testNumber 
+                        .testQuestion Question Test
+                        .testNumber 0/5
                         ul 
                             li 
                                 input#1.answer(type='radio' name='answer') 
-                                label#1-text(for='1') 
+                                label#1-text(for='1') 台北
                             li
                                 input#2.answer(type='radio' name='answer')
-                                label#2-text(for='2')                            
+                                label#2-text(for='2') 台北                           
                             li
                                 input#3.answer(type='radio' name='answer')
-                                label#3-text(for='3')                            
+                                label#3-text(for='3') 台北                           
                             li 
                                 input#4.answer(type='radio' name='answer')
-                                label#4-text(for='4') 
+                                label#4-text(for='4') 台北
                             li 
                                 input#5.answer(type='radio' name='answer')
-                                label#5-text(for='5') 
-                        button#newURL 
+                                label#5-text(for='5') 台北
+                        button#newURL 學校 ABC
                         .pieContainer
                             .pieChart
-                                .pieNum
+                                .pieNum 20%
 
 
         .navCenter
