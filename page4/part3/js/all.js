@@ -137,20 +137,10 @@ loginBackground.addEventListener('click', function(event){
     firebase.auth().createUserWithEmailAndPassword(inputEmail.value, inputPW.value)
     .then(() => {
       console.log("註冊成功");
-      // const userId = firebase.auth().currentUser.uid; 
-      // firebase.database().ref('users/' + userId).set({
-      //   email: inputEmail.value, 
-      //   password: inputPW.value
-      // })
-      // .then(() => {
-        // console.log("資料儲存成功");
         firebase.auth().currentUser.sendEmailVerification();
         remindBackground.style.display = 'flex'; 
         remindBoxContent.innerText = '驗證信已寄出';
-        windowClose();
-      // }).catch((error) => {0
-      //   console.error("資料儲存失敗:", error);
-      // });
+        forceLogout();
     }).catch((error) => {
       if(error.code === "auth/invalid-email"){
         console.error("註冊失敗:", error);
@@ -235,19 +225,23 @@ loginBackground.addEventListener('click', function(event){
           }else{ // 沒通過認證
           remindBackground.style.display = 'flex';
           remindBoxContent.innerText = '請先通過信箱認證';
-          firebase.auth().signOut().then(() => {
-            loginContainer.style.display = 'flex';
-            loginBackground.style.display = 'none';
-            windowClose();
-            console.log('使用者已登出');
-            })
-          windowClose();
-          // 強制登出 
+
+          forceLogout()
           }
       } else {
         console.error("登入失敗:", error);
       }
     });
+  }
+
+  // 強制登出
+  function forceLogout(){
+    firebase.auth().signOut().then(() => {
+      loginContainer.style.display = 'flex';
+      loginBackground.style.display = 'none';
+      windowClose();
+      console.log('使用者已登出');
+      })
   }
 
   // profile.html
