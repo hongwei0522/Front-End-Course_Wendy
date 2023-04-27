@@ -23,7 +23,6 @@ function showSlides() {
 const blockTemplate = document.querySelector('[data-classroom-block]');
 
 const blockContainer = document.querySelector('.navCenter');
-
 const allClass = document.getElementById('allClass');
 const smallClass = document.getElementById('smallClass');
 const freeRange = document.getElementById('freeRange');
@@ -31,89 +30,128 @@ const oneOnOne = document.getElementById('oneOnOne');
 
 const blue = '#1ad8d3';
 const grey = '#737373';
+let urlTrue = 'https://frankyeah.github.io/Front-Enter/images/star-background.svg';
 
-// let articles = [];
+let urlFalse = 'https://frankyeah.github.io/Front-Enter/images/star-border.svg';
 
-window.addEventListener('DOMContentLoaded', allBlock);
 
-// const url = '../json/front-enter-export.json';
+if (storedArticles) {
+  articles = JSON.parse(storedArticles);
+}
 
-function allBlock(){
-fetch(url)
-  .then(res => res.json())
-  .then(res => res.article)
-  .then(res => Object.values(res))
-  .then(data => {
-    articles = data.map(object => {
+window.addEventListener('DOMContentLoaded', () => {
+  articles.forEach(object => {
     const block = blockTemplate.content.cloneNode(true).children[0];
     const cityName = block.querySelector('.cityName');
     const squareInner = block.querySelector('.squareInner');
     const className = block.querySelector('.className');
-    const preface = block.querySelector('.preface'); 
-
-    
-    
-    cityName.textContent = object.city;
+    const preface = block.querySelector('.preface');
+  
+    cityName.textContent = object.cityName;
     squareInner.setAttribute('src', object.squareUrl);
-    className.textContent = object.name;
+    className.textContent = object.className;
     preface.textContent = object.preface;
     blockContainer.append(block);
-    // const star = document.createElement('div');
-    // block.appendChild(star);
-    // star.style.width = '20px';
-    // star.style.height = '20px';
-    // star.style.background = `url('https://frankyeah.github.io/Front-Enter/images/star-border.svg') 50% / cover no-repeat`
-    return {
-        cityName: object.city, 
-        squareUrl: object.squareUrl, 
-        className: object.name, 
-        preface: object.preface, 
-        classType: object.classType, 
-        teachWay: object.teachWay, 
-        id: object.creatTime, 
-        element: block};  
-    })
-    allClassClick();
-    smallClassClick();
-    freeRangeClick();
-    oneOnOneClick();
-    
-    taipeiClickFunction();
-    kaoshiungClickFunction();
-    remoteClickFunction();
-    contentLink();
-  })
-}
+
+    object.element = block;
+    object.element.style.display = 'flex';
+  });
+
+  smallClassClick(articles);
+  allClassClick(articles);
+  
+  freeRangeClick(articles);
+  oneOnOneClick(articles);
+
+  taipeiClickFunction(articles);
+  kaoshiungClickFunction(articles);
+  remoteClickFunction(articles);
+  contentLink(articles)
+
+});
+
+
+
+// 登入顯示星星，登出隱藏星星
+  let articleObj;
+
+  if (storedArticles) {
+    articleObj = JSON.parse(storedArticles);
+  }
+
+  starLogin();
+  
+  function starLogin(){
+    firebase.auth().onAuthStateChanged(function(user) {
+      const starList = document.querySelectorAll('.star');
+      if (user) { 
+        articleObj.forEach((currentArticle, index) => {
+
+          const clicked = localStorage.getItem('clicked_' + index);
+          
+          currentArticle.clicked = clicked === 'true';
+
+
+          const star = starList[index];
+          star.style.display = 'flex';
+          star.style.background = `url(${currentArticle.clicked ? urlTrue : urlFalse}) 50% / cover no-repeat`;
+
+
+          star.addEventListener('click', (e) => {
+            if (!currentArticle.clicked) {
+              e.currentTarget.style.background = `url(${urlTrue}) 50% / cover no-repeat`;
+            } else { 
+              e.currentTarget.style.background = `url(${urlFalse}) 50% / cover no-repeat`;
+            }
+            currentArticle.clicked = !currentArticle.clicked;
+            
+            localStorage.setItem('clicked_' + index, currentArticle.clicked); 
+
+            // displayCollection(articleObj);
+            
+            console.log(articleObj);
+            localStorage.setItem('displayCollect', JSON.stringify(articleObj)); 
+          });
+        });
+
+      } else {
+        starList.forEach((star) => {
+          star.style.display = 'none';
+        });
+      }
+    });
+  }
 
 
 
 
-function allClassClick(){ // 全部
+  
+// 顯示文章
+
+function allClassClick(articles){ // 全部
   allClass.addEventListener('click', function(){
-    articles.forEach((article)=>{
-    article.element.style.display = 'flex'})
-
+    articles.forEach((object)=>{
+    object.element.style.display = 'flex'})
     allClass.style.color = blue;
     [smallClass, freeRange, oneOnOne].forEach(el => el.style.color = grey);
 })
 }
 
 
-function smallClassClick(){ // 小班制
-    smallClass.addEventListener("click", function(){
-      articles.forEach((article)=>{
-        article.element.style.display = 'flex';
-        if(article.classType !== '小班制'){
-          article.element.style.display = 'none';}
-      })
-      smallClass.style.color = blue;
-
-      [freeRange, oneOnOne, allClass].forEach(el => el.style.color = grey);
+function smallClassClick(articles){ // 小班制
+  smallClass.addEventListener("click", function(){
+    articles.forEach((object)=>{
+      object.element.style.display = 'flex';
+      if(object.classType !== '小班制'){
+        object.element.style.display = 'none';}
     })
+    smallClass.style.color = blue;
+    [freeRange, oneOnOne, allClass].forEach(el => el.style.color = grey);
+  })
 }
 
 
-function freeRangeClick(){ // 放養制
+function freeRangeClick(articles){ // 放養制
   freeRange.addEventListener("click", function(){
     articles.forEach((article)=>{
       article.element.style.display = 'flex';
@@ -126,7 +164,7 @@ function freeRangeClick(){ // 放養制
 }
 
 
-function oneOnOneClick(){ // 一對一
+function oneOnOneClick(articles){ // 一對一
   oneOnOne.addEventListener("click", function(){
     articles.forEach((article)=>{
       article.element.style.display = 'flex';
@@ -139,54 +177,58 @@ function oneOnOneClick(){ // 一對一
 }
 
 
-function taipeiClick(){
-  articles.forEach((article)=>{ // 台北
-    article.element.style.display = 'flex';
-  if(article.cityName !== '台北'){
-      article.element.style.display = 'none'}
-  })
-}
-function taipeiClickFunction(){
-  const taipeiCities = articles.filter(article => article.cityName === '台北').map(article => article.element.querySelector('.cityName'));
+
+function taipeiClickFunction(articles){
+  const taipeiCities = articles.filter(article => article.cityName === '台北').map(article => article.element.querySelector('.cityName'));  
   taipeiCities.forEach(ele =>{
-    ele.addEventListener('click', taipeiClick);
-  })
+    ele.addEventListener('click', () => { 
+
+      articles.forEach((article)=>{
+        article.element.style.display = 'flex';
+        if(article.cityName !== '台北'){
+          article.element.style.display = 'none';
+        }
+      });
+
+    });
+  });
 }
 
-function kaoshiungClick(){ // 高雄
-  articles.forEach((article)=>{
-    article.element.style.display = 'flex';
-  if(article.cityName !== '高雄'){
-      article.element.style.display = 'none'}
-  })
-}
-function kaoshiungClickFunction(){
+function kaoshiungClickFunction(articles){
   const kaoshiungCities = articles.filter(article => article.cityName === '高雄').map(article => article.element.querySelector('.cityName'));
+
   kaoshiungCities.forEach(ele =>{
-    ele.addEventListener('click', kaoshiungClick);
-  })
-}
-
-function remoteClick(){// 各地
-  articles.forEach((article)=>{
-    article.element.style.display = 'flex';
-  if(article.cityName !== '各地'){
-      article.element.style.display = 'none'}
-  })
-}
-
-function remoteClickFunction(){
-  const remoteCities = articles.filter(article => article.cityName === '各地').map(article => article.element.querySelector('.cityName'));
-  remoteCities.forEach(ele =>{
-    ele.addEventListener('click', remoteClick);
-  })    
+    ele.addEventListener('click', () => { 
+        articles.forEach((article)=>{
+          article.element.style.display = 'flex';
+        if(article.cityName !== '高雄'){
+            article.element.style.display = 'none'}
+        })
+      })
+    })
   }
+
+
+function remoteClickFunction(articles){
+  const remoteCities = articles.filter(article => article.cityName === '各地').map(article => article.element.querySelector('.cityName'));
+
+  remoteCities.forEach(ele =>{
+    ele.addEventListener('click', () => { 
+
+      articles.forEach((article)=>{
+        article.element.style.display = 'flex';
+      if(article.cityName !== '各地'){
+          article.element.style.display = 'none'}
+      }) 
+    });
+  })    
+}
 
 
 
 // take id parameter on the URL and link to content.html
 
-function contentLink(){
+function contentLink(articles){
   const contentLinks = document.querySelectorAll('.lowerBlock ');
   contentLinks.forEach(link => {
     link.addEventListener( 'click', () => {

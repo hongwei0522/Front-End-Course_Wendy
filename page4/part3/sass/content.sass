@@ -2,11 +2,11 @@
 $dark-blue: #1cb5e0
 $light-blue: #1ad8d3
 $grey: #737373
-$darkGrey: rgb(128, 128, 128)
+$darkGrey: #808080cc
   
 *
     font-family: 微軟正黑體
-    // border: solid 1px $grey
+    // border: solid 1px #b3b3b3
 
 
 html body
@@ -71,7 +71,6 @@ html body
         width: 20px
         cursor: pointer
         transition: .5s
-
   #loginContainer 
     position: fixed
     z-index: 9
@@ -158,50 +157,6 @@ html body
           cursor: pointer
           border: none
           margin-top: 5px
-    .remindBackground
-      position: fixed
-      margin-top: 0px
-      background-color: rgba(0, 0, 0, 0.5)
-      width: 100vw
-      height: 100vh
-      top: 0px
-      left: 0px
-      position: fixed
-      display: flex
-      justify-content: center
-      align-items: center
-      .remindBox 
-        width: 300px
-        height: 170px
-        transform: translateY(-30px)
-        background-color: white
-        border-radius: 5px
-        letter-spacing: 3px
-        display: flex
-        flex-direction: column
-        justify-content: flex-start
-        align-items: center
-
-        .header
-          font-size: 20px
-          color: $grey
-          margin-top: 25px
-        .content
-          font-size: 16px
-          color: $grey
-          margin-top: 20px
-        button
-          font-size: 16px
-          width: 100px
-          padding: 3px 10px
-          margin-top: 15px
-          color: white
-          background-color: $light-blue
-          border: none
-          border-radius: 3px
-          cursor: pointer
-
-
   #search-box
     position: absolute
     background-color: #f0f0f0
@@ -219,30 +174,30 @@ html body
       letter-spacing: 2px
       font-size: 15pt
     #searchBar
-        width: 60%
-        height: 50px
-        background-color: white
-        border-radius: 20px
+      width: 60%
+      height: 50px
+      background-color: white
+      border-radius: 20px
+      border: none
+      display: flex
+      align-items: center
+      justify-content: space-evenly
+      input#search
+        width: 90%
+        height: 60%
+        border-radius: 10px
         border: none
-        display: flex
-        align-items: center
-        justify-content: space-evenly
-        input#search
-          width: 90%
-          height: 60%
-          border-radius: 10px
-          border: none
-          font-size: 12pt
-          letter-spacing: 2pt
-          padding: 5px
-        input::placeholder
-          color: #929292
-        .voice
-          width: 22px
-          cursor: pointer
-        .search-glass
-          width: 22px
-          cursor: pointer  
+        font-size: 12pt
+        letter-spacing: 2pt
+        padding: 5px
+      input::placeholder
+        color: #929292
+      .voice
+        width: 22px
+        cursor: pointer
+      .search-glass
+        width: 22px
+        cursor: pointer  
 
         
   #black-box
@@ -293,7 +248,7 @@ html body
   .slogan
     opacity: 0.5
 
-#nav-center-upper
+#nav-upper
   width: 100vw
   height: 380px
   padding: 0px
@@ -303,57 +258,25 @@ html body
   align-items: center
   position: relative
   overflow: hidden
-  img
+  .nav-upper-background
     position: absolute
     width: 100%
-    opacity: 0
+    opacity: 1
     transition: opacity 1s
-  .slogan
+  .className
     position: absolute
-    font-size: 18pt
     background-color: $darkGrey
-    opacity: 0.8
-    color: white
-    width: 230px
-    height: 40px
     border-radius: 8px
     display: flex
     justify-content: center
     align-items: center
     padding: 6px
-    p
-      letter-spacing: 10px
-      text-align: center
-
-@media screen and (max-width: 580px)
-  #nav-center-upper
-    height: 380px
-    img
-      position: absolute
-      width: auto
-      height: 100%
-
-.nav-center-lower
-  width: 100%
-  height: 70px
-  background-color: white
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1)
-  display: flex
-  justify-content: space-between
-  flex-direction: row
-  align-items: center
-  flex-wrap: wrap
-  position: relative
-  span:hover
-    cursor: pointer
-    opacity: .5
-  span
-    color: $darkGrey
-    white-space: nowrap
-  #allClass
-    margin-left: 25vw
-  #oneOnOne
-    margin-right: 25vw
+    letter-spacing: 10px
+    color: white
+    font-size: 18pt
+    font-weight: 650
+    white-space: nowrap 
+    padding: 10px 15px
   .test-go-container
     width: 100px
     height: 100px
@@ -611,127 +534,289 @@ html body
     transform: rotate(50deg)
   100%
     transform: rotate(20deg)
+  
 
 @keyframes testRound 
-  0% 
-    bottom: 800px
-  100%
-    bottom: 100px
+    0% 
+        bottom: 800px
+    100%
+        bottom: 140px
 
-@media screen and (max-width: 600px)
-  .nav-center-lower 
-    justify-content: center
-    gap: 8%
-    flex-wrap: nowrap
-    div 
-      white-space: nowrap
+@media screen and (max-width: 580px)
+  #nav-upper
+    height: 380px
+    .nav-upper-background
+      position: absolute
+      width: auto
+      height: 100%
+
 
 .navCenter
   background-color: white
-  display: flex
-  flex-direction: row
-  padding: 100px 50px
-  justify-content: center
-  flex-wrap: wrap
+  padding: 100px 5%
   z-index: 3
-
-  .block
-    width: 330px
-    height: 520px
-    border: solid 1px $light-blue
-    margin: 10px 10px
+  display: flex
+  .navCenterLeft
+    height: auto
+    width: 100%
     display: flex
-    flex-direction: column
-    justify-content: flex-start
+    justify-content: center
     align-items: center
-    .star
-      width: 20px
-      height: 20px
-      background: url('https://frankyeah.github.io/Front-Enter/images/star-border.svg') no-repeat center center/cover
-    .city
-      margin-top: 50px
-      display: flex
-      align-items: center
-      color: $grey
-      .locationLogo
-        width: 18px
-      .cityName:hover
-        cursor: pointer
-        color: $grey
-        opacity: .7
-      .cityName
-        margin-left: 5px
-        
-    .lowerBlock:hover
+    flex-direction: column
+    .leftImg:hover
       cursor: pointer
-      opacity: .7
-    .lowerBlock
+      transform: scale(1.05)
+      transform-origin: top center
+      margin-bottom: 55px
+    .leftImg:not(:hover)
+      transform: scale(1)
+      margin-bottom: 40px
+      transition: .6s
+      position: relative
+    .leftImg
+      width: 400px
+      height: 266px
+      border-radius: 5px 
+      margin-bottom: 40px
+      transition: .6s
+      position: relative
+
+    .popUpImgContainer
+      display: none
+      position: fixed
+      z-index: 9
+      top: 0
+      left: 0
+      width: 100vw
+      height: 100vh
+      .popUpImgBackgroud
+        position: fixed
+        margin-top: 0px
+        background-color: rgba(0,0,0,0.8)
+        width: 100vw
+        height: 100vh
+        top: 0px
+        left: 0px
+        position: fixed
+        display: flex
+        justify-content: center
+        align-items: center
+        align-content: center
+        .TriLeft
+          z-index: 10
+          width: 50px
+          height: 50px
+          display: flex
+          justify-content: center
+          align-items: center
+          .popUpTriLeft
+            width: 0
+            height: 0
+            border-top: 12px solid transparent
+            border-right: 12px solid transparent
+            border-left: solid 12px grey
+            border-bottom: solid 12px grey
+            transform: rotate(45deg)
+        .popUpImg
+          width: 750px
+          height: 550px
+          // background: url('') 50% / cover no-repeat
+        .TriRight
+          z-index: 10
+          width: 50px
+          height: 50px
+          // border: 1px solid white
+          display: flex
+          justify-content: center
+          align-items: center
+          .popUpTriRight
+            width: 0
+            height: 0
+            border-top: 12px solid transparent
+            border-right: 12px solid transparent
+            border-left: solid 12px grey
+            border-bottom: solid 12px grey
+            transform: rotate(225deg)
+
+
+  @media screen and (max-width: 960px)
+    .navCenterLeft
+      .popUpImgContainer
+        .popUpImgBackgroud
+          .popUpImg
+            width: 400px
+            height: 400px
+  @media screen and (max-width: 530px)
+    .navCenterLeft
+      .popUpImgContainer
+        .popUpImgBackgroud
+          .popUpImg
+            width: 300px
+            height: 300px
+
+  @media screen and (max-width: 410px)
+    .navCenterLeft
+      .popUpImgContainer
+        .popUpImgBackgroud
+          .popUpImg
+            width: 220px
+            height: 340px
+
+
+  .navCenterRight
+    margin-left: 60px
+    margin-right: 80px
+    .mainContent
       display: flex
       flex-direction: column
+      align-items: center
+      #mainContentText
+        #mainTitle
+          font-size: 20px
+          color: $light-blue
+          line-height: 28px
+          font-weight: bold
+          letter-spacing: 3px
+        p        
+          margin-top: 20px
+          font-size: 16px
+          color: $grey
+          line-height: 28px
+          letter-spacing: 3px
+      #boxTitle
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: flex-end
+        height: 140px
+        p
+          font-size: 18px
+          color: $light-blue
+          letter-spacing: 3px
+          display: flex
+        .underline
+          width: 20px
+          border-top: .8px solid $light-blue 
+          transform: translateY(-10px)
+
+      #boxTable
+        margin-top: 30px
+        flex-direction: column
+        // border: 1px solid blue
+        display: flex
+        align-items: flex-start
+        font-size: 16px
+        letter-spacing: 3px
+        width: 400px
+        .row
+          width: 100%
+          border-bottom: 1px solid #73737358
+          line-height: 70px
+          display: flex
+          flex-direction: row
+          // border: 1px solid red
+          .row-left
+            color: $light-blue
+            font-weight: bold
+            white-space: nowrap
+          .row-right
+              color: $grey
+              white-space: nowrap
+              // border-left: 1px solid #73737358
+              color: #8f8f8f
+              margin-left: 60px
+
+                        
+                      
+@media screen and (max-width: 1200px)
+  .navCenter
+    flex-wrap: wrap
+    justify-content: center
+    padding: 100px 0px
+    .navCenterLeft
+      display: flex
       justify-content: center
       align-items: center
-      margin-top: 20px
-      .squareOuter:hover
-        .squareInner
-          cursor: pointer
-          opacity: .8
-          transform: scale(1.2)
-      .squareOuter
-        width: 210px
-        height: 160px
-        margin-top: 20px
-        border-radius: 5px
-        padding: 0px
-        margin: 0px
-        position: relative
-        overflow: hidden
-        .squareInner
-          width: 100%
-          height: 100%
-          position: absolute
-          transition: transform 1s ease
-          
-      .className:hover
-        opacity: .5
-
-      .className
-        margin-top: 30px 
-        font-size: 20pt
-        color: $light-blue
-      .preface:hover
-        opacity: .5
-
-      .preface
-        color: #3f3a3a
-        width: 220px
-        text-align: center
-        margin-top: 30px
-        line-height: 23px
-      .readmore
-        margin-top: 20px
+      .leftImg
+        display: none
+      .leftImgOne 
         display: flex
-        flex-direction: row
-        align-items: center
-        text-decoration: none
-        .readmoreGuide:hover
-          opacity: .5
-          margin-right: 20px 
-        .readmoreGuide
-          color: $light-blue
-          transition: 1s ease
-        .readmoreArrow
-          width: 5px
-          height: 5px
-          margin-left: 10px
-          border-left: solid 1px grey
-          border-bottom: solid 1px grey
-          transform: rotate(225deg)
 
-@media screen and (max-width: 823px)
+@media screen and (max-width: 700px)
   .navCenter
-    .block
-      border: none
-      border-bottom: solid 1px $light-blue
+    .navCenterRight
+      .mainContent
+        #boxTable
+          margin-top: 30px
+          flex-direction: column
+          display: flex
+          align-items: flex-start
+          font-size: 14px
+          letter-spacing: 3px
+          width: 100%
+          .row
+            width: 100%
+
+@media screen and (max-width: 650px)
+  .navCenter
+    .navCenterLeft
+      .leftImg
+          display: none
+      .leftImgOne 
+          display: flex
+          scale: .85
+          transform-origin: top center
+      .leftImgOne:hover
+          cursor: pointer
+          transform: scale(1.15)
+          margin-bottom: 55px
+          transform-origin: top center
+    .navCenterRight
+      margin-top: -35px
+
+@media screen and (max-width: 470px)
+  .navCenter
+    .navCenterLeft
+      height: auto
+      flex-direction: column
+      .leftImg:hover
+        transform: scale(1)
+        height: 320px
+        cursor: pointer
+        transform-origin: top center
+        margin-bottom: 40px
+      .leftImg:not(:hover)
+        transform: scale(1)
+        margin-bottom: 40px
+        transition: .6s
+        position: relative
+      .leftImg
+        background: url('https://frankyeah.github.io/Front-Enter/images/15.jpg') 50% / cover no-repeat
+        width: 80%
+        max-width: 400px
+        height: 266px
+        border-radius: 5px 
+        margin-bottom: 40px
+        transition: .6s
+        position: relative
+
+    .navCenterRight
+      margin-left: 0px
+      margin-right: 0px
+      .mainContent
+        margin-left: 0px
+        margin-right: 0px
+        #mainContentText
+          margin-left: 60px
+          margin-right: 80px
+        #boxTable
+          font-size: 12px
+          width: 80%
+          .row
+            width: 100%
+            .row-right
+              margin-left: 60px
+
 
 
 .top
@@ -777,7 +862,6 @@ html body
         color:$light-blue
         font-size: 8pt
 
-    
 .footer
   display: flex
   flex-direction: row
@@ -858,7 +942,7 @@ html body
   width: 100vw
   height: 100vh
   top: 0
-  z-index: 10
+  z-index: 20
   #animation-logo
     position: absolute
     display: flex

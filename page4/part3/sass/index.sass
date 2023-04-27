@@ -1,27 +1,22 @@
+*
+    font-family: 微軟正黑體
+    // border: solid 1px black
 
 $dark-blue: #1cb5e0
 $light-blue: #1ad8d3
 $grey: #737373
-$darkGrey: rgb(128, 128, 128)
+
   
-*
-    font-family: 微軟正黑體
-    // border: solid 1px $grey
-
-
 html body
   padding: 0px
   margin: 0px
   box-sizing: border-box
   background-color: #f0f0f0
 
-.hide
-  display: none
-
 .header 
   display: flex
   top: 0
-  z-index: 7
+  z-index: 5
   position: sticky
   #headerNav
     width: 100vw
@@ -287,73 +282,43 @@ html body
         width: 90vw
         input#search
           width: 80%
-
-
-.nav-center-upper:hover
-  .slogan
-    opacity: 0.5
-
-#nav-center-upper
-  width: 100vw
-  height: 380px
-  padding: 0px
+        
+.info
+  height: 600px
+  background-image: url(https://frankyeah.github.io/Front-Enter/images/key-visual.jpg)
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: center
+  color: white
   display: flex
-  flex-direction: row
   justify-content: center
   align-items: center
-  position: relative
-  overflow: hidden
-  img
-    position: absolute
-    width: 100%
-    opacity: 0
-    transition: opacity 1s
-  .slogan
-    position: absolute
-    font-size: 18pt
-    background-color: $darkGrey
-    opacity: 0.8
-    color: white
-    width: 230px
-    height: 40px
-    border-radius: 8px
+  flex-direction: column
+
+  .words
     display: flex
-    justify-content: center
+    flex-direction: column
     align-items: center
-    padding: 6px
-    p
-      letter-spacing: 10px
-      text-align: center
+    
+    h3 
+      font-size: 28pt
+      letter-spacing: 2pt
+      margin-bottom: -23px
+    h3:hover
+      transform: rotate(-10deg)
 
-@media screen and (max-width: 580px)
-  #nav-center-upper
-    height: 380px
-    img
-      position: absolute
-      width: auto
-      height: 100%
+    h4 
+      font-size: 18pt
+      letter-spacing: 7pt
+      font-weight: 250
+  .arrow
+    border-top: solid 1px white
+    border-left: solid 1px white
+    transform: translateY(120px) rotate(225deg)
+    width: 12px
+    height: 12px
+    animation: arrow .5s infinite
 
-.nav-center-lower
-  width: 100%
-  height: 70px
-  background-color: white
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1)
-  display: flex
-  justify-content: space-between
-  flex-direction: row
-  align-items: center
-  flex-wrap: wrap
-  position: relative
-  span:hover
-    cursor: pointer
-    opacity: .5
-  span
-    color: $darkGrey
-    white-space: nowrap
-  #allClass
-    margin-left: 25vw
-  #oneOnOne
-    margin-right: 25vw
   .test-go-container
     width: 100px
     height: 100px
@@ -361,8 +326,9 @@ html body
     bottom: 100px
     right: -10px
     position: fixed
-    z-index: 6
+    z-index: 1
     opacity: 0.85
+    transition-duration: 1s
     animation: testRound 1s 1.5s
     display: flex
     justify-content: center
@@ -370,10 +336,10 @@ html body
     .test-go-round:hover
       cursor: pointer
       opacity: 0.7
-      transform: translateY(-25%)
+      transform: translateY(-15%)
     .test-go-round
       width: 80px
-      transition: transform 1s ease
+
 
   .testContainer
     position: fixed
@@ -428,6 +394,7 @@ html body
           color: white
           letter-spacing: 3px
           margin-top: 60px
+          // display: none
         .testIntro
           position: absolute
           font-size: 16px
@@ -435,6 +402,7 @@ html body
           letter-spacing: 1px
           line-height: 30px
           margin: 120px 50px
+          // display: none
         .startBtn
           position: absolute
           font-size: 18px
@@ -444,6 +412,7 @@ html body
           color: $light-blue
           background-color: white
           letter-spacing: 3px
+          // display: none
         .startBtn:hover
           position: absolute
           font-size: 18px
@@ -461,7 +430,6 @@ html body
           position: absolute
           margin-top: 40px
           display: none
-          color: white
         .testNumber
           color: rgba(255, 255, 255,.7)
           letter-spacing: 3px
@@ -501,6 +469,7 @@ html body
               left: 0
               top: 0
               width: 100%
+              // height: 100%
               border-radius: 10px
               cursor: pointer
             label
@@ -586,7 +555,7 @@ html body
             transform-origin: 75px 75px 
             animation: rotate-circle 4s linear
             transform: rotate(var(--after-rotation, 0deg))
-
+            
 
 @keyframes rotate-circle
   0%
@@ -612,127 +581,280 @@ html body
   100%
     transform: rotate(20deg)
 
+    
+@keyframes arrow
+  0%
+    transform: translateY(130px) rotate(225deg)
+  50%
+    transform: translateY(120px) rotate(225deg)
+  100%
+    transform: translateY(130px) rotate(225deg)
+
 @keyframes testRound 
   0% 
     bottom: 800px
   100%
     bottom: 100px
 
-@media screen and (max-width: 600px)
-  .nav-center-lower 
-    justify-content: center
-    gap: 8%
-    flex-wrap: nowrap
-    div 
-      white-space: nowrap
+.test:hover
+  height: 660px
+.test
+  margin-top: 10px
+  height: 600px
+  background-color: rgba(0,0,0,0.5)
+  background-blend-mode: multiply
+  background-image: url("https://frankyeah.github.io/Front-Enter/images/second-img.jpg") 
+  
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: center
+  background-attachment: fixed
 
-.navCenter
-  background-color: white
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  transition-duration: 2s
+
+  p
+    color: white
+    font-size: 13.5pt
+    letter-spacing: 2pt
+    line-height: 30pt    
+    font-weight: 300
+    text-align: center
+    flex-grow: 0.025
+    
+
+  button.test-go-square
+    border: solid 1px $light-blue
+    color: $light-blue
+    border-radius: 5px
+    font-size: 13.5pt
+    width: 130px
+    background-color: rgba(0,0,0,0)
+    flex-grow: 0.023
+    transition: all 1.2s ease
+  button:hover
+    cursor: pointer
+    flex-grow: 0.030
+    transform: scale(1.12)
+
+@media screen and (max-width: 570px)
+
+  .test:hover
+    height: 660px
+  .test
+    background-size: cover
+    background-attachment: local
+    
+    
+.classroom:hover
+  height: 660px
+.classroom
+  transition-duration: 2s
+  margin-top: 10px
+  height: 600px
+  background-color: rgba(0,0,0,0.5)
+  background-blend-mode: multiply
+  background-image: url("https://frankyeah.github.io/Front-Enter/images/third-img.jpg") 
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: center
+  background-attachment: fixed
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  p
+    color: white
+    font-size: 16pt
+    letter-spacing: 2pt
+    font-weight: 300
+    margin-bottom: 0pt
+    flex-grow: 0.03
+  button:hover
+    cursor: pointer
+    flex-grow: 0.03
+    transform: scale(1.1)
+    
+  button
+    transition-duration: 1s
+    flex-grow: 0.013
+    flex-wrap: nowrap
+    width: 230px
+    padding: 2pt
+    margin-top: 35px
+    border: solid 1px $light-blue
+    color: $light-blue
+    font-size: 13.5pt
+    border-radius: 5px
+    background-color: rgba(0,0,0,0)
+
+@media screen and (max-width: 570px)
+
+  .classroom:hover
+    height: 660px
+  
+  .classroom
+    background-size: cover
+    background-attachment: local
+ 
+
+
+.article-skilltree:hover
+  height: 840px
+.article-skilltree
+  
+  transition-duration: 2s
+  margin-top: 10px
+  height: 800px
+  background-image: url("https://frankyeah.github.io/Front-Enter/images/15.jpg") 
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: center
+  background-attachment: fixed
+
+  position: relative
   display: flex
   flex-direction: row
-  padding: 100px 50px
   justify-content: center
-  flex-wrap: wrap
-  z-index: 3
-
-  .block
-    width: 330px
-    height: 520px
-    border: solid 1px $light-blue
-    margin: 10px 10px
+  align-items: center
+  gap: 65px
+  
+  
+  .box
+    width: 290px
+    height: 420px
+    border-radius: 3px
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3)
+    background-color: #f5f5f5
+    position: relative
+    justify-content: center
+    align-items: center
     display: flex
     flex-direction: column
-    justify-content: flex-start
-    align-items: center
-    .star
-      width: 20px
-      height: 20px
-      background: url('https://frankyeah.github.io/Front-Enter/images/star-border.svg') no-repeat center center/cover
-    .city
-      margin-top: 50px
-      display: flex
-      align-items: center
-      color: $grey
-      .locationLogo
-        width: 18px
-      .cityName:hover
-        cursor: pointer
-        color: $grey
-        opacity: .7
-      .cityName
-        margin-left: 5px
-        
-    .lowerBlock:hover
+
+    img.pen 
+      position: absolute
+      width: 40px
+      top: 35px
+    h2
+      position: relative
+      top: 5px
+      font-size: 18pt
+      color: $light-blue
+      font-weight: 200
+    .line
+      border-top: solid 2px $light-blue
+      width: 50px
+    p
+      line-height: 30px
+      color: #272626
+      text-align: center
+    button:hover
       cursor: pointer
-      opacity: .7
-    .lowerBlock
-      display: flex
-      flex-direction: column
-      justify-content: center
-      align-items: center
+      color: rgba(255, 255, 255, 0.7)
+    button
+      width: 130px
       margin-top: 20px
-      .squareOuter:hover
-        .squareInner
-          cursor: pointer
-          opacity: .8
-          transform: scale(1.2)
-      .squareOuter
-        width: 210px
-        height: 160px
-        margin-top: 20px
-        border-radius: 5px
-        padding: 0px
-        margin: 0px
-        position: relative
-        overflow: hidden
-        .squareInner
-          width: 100%
-          height: 100%
-          position: absolute
-          transition: transform 1s ease
-          
-      .className:hover
-        opacity: .5
-
-      .className
-        margin-top: 30px 
-        font-size: 20pt
-        color: $light-blue
-      .preface:hover
-        opacity: .5
-
-      .preface
-        color: #3f3a3a
-        width: 220px
-        text-align: center
-        margin-top: 30px
-        line-height: 23px
-      .readmore
-        margin-top: 20px
-        display: flex
-        flex-direction: row
-        align-items: center
-        text-decoration: none
-        .readmoreGuide:hover
-          opacity: .5
-          margin-right: 20px 
-        .readmoreGuide
-          color: $light-blue
-          transition: 1s ease
-        .readmoreArrow
-          width: 5px
-          height: 5px
-          margin-left: 10px
-          border-left: solid 1px grey
-          border-bottom: solid 1px grey
-          transform: rotate(225deg)
-
-@media screen and (max-width: 823px)
-  .navCenter
-    .block
+      padding: 6px 30px
+      color: white
+      font-size: 13.5pt
+      border-radius: 5px
+      background-color: $light-blue
       border: none
-      border-bottom: solid 1px $light-blue
+  .box::before
+    content: ""
+    position: absolute
+    top: 0
+    right: 0
+    width: 0
+    height: 0
+    border-top: 30px solid $light-blue
+    border-left: 30px solid white
+    transform: rotate(180deg)
 
+@media screen and (max-width: 712px)
+  .article-skilltree
+    .box_skilltree
+      transform: translateX(-15%) scale(0.8)
+    .box_article
+      transform: translateX(15%) scale(0.8)
+
+@media screen and (max-width: 570px)
+  .article-skilltree
+
+    flex-direction: column
+    align-items: center
+    gap: 0px
+    @media screen and (max-width: 570px)
+    background-size: cover
+    background-attachment: local
+    
+    
+    .box_skilltree
+      transform: translateX(0%) scale(0.8) 
+
+    .box_article
+      transform: translateX(0%) scale(0.8)
+
+  
+
+.about:hover
+  height: 740px
+.about 
+  transition-duration: 2s
+  margin-top: 10px
+  height: 700px
+  background-image: url("https://frankyeah.github.io/Front-Enter/images/five-img.jpg") 
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: bottom
+  background-attachment: local
+  color: white
+  
+  font-size: 14pt
+  line-height: 22pt
+  
+  display: flex
+
+  flex-direction: row
+  justify-content: center
+  align-items: flex-end
+  
+  .about_box
+    width: 600px
+    display: flex
+    justify-content: space-between
+    flex-direction: column
+    align-items: center
+    margin: 80px 20px
+    h2
+      font-weight: 400
+    .line
+      margin-top: -5px
+      border-top: solid 2px white
+      width: 25px
+     
+  
+@media screen and (max-width: 570px)
+  .about
+    background-color: rgba(0,0,0,0.5)
+    background-blend-mode: multiply
+    h2
+      font-size: 16pt
+
+@media screen and (max-width: 420px)       
+  .about
+    line-height: 18pt
+  
+    .about_box
+      padding: 20px
+      h2
+        font-size: 12pt  
+      p
+        font-size: 10pt
 
 .top
   height: 186px
@@ -858,7 +980,7 @@ html body
   width: 100vw
   height: 100vh
   top: 0
-  z-index: 10
+  z-index: 12
   #animation-logo
     position: absolute
     display: flex
