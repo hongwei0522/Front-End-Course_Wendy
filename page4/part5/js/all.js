@@ -201,9 +201,10 @@ loginBackground.addEventListener('click', function(event){
         // User is signed in.
         if (user.emailVerified) { // 登入且有通過驗證
           const userId = firebase.auth().currentUser.uid; 
-          firebase.database().ref('users/' + userId).set({
+          firebase.database().ref('users/' + userId).update({
             email: inputEmail.value, 
             password: inputPW.value
+
           })
           
           console.log("登入成功:", 'uid:', user.uid, 'display name:', user.displayName, 'photoURL:', user.photoURL, 'emailVerified:', user.emailVerified)
@@ -427,14 +428,24 @@ let quizData = [
 
 
 const url = '../json/front-enter-export.json'; 
-let articles = {};
 
-fetch(url) // 整理出九個物件的屬性
-.then(res => res.json())
-.then(res => res.article)
-.then(res => Object.values(res))
-.then(data => {
-  articles = data.map(object => {
+// 將資料上傳 firebase realtime database
+
+fetch(url)
+  .then(response => response.json())
+  .then(jsonData => {
+    firebase.database().ref('front-enter-json/').set(jsonData);
+  })
+  .catch(error => {
+    console.error('Error fetching JSON data:', error);
+  });
+
+// 從 firebase 獲取 json 檔案
+
+
+firebase.database().ref('front-enter-json/').on('value', (snapshot) => {
+  const data = snapshot.val(); 
+  const articles = Object.values(data.article).map(object => {
     return {
       className: object.name,
       cityName: object.city,
@@ -448,18 +459,16 @@ fetch(url) // 整理出九個物件的屬性
       clicked: false
     };  
   });
-  localStorage.setItem('articles', JSON.stringify(articles));
+  
+  compareSchools(quizData, articles); // 比較屬性與題目的相符程度
+  let answerData = compareSchools(quizData, articles);
+  dispalyQuiz(answerData, articles);
+  changePercentage(articles)
+  
+  firebase.database().ref('front-enter-json/update-article').set(articles);
 });
 
-const storedArticles = localStorage.getItem('articles'); // 將 articles 存在瀏覽器
 
-if (storedArticles) {
-  articles = JSON.parse(storedArticles);
-}
-
-
-compareSchools(quizData, articles); // 比較屬性與題目的相符程度
-let answerData = compareSchools(quizData, articles);
 
 function compareSchools(quizData, articles) {
   let answerData = [];
@@ -591,7 +600,6 @@ function compareSchools(quizData, articles) {
 
 
   function rotateDeg() {  // 依照 percentage 設定旋轉度數 
-    console.log(percentage);
     if (percentage >= 0 && percentage < 20) {
       beforeRotation = 0;
       afterRotation = 0;
@@ -656,10 +664,10 @@ function compareSchools(quizData, articles) {
       return Math.floor(Math.random() * 101) + '%'; 
     }
     function randomClassNum(){
-      return Math.floor(Math.random() * articles.length);
+      return Math.floor(Math.random() * 9);
     }
 
-    function changePercentage() {
+    function changePercentage(articles) {
       var intervalId = setInterval(function() {
         pieNum.textContent = randomPercentage(); 
         urlButton.textContent = articles[randomClassNum()].className
@@ -672,7 +680,6 @@ function compareSchools(quizData, articles) {
         urlButton.addEventListener('click',()=>{
           window.location.href = newURL;
         })
-        console.log(newURL);
       }, 4000);
     }
     
@@ -685,6 +692,8 @@ function compareSchools(quizData, articles) {
     
 
     // 按下選項
+    function dispalyQuiz(answerData, articles){
+
     answerEls.forEach(e=>e.addEventListener("click", (event) => {
       event.stopPropagation();
       let answers = getSelected(); 
@@ -720,10 +729,11 @@ function compareSchools(quizData, articles) {
             percentage = ((score / answers.length) * 100).toFixed(0);
             }
           })
-          changePercentage();
+          changePercentage(articles);
           console.log(percentage);
           console.log(matchedSchool); 
           console.log(id); 
       }
     }
- ))
+   ))
+ }

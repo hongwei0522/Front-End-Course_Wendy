@@ -35,96 +35,116 @@ let urlTrue = 'https://frankyeah.github.io/Front-Enter/images/star-background.sv
 let urlFalse = 'https://frankyeah.github.io/Front-Enter/images/star-border.svg';
 
 
-if (storedArticles) {
-  articles = JSON.parse(storedArticles);
-}
 
-window.addEventListener('DOMContentLoaded', () => {
-  articles.forEach(object => {
-    const block = blockTemplate.content.cloneNode(true).children[0];
-    const cityName = block.querySelector('.cityName');
-    const squareInner = block.querySelector('.squareInner');
-    const className = block.querySelector('.className');
-    const preface = block.querySelector('.preface');
-  
-    cityName.textContent = object.cityName;
-    squareInner.setAttribute('src', object.squareUrl);
-    className.textContent = object.className;
-    preface.textContent = object.preface;
-    blockContainer.append(block);
 
-    object.element = block;
-    object.element.style.display = 'flex';
+firebase.database().ref('front-enter-json/update-article').on('value', (snapshot) => {
+  const articles = snapshot.val(); 
+  // console.log(articles);
+    articles.forEach(object => {
+      const block = blockTemplate.content.cloneNode(true).children[0];
+      const cityName = block.querySelector('.cityName');
+      const squareInner = block.querySelector('.squareInner');
+      const className = block.querySelector('.className');
+      const preface = block.querySelector('.preface');
+    
+      cityName.textContent = object.cityName;
+      squareInner.setAttribute('src', object.squareUrl);
+      className.textContent = object.className;
+      preface.textContent = object.preface;
+      blockContainer.append(block);
+
+      object.element = block;
+      object.element.style.display = 'flex';
+      const starList = document.querySelectorAll('.star');
+      starList.forEach((star)=>{star.style.display = 'none'} )
+    });
+
+    smallClassClick(articles);
+    allClassClick(articles);
+    
+    freeRangeClick(articles);
+    oneOnOneClick(articles);
+
+    taipeiClickFunction(articles);
+    kaoshiungClickFunction(articles);
+    remoteClickFunction(articles);
+    contentLink(articles)
   });
 
-  smallClassClick(articles);
-  allClassClick(articles);
+
+
+
+  // 登入後為個人資料賦予 article 屬性
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) { 
+      const userId = user.uid;
+      const starList = document.querySelectorAll('.star');
+      starList.forEach((star)=>{star.style.display = 'flex'} )
   
-  freeRangeClick(articles);
-  oneOnOneClick(articles);
-
-  taipeiClickFunction(articles);
-  kaoshiungClickFunction(articles);
-  remoteClickFunction(articles);
-  contentLink(articles)
-
-});
-
-
-
-// 登入顯示星星，登出隱藏星星
-  let articleObj;
-
-  if (storedArticles) {
-    articleObj = JSON.parse(storedArticles);
-  }
-
-  starLogin();
+      firebase.database().ref('users/' + userId + '/user-article/').once('value', (snapshot) => {
+        const data = snapshot.val();
+        if (!data) {
+          firebase.database().ref('front-enter-json/update-article').on('value', (snapshot) => {
+            const data = snapshot.val(); 
+            const articles = Object.values(data).map(object => {
+              return {
+                className: object.className,
+                id: object.id,
+                squareUrl: object.squareUrl,
+                clicked: false
+              };  
+            })
+            console.log(articles)
+            // 每次登入都會更新一次
+            firebase.database().ref('users/' + userId + '/user-article/').update(articles);
+          });
+        }
+      });
+    } else {
+      console.log("User is not signed in.");
+      starList.forEach((star)=>{star.style.display = 'none'} )
+    }
+  });
   
-  function starLogin(){
+
+
+    // 將按下星星的變化存到 firebase realtime database
     firebase.auth().onAuthStateChanged(function(user) {
       const starList = document.querySelectorAll('.star');
-      if (user) { 
-        articleObj.forEach((currentArticle, index) => {
 
-          const clicked = localStorage.getItem('clicked_' + index);
-          
-          currentArticle.clicked = clicked === 'true';
+      if (user) {
+        const userId = user.uid;
+        firebase.database().ref('users/'+ userId +'/user-article/').on('value', (snapshot) => { 
+        const updateArticle = snapshot.val(); 
 
-
+        updateArticle.forEach((currentArticle, index) => {
           const star = starList[index];
-          star.style.display = 'flex';
+
           star.style.background = `url(${currentArticle.clicked ? urlTrue : urlFalse}) 50% / cover no-repeat`;
 
+          const clicked = snapshot.val()[index].clicked;  
 
           star.addEventListener('click', (e) => {
+            star.style.background = `url(${currentArticle.clicked ? urlTrue : urlFalse}) 50% / cover no-repeat`;
+
             if (!currentArticle.clicked) {
               e.currentTarget.style.background = `url(${urlTrue}) 50% / cover no-repeat`;
             } else { 
               e.currentTarget.style.background = `url(${urlFalse}) 50% / cover no-repeat`;
             }
             currentArticle.clicked = !currentArticle.clicked;
+            console.log(index);
+            console.log(updateArticle[index]);
+            console.log(updateArticle[index].clicked);
+            //update clicked
+            firebase.database().ref('users/' + userId + '/user-article/' + index).set(updateArticle[index])
+          })     
+        })         
+      })
+    }
+  })
             
-            localStorage.setItem('clicked_' + index, currentArticle.clicked); 
-
-            // displayCollection(articleObj);
-            
-            console.log(articleObj);
-            
-            localStorage.setItem('displayCollect', JSON.stringify(articleObj)); 
-          });
-        });
-
-      } else {
-        starList.forEach((star) => {
-          star.style.display = 'none';
-        });
-      }
-    });
-  }
-
-
-
 
   
 // 顯示文章
