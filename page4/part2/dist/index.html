@@ -6,13 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
     <link rel="stylesheet" href=" ../css/index.css">
-
-    <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
-    <script src="../js/login.js"></script>
-    <script src="../js/all.js" defer></script>
-    <script src="../js/index.js" defer></script>
-
-  </head>
+  <script defer src="bundle.js"></script></head>
   <body> 
     <div class="header"> 
       <div id="headerNav"><img class="logo" src="https://frankyeah.github.io/Front-Enter/images/FE_logo-4.png" alt="">
@@ -33,15 +27,7 @@
               <button id="register">註冊</button>
               <button id="login">登入</button>
             </div>
-            <button id="loginGmail">log in with Gmail</button>
-          </div>
-        </div>
-        <div class="remindBackground">
-          <div class="remindBox">
-            <div class="header">Remind </div>
-            <div class="content"> </div>
-            <button>OK </button>
-
+            <button id="loginEmail">log in with Gmail</button>
           </div>
         </div>
       </div>
@@ -67,9 +53,7 @@
             <div class="startBtn">開始測驗</div>
             <div class="testQuestion">Question Test</div>
             <div class="testNumber">0/5</div>
-
-            <ul id="testList"> 
-
+            <ul> 
               <li> 
                 <input class="answer" id="1" type="radio" name="answer">
                 <label id="1-text" for="1">台北</label>
@@ -104,9 +88,7 @@
     <div class="test"> 
       <p>
          想知道自己適合什麼學習環境嗎？<br>可以點擊按鈕測測看喔！<br></p>
-
-      <button class="test-go-square" type="button">測驗 GO</button>
-
+      <button class="test-go" type="button">測驗 GO</button>
     </div>
     <div class="classroom">
       <p>教室精選</p>
@@ -156,6 +138,7 @@
     <div id="animation"><img id="animation-logo" src="https://frankyeah.github.io/Front-Enter/images/FE_logo-4.png" alt="">
       <div id="animation-blue"></div>
     </div>
-
+    <script src="../dist/bundle.js"></script>
+    <script src="../js/index.js" defer> </script>
   </body>
 </html>

@@ -1,3 +1,4 @@
+
 // test go square
 
 const testGoSquare = document.querySelector('.test-go-square')

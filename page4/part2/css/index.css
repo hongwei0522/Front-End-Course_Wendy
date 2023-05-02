@@ -214,6 +214,7 @@ html body {
   margin: 15px;
   border: none;
 }
+
 .header #loginContainer .loginBackground .loginBox #loginGmail {
   width: 250px;
   background-color: #d93025;
@@ -225,6 +226,7 @@ html body {
   border: none;
   margin-top: 5px;
 }
+
 .header #loginContainer .remindBackground {
   position: fixed;
   margin-top: 0px;
@@ -287,6 +289,7 @@ html body {
   border-radius: 3px;
   cursor: pointer;
 }
+
 .header #search-box {
   position: absolute;
   background-color: #f0f0f0;
@@ -960,6 +963,7 @@ html body {
           flex-grow: 0.025;
 }
 .test button.test-go-square {
+
   border: solid 1px #1ad8d3;
   color: #1ad8d3;
   border-radius: 5px;

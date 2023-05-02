@@ -218,7 +218,9 @@ html body {
   margin: 15px;
   border: none;
 }
+
 .header #loginContainer .loginBackground .loginBox #loginGmail {
+
   width: 250px;
   background-color: #d93025;
   border-radius: 5px;

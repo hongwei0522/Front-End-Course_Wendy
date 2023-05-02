@@ -6,11 +6,13 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title index
         link(rel="stylesheet", href=" ../css/index.css")
+
         script(src='https://www.gstatic.com/firebasejs/5.5.1/firebase.js')
         
         script(src="../js/login.js")
         script(src="../js/all.js" defer)
         script(src="../js/index.js" defer)
+
         
     body 
         .header 
@@ -33,6 +35,7 @@ html(lang="en")
                         .blueBtn
                             button#register 註冊
                             button#login 登入
+
                         button#loginGmail log in with Gmail
                 .remindBackground
                     .remindBox
@@ -42,8 +45,6 @@ html(lang="en")
                          
                          
                     
-
-
             #search-box
                 span SEARCH
                 form#searchBar(action="") 
@@ -70,7 +71,9 @@ html(lang="en")
                         .startBtn 開始測驗
                         .testQuestion Question Test
                         .testNumber 0/5
+
                         ul#testList 
+
                             li 
                                 input#1.answer(type='radio' name='answer') 
                                 label#1-text(for='1') 台北
@@ -97,7 +100,9 @@ html(lang="en")
                 br 
                 | 可以點擊按鈕測測看喔！
                 br
+
             button.test-go-square(type="button") 測驗 GO
+
 
         .classroom
             p 教室精選
@@ -162,3 +167,4 @@ html(lang="en")
         #animation
             img#animation-logo(src="https://frankyeah.github.io/Front-Enter/images/FE_logo-4.png", alt="")
             #animation-blue
+

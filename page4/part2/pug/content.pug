@@ -11,6 +11,7 @@ html(lang="en")
         script(src="../js/content.js" defer)
         script(src="../js/all.js" defer)
         
+
         
     body 
         .header 
@@ -32,12 +33,14 @@ html(lang="en")
                         .blueBtn
                             button#register 註冊
                             button#login 登入
+
                         button#loginGmail log in with Gmail
                 .remindBackground
                     .remindBox
                         .header Remind 
                         .content 
                         button OK 
+
             #search-box
                 span SEARCH
                 form#searchBar(action="") 
@@ -60,7 +63,9 @@ html(lang="en")
                         .startBtn 開始測驗
                         .testQuestion 
                         .testNumber 
+
                         ul#testList  
+
                             li 
                                 input#1.answer(type='radio' name='answer') 
                                 label#1-text(for='1') 

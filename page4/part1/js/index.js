@@ -1,3 +1,7 @@
+
+ 
+
+
 //loading effect
 
   let logo = document.getElementById('animation-logo');
@@ -52,7 +56,6 @@
         }
       }
     )
-
 
 
 // .test-go 測驗
@@ -164,7 +167,7 @@
   compareSchools(quizData, articles);
   let answerData = compareSchools(quizData, articles);
 
-  console.log(answerData);
+  // console.log(answerData);
 
   function compareSchools(quizData, articles) {
     let answerData = [];
@@ -472,7 +475,7 @@
   const searchInput = document.querySelector('[data-search]'); 
   const searchGlass = document.querySelector('.search-glass');
 
-  console.log(searchGlass);
+  // console.log(searchGlass);
 
   let clickCount = 0;
 

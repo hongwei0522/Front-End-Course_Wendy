@@ -1,5 +1,6 @@
 
 
+
 // slide effect
 
 var slideIndex = 0;
@@ -32,7 +33,7 @@ const oneOnOne = document.getElementById('oneOnOne');
 const blue = '#1ad8d3';
 const grey = '#737373';
 
-// let articles = [];
+
 
 window.addEventListener('DOMContentLoaded', allBlock);
 
@@ -49,20 +50,22 @@ fetch(url)
     const cityName = block.querySelector('.cityName');
     const squareInner = block.querySelector('.squareInner');
     const className = block.querySelector('.className');
+
     const preface = block.querySelector('.preface'); 
 
-    
     
     cityName.textContent = object.city;
     squareInner.setAttribute('src', object.squareUrl);
     className.textContent = object.name;
     preface.textContent = object.preface;
     blockContainer.append(block);
+
     // const star = document.createElement('div');
     // block.appendChild(star);
     // star.style.width = '20px';
     // star.style.height = '20px';
     // star.style.background = `url('https://frankyeah.github.io/Front-Enter/images/star-border.svg') 50% / cover no-repeat`
+
     return {
         cityName: object.city, 
         squareUrl: object.squareUrl, 
@@ -183,8 +186,8 @@ function remoteClickFunction(){
   }
 
 
-
 // take id parameter on the URL and link to content.html
+
 
 function contentLink(){
   const contentLinks = document.querySelectorAll('.lowerBlock ');
@@ -201,6 +204,7 @@ function contentLink(){
   }
   )
 }
+
 
 
 // search bar Text 

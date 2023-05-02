@@ -1,17 +1,22 @@
 
 
 
+
 // show content dynamically based on URL.
+
 
   let schools = [];
   // const url = ;
 
   fetch('../json/front-enter-export.json')
+
     .then(res => res.json())
     .then(res => res.article)
     .then(res => Object.values(res))
     .then(data => {
+
       schools = data.map(object => {
+
       return {
         cityName: object.city, 
         squareUrl: object.squareUrl, 
@@ -49,7 +54,9 @@
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id'); // get id parameter on the URL
 
+
     const object = schools.find(article => article.id === parseInt(id)); // 將字符串轉換成整數
+
     navUpperBackground.setAttribute('src', object.rectangleUrl);
     className.textContent = object.className;
     mainTitle.textContent = object.topic;
@@ -62,6 +69,7 @@
     tech.textContent = `${object.technology}小時`;
     mail.textContent = object.mail;
     phone.textContent = object.phone;
+
 
     localStorage.setItem('schools', JSON.stringify(schools));
   });
@@ -148,8 +156,10 @@ triLeft.addEventListener('click', () => {
 
 
 
+
 // search bar 
 const searchInput = document.querySelector('[data-search]'); 
+
 
 searchInput.addEventListener('keydown', e => {
   if (e.keyCode === 13) {
