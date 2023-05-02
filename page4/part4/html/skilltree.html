@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>skilltree</title>
+    <link rel="stylesheet" href=" ../css/skilltree.css">
+    <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/all.js" defer></script>
+    <script src="../js/skilltree.js" defer></script>
+  </head>
+  <body> 
+    <div class="header"> 
+      <div id="headerNav"><img class="logo" src="https://frankyeah.github.io/Front-Enter/images/FE_logo-4.png" alt="">
+        <nav>
+          <button id="search-button" type="button">探索</button>
+          <button id="skilltree-button" type="button">技能樹</button>
+          <button id="header-login" type="button">登入</button><img id="click-glass" src="https://frankyeah.github.io/Front-Enter/images/FE_search_green.png" alt="">
+        </nav>
+      </div>
+      <div id="loginContainer"> 
+        <div class="loginBackground"> 
+          <div class="loginBox"><img class="login" src="https://frankyeah.github.io/Front-Enter/images/FE_logo-2.png" alt="">
+            <form>
+              <input id="email" type="email" name="email" placeholder="Email" required>
+              <input id="password" type="password" name="password" placeholder="******" required>
+            </form><span class="forgetPW">忘記密碼？</span>
+            <div class="blueBtn">
+              <button id="register">註冊</button>
+              <button id="login">登入</button>
+            </div>
+            <button id="loginGmail">log in with Gmail</button>
+          </div>
+        </div>
+        <div class="remindBackground">
+          <div class="remindBox">
+            <div class="header">Remind </div>
+            <div class="content"> </div>
+            <button>OK </button>
+          </div>
+        </div>
+      </div>
+      <div id="search-box"><span>SEARCH</span>
+        <form id="searchBar" action=""> 
+          <input id="search" type="search" placeholder="搜尋課程名稱、所在城市或簡介" data-search><img class="voice" src="https://frankyeah.github.io/Front-Enter/images/microphone.svg" alt=""><img class="search-glass" src="https://frankyeah.github.io/Front-Enter/images/FE_search_green.png">
+        </form>
+      </div>
+      <div id="black-box"></div>
+    </div>
+    <div class="info"> 
+      <div class="info-header">技能樹</div>
+      <div class="test-go test-go-container"><img class="test-go-round" src="https://frankyeah.github.io/Front-Enter/images/FE_test_go.png"></div>
+      <div class="testContainer"> 
+        <div class="testBackground"> 
+          <div class="boxContainer"> 
+            <div class="testHeader">測驗說明</div>
+            <div class="testIntro">點選「開始測驗」後，系統將根據你的回答，找出最適合你的學習環境，並顯示有多少百分比的合適度。</div>
+            <div class="startBtn">開始測驗</div>
+            <div class="testQuestion">Question Test</div>
+            <div class="testNumber">0/5</div>
+            <ul id="testList"> 
+              <li> 
+                <input class="answer" id="1" type="radio" name="answer">
+                <label id="1-text" for="1">台北</label>
+              </li>
+              <li>
+                <input class="answer" id="2" type="radio" name="answer">
+                <label id="2-text" for="2">台北                           </label>
+              </li>
+              <li>
+                <input class="answer" id="3" type="radio" name="answer">
+                <label id="3-text" for="3">台北                           </label>
+              </li>
+              <li> 
+                <input class="answer" id="4" type="radio" name="answer">
+                <label id="4-text" for="4">台北</label>
+              </li>
+              <li> 
+                <input class="answer" id="5" type="radio" name="answer">
+                <label id="5-text" for="5">台北</label>
+              </li>
+            </ul>
+            <button id="newURL">學校 ABC</button>
+            <div class="pieContainer">
+              <div class="pieChart">
+                <div class="pieNum">20%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="intro"> 
+      <p class="intro-header">技能樹說明</p>
+      <div class="bottom-line"> </div>
+      <p class="intro-content">要成為一名稱職的前端，需要學會哪些技能呢？您不仿親自測試看看，自己已掌握了哪些能力。遊戲中，只需點擊按鈕回答問題，答對了，即能接續挑戰。</p>
+    </div>
+    <div class="main">
+      <div class="game"> 
+        <div class="box-evenly">
+          <div class="user-icon"></div>
+        </div>
+        <div class="box-evenly"> 
+          <div class="html greyBorder">HTML</div>
+        </div>
+        <div class="box-left"> 
+          <div class="slash"></div>
+        </div>
+        <div class="box-evenly"> 
+          <div class="css greyBorder">CSS </div>
+          <div class="horiz"></div>
+          <div class="js greyBorder">JS</div>
+        </div>
+        <div class="box-right"> 
+          <div class="slash"></div>
+          <div class="pipe"></div>
+        </div>
+        <div class="box-evenly"> 
+          <div class="jquery greyBorder">jQuery </div>
+          <div class="rwd greyBorder">RWD</div>
+        </div>
+        <div class="box-right">
+          <div class="slash"></div>
+        </div>
+        <div class="box-evenly"> 
+          <div class="github greyBorder">GitHub</div>
+        </div>
+        <div class="box-evenly"> 
+          <div class="slash"></div>
+          <div class="backslash"></div>
+        </div>
+        <div class="box-evenly"> 
+          <div class="scss greyBorder">SCSS</div>
+          <div class="webpack greyBorder">Webpack</div>
+        </div>
+        <div class="box-evenly"> 
+          <div class="pipe"></div>
+          <div class="pipe"></div>
+        </div>
+        <div class="box-evenly"> 
+          <div class="bootstrap greyBorder">Bootstrap</div>
+          <div class="react greyBorder">React</div>
+        </div>
+        <div class="box-right">
+          <div class="slash"></div>
+        </div>
+        <div class="box-evenly"> 
+          <div class="unitTest greyBorder">Unit Test</div>
+        </div>
+      </div>
+    </div>
+    <div class="top">
+      <div id="topwrap" onclick="toTop()"> 
+        <div class="top-arrow"></div>
+        <div class="top-icon"> 
+          <h3>TOP</h3>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-info"><a href="">聯絡</a>
+        <div class="num">0918-120-210</div>
+        <div class="mail">wendy950210@gmail.com</div>
+      </div>
+      <div class="fb-line"><a href="https://www.facebook.com/WendyHsinYun" target="_blank"> <img class="fb" src="https://frankyeah.github.io/Front-Enter/images/new-facebook-blue.svg"></a><a href="https://line.me/ti/p/OBVsxhRD9r" target="_blank"> <img class="line" src="https://frankyeah.github.io/Front-Enter/images/FE_line.png"></a></div>
+    </div>
+    <div id="animation"><img id="animation-logo" src="https://frankyeah.github.io/Front-Enter/images/FE_logo-4.png" alt="">
+      <div id="animation-blue"></div>
+    </div>
+  </body>
+</html>

@@ -214,7 +214,8 @@ html body {
   margin: 15px;
   border: none;
 }
-.header #loginContainer .loginBackground .loginBox #loginEmail {
+
+.header #loginContainer .loginBackground .loginBox #loginGmail {
   width: 250px;
   background-color: #d93025;
   border-radius: 5px;
@@ -225,6 +226,70 @@ html body {
   border: none;
   margin-top: 5px;
 }
+
+.header #loginContainer .remindBackground {
+  position: fixed;
+  margin-top: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.header #loginContainer .remindBackground .remindBox {
+  width: 300px;
+  height: 170px;
+  -webkit-transform: translateY(-30px);
+          transform: translateY(-30px);
+  background-color: white;
+  border-radius: 5px;
+  letter-spacing: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.header #loginContainer .remindBackground .remindBox .header {
+  font-size: 20px;
+  color: #737373;
+  margin-top: 25px;
+}
+.header #loginContainer .remindBackground .remindBox .content {
+  font-size: 16px;
+  color: #737373;
+  margin-top: 20px;
+}
+.header #loginContainer .remindBackground .remindBox button {
+  font-size: 16px;
+  width: 100px;
+  padding: 3px 10px;
+  margin-top: 15px;
+  color: white;
+  background-color: #1ad8d3;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
 .header #search-box {
   position: absolute;
   background-color: #f0f0f0;
@@ -897,7 +962,8 @@ html body {
       -ms-flex-positive: 0.025;
           flex-grow: 0.025;
 }
-.test button.test-go {
+.test button.test-go-square {
+
   border: solid 1px #1ad8d3;
   color: #1ad8d3;
   border-radius: 5px;

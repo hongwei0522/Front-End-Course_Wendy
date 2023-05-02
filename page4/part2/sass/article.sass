@@ -148,7 +148,9 @@ html body
             cursor: pointer
             margin: 15px
             border: none
-        #loginEmail
+
+        #loginGmail
+
           width: 250px
           background-color: #d93025
           border-radius: 5px
@@ -158,6 +160,51 @@ html body
           cursor: pointer
           border: none
           margin-top: 5px
+
+    .remindBackground
+      position: fixed
+      margin-top: 0px
+      background-color: rgba(0, 0, 0, 0.5)
+      width: 100vw
+      height: 100vh
+      top: 0px
+      left: 0px
+      position: fixed
+      display: flex
+      justify-content: center
+      align-items: center
+      .remindBox 
+        width: 300px
+        height: 170px
+        transform: translateY(-30px)
+        background-color: white
+        border-radius: 5px
+        letter-spacing: 3px
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        align-items: center
+
+        .header
+          font-size: 20px
+          color: $grey
+          margin-top: 25px
+        .content
+          font-size: 16px
+          color: $grey
+          margin-top: 20px
+        button
+          font-size: 16px
+          width: 100px
+          padding: 3px 10px
+          margin-top: 15px
+          color: white
+          background-color: $light-blue
+          border: none
+          border-radius: 3px
+          cursor: pointer
+
+
 
   #search-box
     position: absolute
@@ -306,6 +353,9 @@ html body
     opacity: .5
   span
     color: $darkGrey
+
+    white-space: nowrap
+
   #allClass
     margin-left: 25vw
   #oneOnOne
@@ -600,6 +650,12 @@ html body
     flex-direction: column
     justify-content: flex-start
     align-items: center
+
+    .star
+      width: 20px
+      height: 20px
+      background: url('https://frankyeah.github.io/Front-Enter/images/star-border.svg') no-repeat center center/cover
+
     .city
       margin-top: 50px
       display: flex
