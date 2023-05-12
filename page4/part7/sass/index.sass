@@ -284,8 +284,8 @@ html body
           width: 80%
         
 .info
-  height: 400px
-  background-image: url(https://frankyeah.github.io/Front-Enter/images/skill-tree-key.jpg)
+  height: 600px
+  background-image: url(https://frankyeah.github.io/Front-Enter/images/key-visual.jpg)
   background-size: cover
   background-repeat: no-repeat
   background-position: center
@@ -295,13 +295,30 @@ html body
   align-items: center
   flex-direction: column
 
-  .info-header
-    font-size: 24px
-    padding: 6px
-    background-color: rgba(128,128,128,0.7)
-    border-radius: 5px
-    text-align: center
-    letter-spacing: 10px
+  .words
+    display: flex
+    flex-direction: column
+    align-items: center
+    
+    h3 
+      font-size: 28pt
+      letter-spacing: 2pt
+      margin-bottom: -23px
+    h3:hover
+      transform: rotate(-10deg)
+
+    h4 
+      font-size: 18pt
+      letter-spacing: 7pt
+      font-weight: 250
+  .arrow
+    border-top: solid 1px white
+    border-left: solid 1px white
+    transform: translateY(120px) rotate(225deg)
+    width: 12px
+    height: 12px
+    animation: arrow .5s infinite
+
   .test-go-container
     width: 100px
     height: 100px
@@ -565,6 +582,13 @@ html body
     transform: rotate(20deg)
 
     
+@keyframes arrow
+  0%
+    transform: translateY(130px) rotate(225deg)
+  50%
+    transform: translateY(120px) rotate(225deg)
+  100%
+    transform: translateY(130px) rotate(225deg)
 
 @keyframes testRound 
   0% 
@@ -572,141 +596,265 @@ html body
   100%
     bottom: 100px
 
-.intro
-    margin-top: 10px
-    height: 600px
-    background-color: rgba(0,0,0,0.5)
-    background-blend-mode: multiply
-    background-image: url("https://frankyeah.github.io/Front-Enter/images/second-img.jpg") 
-    background-size: cover
-    background-repeat: no-repeat
-    background-position: center
+.test:hover
+  height: 660px
+.test
+  margin-top: 10px
+  height: 600px
+  background-color: rgba(0,0,0,0.5)
+  background-blend-mode: multiply
+  background-image: url("https://frankyeah.github.io/Front-Enter/images/second-img.jpg") 
+  
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: center
+  background-attachment: fixed
 
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  transition-duration: 2s
+
+  p
+    color: white
+    font-size: 13.5pt
+    letter-spacing: 2pt
+    line-height: 30pt    
+    font-weight: 300
+    text-align: center
+    flex-grow: 0.025
+    
+
+  button.test-go-square
+    border: solid 1px $light-blue
+    color: $light-blue
+    border-radius: 5px
+    font-size: 13.5pt
+    width: 130px
+    background-color: rgba(0,0,0,0)
+    flex-grow: 0.023
+    transition: all 1.2s ease
+  button:hover
+    cursor: pointer
+    flex-grow: 0.030
+    transform: scale(1.12)
+
+@media screen and (max-width: 570px)
+
+  .test:hover
+    height: 660px
+  .test
+    background-size: cover
+    background-attachment: local
+    
+    
+.classroom:hover
+  height: 660px
+.classroom
+  transition-duration: 2s
+  margin-top: 10px
+  height: 600px
+  background-color: rgba(0,0,0,0.5)
+  background-blend-mode: multiply
+  background-image: url("https://frankyeah.github.io/Front-Enter/images/third-img.jpg") 
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: center
+  background-attachment: fixed
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  p
+    color: white
+    font-size: 16pt
+    letter-spacing: 2pt
+    font-weight: 300
+    margin-bottom: 0pt
+    flex-grow: 0.03
+  button:hover
+    cursor: pointer
+    flex-grow: 0.03
+    transform: scale(1.1)
+    
+  button
+    transition-duration: 1s
+    flex-grow: 0.013
+    flex-wrap: nowrap
+    width: 230px
+    padding: 2pt
+    margin-top: 35px
+    border: solid 1px $light-blue
+    color: $light-blue
+    font-size: 13.5pt
+    border-radius: 5px
+    background-color: rgba(0,0,0,0)
+
+@media screen and (max-width: 570px)
+
+  .classroom:hover
+    height: 660px
+  
+  .classroom
+    background-size: cover
+    background-attachment: local
+ 
+
+
+.article-skilltree:hover
+  height: 840px
+.article-skilltree
+  
+  transition-duration: 2s
+  margin-top: 10px
+  height: 800px
+  background-image: url("https://frankyeah.github.io/Front-Enter/images/15.jpg") 
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: center
+  background-attachment: fixed
+
+  position: relative
+  display: flex
+  flex-direction: row
+  justify-content: center
+  align-items: center
+  gap: 65px
+  
+  
+  .box
+    width: 290px
+    height: 420px
+    border-radius: 3px
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3)
+    background-color: #f5f5f5
+    position: relative
+    justify-content: center
+    align-items: center
     display: flex
+    flex-direction: column
+
+    img.pen 
+      position: absolute
+      width: 40px
+      top: 35px
+    h2
+      position: relative
+      top: 5px
+      font-size: 18pt
+      color: $light-blue
+      font-weight: 200
+    .line
+      border-top: solid 2px $light-blue
+      width: 50px
+    p
+      line-height: 30px
+      color: #272626
+      text-align: center
+    button:hover
+      cursor: pointer
+      color: rgba(255, 255, 255, 0.7)
+    button
+      width: 130px
+      margin-top: 20px
+      padding: 6px 30px
+      color: white
+      font-size: 13.5pt
+      border-radius: 5px
+      background-color: $light-blue
+      border: none
+  .box::before
+    content: ""
+    position: absolute
+    top: 0
+    right: 0
+    width: 0
+    height: 0
+    border-top: 30px solid $light-blue
+    border-left: 30px solid white
+    transform: rotate(180deg)
+
+@media screen and (max-width: 712px)
+  .article-skilltree
+    .box_skilltree
+      transform: translateX(-15%) scale(0.8)
+    .box_article
+      transform: translateX(15%) scale(0.8)
+
+@media screen and (max-width: 570px)
+  .article-skilltree
+
     flex-direction: column
     align-items: center
-    justify-content: center
-    .intro-header
-        font-size: 24px
-        color: white
-        letter-spacing: 3px
-    .bottom-line
-        border: 1px solid white
-        width: 15px
-    .intro-content
-        width: 580px
-        text-align: center
-        color: white
-        font-size: 18px
-        line-height: 30px
-        letter-spacing: 3px
+    gap: 0px
+    @media screen and (max-width: 570px)
+    background-size: cover
+    background-attachment: local
+    
+    
+    .box_skilltree
+      transform: translateX(0%) scale(0.8) 
 
-@media screen and (max-width: 650px)
-  .intro
-    .intro-content
-        width: 300px
- 
-.main
-  height: 900px
-  background-color: white
+    .box_article
+      transform: translateX(0%) scale(0.8)
+
+  
+
+.about:hover
+  height: 740px
+.about 
+  transition-duration: 2s
+  margin-top: 10px
+  height: 700px
+  background-image: url("https://frankyeah.github.io/Front-Enter/images/five-img.jpg") 
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: bottom
+  background-attachment: local
+  color: white
+  
+  font-size: 14pt
+  line-height: 22pt
+  
   display: flex
+
+  flex-direction: row
   justify-content: center
-  .game 
+  align-items: flex-end
+  
+  .about_box
+    width: 600px
     display: flex
+    justify-content: space-between
     flex-direction: column
-    justify-content: center
-    width: 400px
+    align-items: center
+    margin: 80px 20px
+    h2
+      font-weight: 400
+    .line
+      margin-top: -5px
+      border-top: solid 2px white
+      width: 25px
+     
+  
+@media screen and (max-width: 570px)
+  .about
+    background-color: rgba(0,0,0,0.5)
+    background-blend-mode: multiply
+    h2
+      font-size: 16pt
 
-    .box-left 
-      border: 1px solid red
-      margin-top: 5px
-      margin-left: 150px
-      display: flex
-      flex-direction: row
-      justify-content: flex-start
-      padding: 3px
-      .slash
-        width: 40px
-        height: 40px
-        border-left: 2.5px solid $grey
-        transform: rotate(45deg) translate(10px, 0px)
-    .box-right
-      border: 1px solid red
-      margin-top: 0px
-      display: flex
-      flex-direction: row
-      justify-content: flex-end
-      padding: 3px
-      .slash
-        width: 40px
-        height: 40px
-        border-left: 2.5px solid $grey
-        transform: rotate(45deg) translate(10px, 0px)
-        margin-top: 10px
-        margin-right: 50px
-      .pipe
-        height: 30px
-        border-right: 2.5px solid $grey
-        margin: 5px
-        margin-right: 100px
-    .box-right-second
-      border: 1px solid red
-      margin-top: 0px
-      display: flex
-      flex-direction: row
-      justify-content: flex-end
-      padding: 3px
-      .slash
-        width: 40px
-        height: 40px
-        border-left: 2.5px solid $grey
-        transform: rotate(45deg) translate(10px, 0px)
-        margin-top: 10px
-        margin-right: 150px
-    .box-evenly
-        border: 1px solid red
-        margin-top: 0px
-        display: flex
-        flex-direction: row
-        justify-content: space-evenly
-        padding: 3px
-        .user-icon
-          width: 30px
-          height: 30px
-          background: url("https://frankyeah.github.io/Front-Enter/images/cute.svg")no-repeat center center/cover
-
-        .greyBorder
-          width: 100px
-          height: 30px
-          line-height: 30px
-          font-size: 16px
-          cursor: pointer
-          border: 1px solid $grey
-          color: $grey
-          text-align: center
-          padding: 2.5px
-          letter-spacing: 3px
-          margin-left: 30px
-        .slash
-          width: 35px
-          height: 35px
-          border-left: 2.5px solid $grey
-          transform: rotate(45deg) translate(10px, 0px)
-            
-        .horiz
-          width: 30px
-          border-bottom: 2.5px solid $grey
-          transform: translate(15px, 15px)
-          position: absolute
-        .backslash
-          width: 35px
-          height: 35px
-          border-left: 2.5px solid $grey
-          transform: rotate(135deg)
-        .pipe
-          height: 30px
-          border-right: 2.5px solid $grey
-          margin: 5px
+@media screen and (max-width: 420px)       
+  .about
+    line-height: 18pt
+  
+    .about_box
+      padding: 20px
+      h2
+        font-size: 12pt  
+      p
+        font-size: 10pt
 
 .top
   height: 186px

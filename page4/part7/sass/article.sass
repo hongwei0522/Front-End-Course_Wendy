@@ -1,22 +1,27 @@
-*
-    font-family: 微軟正黑體
-    // border: solid 1px black
 
 $dark-blue: #1cb5e0
 $light-blue: #1ad8d3
 $grey: #737373
-
+$darkGrey: rgb(128, 128, 128)
   
+*
+    font-family: 微軟正黑體
+    // border: solid 1px $grey
+
+
 html body
   padding: 0px
   margin: 0px
   box-sizing: border-box
   background-color: #f0f0f0
 
+.hide
+  display: none
+
 .header 
   display: flex
   top: 0
-  z-index: 5
+  z-index: 7
   position: sticky
   #headerNav
     width: 100vw
@@ -282,26 +287,73 @@ html body
         width: 90vw
         input#search
           width: 80%
-        
-.info
-  height: 400px
-  background-image: url(https://frankyeah.github.io/Front-Enter/images/skill-tree-key.jpg)
-  background-size: cover
-  background-repeat: no-repeat
-  background-position: center
-  color: white
+
+
+.nav-center-upper:hover
+  .slogan
+    opacity: 0.5
+
+#nav-center-upper
+  width: 100vw
+  height: 380px
+  padding: 0px
   display: flex
+  flex-direction: row
   justify-content: center
   align-items: center
-  flex-direction: column
-
-  .info-header
-    font-size: 24px
+  position: relative
+  overflow: hidden
+  img
+    position: absolute
+    width: 100%
+    opacity: 0
+    transition: opacity 1s
+  .slogan
+    position: absolute
+    font-size: 18pt
+    background-color: $darkGrey
+    opacity: 0.8
+    color: white
+    width: 230px
+    height: 40px
+    border-radius: 8px
+    display: flex
+    justify-content: center
+    align-items: center
     padding: 6px
-    background-color: rgba(128,128,128,0.7)
-    border-radius: 5px
-    text-align: center
-    letter-spacing: 10px
+    p
+      letter-spacing: 10px
+      text-align: center
+
+@media screen and (max-width: 580px)
+  #nav-center-upper
+    height: 380px
+    img
+      position: absolute
+      width: auto
+      height: 100%
+
+.nav-center-lower
+  width: 100%
+  height: 70px
+  background-color: white
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1)
+  display: flex
+  justify-content: space-between
+  flex-direction: row
+  align-items: center
+  flex-wrap: wrap
+  position: relative
+  span:hover
+    cursor: pointer
+    opacity: .5
+  span
+    color: $darkGrey
+    white-space: nowrap
+  #allClass
+    margin-left: 25vw
+  #oneOnOne
+    margin-right: 25vw
   .test-go-container
     width: 100px
     height: 100px
@@ -309,9 +361,8 @@ html body
     bottom: 100px
     right: -10px
     position: fixed
-    z-index: 1
+    z-index: 6
     opacity: 0.85
-    transition-duration: 1s
     animation: testRound 1s 1.5s
     display: flex
     justify-content: center
@@ -319,10 +370,10 @@ html body
     .test-go-round:hover
       cursor: pointer
       opacity: 0.7
-      transform: translateY(-15%)
+      transform: translateY(-25%)
     .test-go-round
       width: 80px
-
+      transition: transform 1s ease
 
   .testContainer
     position: fixed
@@ -377,7 +428,6 @@ html body
           color: white
           letter-spacing: 3px
           margin-top: 60px
-          // display: none
         .testIntro
           position: absolute
           font-size: 16px
@@ -385,7 +435,6 @@ html body
           letter-spacing: 1px
           line-height: 30px
           margin: 120px 50px
-          // display: none
         .startBtn
           position: absolute
           font-size: 18px
@@ -395,7 +444,6 @@ html body
           color: $light-blue
           background-color: white
           letter-spacing: 3px
-          // display: none
         .startBtn:hover
           position: absolute
           font-size: 18px
@@ -413,6 +461,7 @@ html body
           position: absolute
           margin-top: 40px
           display: none
+          color: white
         .testNumber
           color: rgba(255, 255, 255,.7)
           letter-spacing: 3px
@@ -452,7 +501,6 @@ html body
               left: 0
               top: 0
               width: 100%
-              // height: 100%
               border-radius: 10px
               cursor: pointer
             label
@@ -538,7 +586,7 @@ html body
             transform-origin: 75px 75px 
             animation: rotate-circle 4s linear
             transform: rotate(var(--after-rotation, 0deg))
-            
+
 
 @keyframes rotate-circle
   0%
@@ -564,149 +612,131 @@ html body
   100%
     transform: rotate(20deg)
 
-    
-
 @keyframes testRound 
   0% 
     bottom: 800px
   100%
     bottom: 100px
 
-.intro
-    margin-top: 10px
-    height: 600px
-    background-color: rgba(0,0,0,0.5)
-    background-blend-mode: multiply
-    background-image: url("https://frankyeah.github.io/Front-Enter/images/second-img.jpg") 
-    background-size: cover
-    background-repeat: no-repeat
-    background-position: center
-
-    display: flex
-    flex-direction: column
-    align-items: center
+@media screen and (max-width: 600px)
+  .nav-center-lower 
     justify-content: center
-    .intro-header
-        font-size: 24px
-        color: white
-        letter-spacing: 3px
-    .bottom-line
-        border: 1px solid white
-        width: 15px
-    .intro-content
-        width: 580px
-        text-align: center
-        color: white
-        font-size: 18px
-        line-height: 30px
-        letter-spacing: 3px
+    gap: 8%
+    flex-wrap: nowrap
+    div 
+      white-space: nowrap
 
-@media screen and (max-width: 650px)
-  .intro
-    .intro-content
-        width: 300px
- 
-.main
-  height: 900px
+.navCenter
   background-color: white
   display: flex
+  flex-direction: row
+  padding: 100px 50px
   justify-content: center
-  .game 
+  flex-wrap: wrap
+  z-index: 3
+
+  .block
+    width: 330px
+    height: 520px
+    border: solid 1px $light-blue
+    margin: 10px 10px
     display: flex
     flex-direction: column
-    justify-content: center
-    width: 400px
+    justify-content: flex-start
+    align-items: center
+    .star
+      width: 20px
+      height: 20px
+      // border: 1px solid black
+      background: url('https://frankyeah.github.io/Front-Enter/images/star-border.svg') no-repeat center center/cover
+      transform: translate(130px, 15px)
+      cursor: pointer
+      // display: none
+    .city
+      margin-top: 40px
+      display: flex
+      align-items: center
+      color: $grey
+      .locationLogo
+        width: 18px
+      .cityName:hover
+        cursor: pointer
+        color: $grey
+        opacity: .7
+      .cityName
+        margin-left: 5px
+        
+    .lowerBlock:hover
+      cursor: pointer
+      opacity: .7
+    .lowerBlock
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      margin-top: 20px
+      .squareOuter:hover
+        .squareInner
+          cursor: pointer
+          opacity: .8
+          transform: scale(1.2)
+      .squareOuter
+        width: 210px
+        height: 160px
+        margin-top: 20px
+        border-radius: 5px
+        padding: 0px
+        margin: 0px
+        position: relative
+        overflow: hidden
+        .squareInner
+          width: 100%
+          height: 100%
+          position: absolute
+          transition: transform 1s ease
+          
+      .className:hover
+        opacity: .5
 
-    .box-left 
-      border: 1px solid red
-      margin-top: 5px
-      margin-left: 150px
-      display: flex
-      flex-direction: row
-      justify-content: flex-start
-      padding: 3px
-      .slash
-        width: 40px
-        height: 40px
-        border-left: 2.5px solid $grey
-        transform: rotate(45deg) translate(10px, 0px)
-    .box-right
-      border: 1px solid red
-      margin-top: 0px
-      display: flex
-      flex-direction: row
-      justify-content: flex-end
-      padding: 3px
-      .slash
-        width: 40px
-        height: 40px
-        border-left: 2.5px solid $grey
-        transform: rotate(45deg) translate(10px, 0px)
-        margin-top: 10px
-        margin-right: 50px
-      .pipe
-        height: 30px
-        border-right: 2.5px solid $grey
-        margin: 5px
-        margin-right: 100px
-    .box-right-second
-      border: 1px solid red
-      margin-top: 0px
-      display: flex
-      flex-direction: row
-      justify-content: flex-end
-      padding: 3px
-      .slash
-        width: 40px
-        height: 40px
-        border-left: 2.5px solid $grey
-        transform: rotate(45deg) translate(10px, 0px)
-        margin-top: 10px
-        margin-right: 150px
-    .box-evenly
-        border: 1px solid red
-        margin-top: 0px
+      .className
+        margin-top: 30px 
+        font-size: 20pt
+        color: $light-blue
+      .preface:hover
+        opacity: .5
+
+      .preface
+        color: #3f3a3a
+        width: 240px
+        text-align: center
+        margin-top: 30px
+        line-height: 23px
+      .readmore
+        margin-top: 20px
         display: flex
         flex-direction: row
-        justify-content: space-evenly
-        padding: 3px
-        .user-icon
-          width: 30px
-          height: 30px
-          background: url("https://frankyeah.github.io/Front-Enter/images/cute.svg")no-repeat center center/cover
+        align-items: center
+        text-decoration: none
+        .readmoreGuide:hover
+          opacity: .5
+          margin-right: 20px 
+        .readmoreGuide
+          color: $light-blue
+          transition: 1s ease
+        .readmoreArrow
+          width: 5px
+          height: 5px
+          margin-left: 10px
+          border-left: solid 1px grey
+          border-bottom: solid 1px grey
+          transform: rotate(225deg)
 
-        .greyBorder
-          width: 100px
-          height: 30px
-          line-height: 30px
-          font-size: 16px
-          cursor: pointer
-          border: 1px solid $grey
-          color: $grey
-          text-align: center
-          padding: 2.5px
-          letter-spacing: 3px
-          margin-left: 30px
-        .slash
-          width: 35px
-          height: 35px
-          border-left: 2.5px solid $grey
-          transform: rotate(45deg) translate(10px, 0px)
-            
-        .horiz
-          width: 30px
-          border-bottom: 2.5px solid $grey
-          transform: translate(15px, 15px)
-          position: absolute
-        .backslash
-          width: 35px
-          height: 35px
-          border-left: 2.5px solid $grey
-          transform: rotate(135deg)
-        .pipe
-          height: 30px
-          border-right: 2.5px solid $grey
-          margin: 5px
+@media screen and (max-width: 823px)
+  .navCenter
+    .block
+      border: none
+      border-bottom: solid 1px $light-blue
+
 
 .top
   height: 186px
@@ -832,7 +862,7 @@ html body
   width: 100vw
   height: 100vh
   top: 0
-  z-index: 12
+  z-index: 10
   #animation-logo
     position: absolute
     display: flex

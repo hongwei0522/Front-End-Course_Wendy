@@ -4,14 +4,14 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title 會員中心
-        link(rel="stylesheet", href="../css/profile.css")
+        title article
+        link(rel="stylesheet", href="../css/article.css")
         script(src='https://www.gstatic.com/firebasejs/5.5.1/firebase.js')
         script(src="../js/login.js")
         script(src="../js/all.js" defer)
-        script(src="../js/profile.js" defer)
         script(src="../js/article.js" defer)
-        
+        script(src="../js/profile.js" defer)
+                
     body 
         .header 
             #headerNav
@@ -21,11 +21,12 @@ html(lang="en")
                     button#skilltree-button(type="button") 技能樹
                     button#header-login(type="button") 登入
                     img#click-glass(src="https://frankyeah.github.io/Front-Enter/images/FE_search_green.png", alt="")
+
             #loginContainer 
                 .loginBackground 
                     .loginBox
                         img.login(src="https://frankyeah.github.io/Front-Enter/images/FE_logo-2.png", alt="") 
-                        form#login
+                        form
                             input#email(type="email" name="email" placeholder="Email" required)
                             input#password(type="password" name="password" placeholder="******" required)
                         span.forgetPW 忘記密碼？
@@ -48,9 +49,19 @@ html(lang="en")
 
             #black-box
 
-        #nav-upper
-            img.nav-upper-background(src="https://frankyeah.github.io/Front-Enter/images/member-key.jpg", alt="")
-            .className 會員中心
+        #nav-center-upper
+            img.slide1(src="https://firebasestorage.googleapis.com/v0/b/front-enter.appspot.com/o/images%2Frotate-img-2.jpg?alt=media&token=f28dbea4-af0c-4743-a75a-426198fe409e", alt="")
+            img.slide2(src="https://firebasestorage.googleapis.com/v0/b/front-enter.appspot.com/o/images%2Frotate-img-1.jpg?alt=media&token=059f5677-409b-4fc1-a772-baf1dece5063", alt="")   
+            img.slide3(src="https://firebasestorage.googleapis.com/v0/b/front-enter.appspot.com/o/images%2Frotate-img-3.jpg?alt=media&token=8f7f8f02-5066-452a-863c-a4e715d2657a", alt="")
+
+            .slogan
+                p 蒐羅前端學校 
+
+        .nav-center-lower
+            span#allClass 全部
+            span#smallClass 小班制
+            span#freeRange 放養制
+            span#oneOnOne 一對一
             .test-go.test-go-container
                 img.test-go-round(src="https://frankyeah.github.io/Front-Enter/images/FE_test_go.png")
             .testContainer 
@@ -59,58 +70,46 @@ html(lang="en")
                         .testHeader 測驗說明
                         .testIntro 點選「開始測驗」後，系統將根據你的回答，找出最適合你的學習環境，並顯示有多少百分比的合適度。
                         .startBtn 開始測驗
-                        .testQuestion 
-                        .testNumber 
-                        ul#testList
+                        .testQuestion Question Test
+                        .testNumber 0/5
+                        ul#testList  
                             li 
                                 input#1.answer(type='radio' name='answer') 
-                                label#1-text(for='1') 
+                                label#1-text(for='1') 台北
                             li
                                 input#2.answer(type='radio' name='answer')
-                                label#2-text(for='2')                            
+                                label#2-text(for='2') 台北                           
                             li
                                 input#3.answer(type='radio' name='answer')
-                                label#3-text(for='3')                            
+                                label#3-text(for='3') 台北                           
                             li 
                                 input#4.answer(type='radio' name='answer')
-                                label#4-text(for='4') 
+                                label#4-text(for='4') 台北
                             li 
                                 input#5.answer(type='radio' name='answer')
-                                label#5-text(for='5') 
-                        button#newURL 
+                                label#5-text(for='5') 台北
+                        button#newURL 學校 ABC
                         .pieContainer
                             .pieChart
-                                .pieNum
+                                .pieNum 20%
+
 
         .navCenter
-            .buttonList
-                .line
-                .buttonListDiv
-                    button.personalData 個人資料
-                    button.collectBtn 收藏
-                    button.logout 登出
-            .displayProfile
-                #inputPhoto 
-                ul#profile(action="")
-                    li 
-                        label#labelName(for="profileName") 名字
-                        input#profileName(type="text", maxlength='30' value="" placeholder='請輸入名字')
-                    li 
-                        label#labelPhone(for="profilePhone") 手機
-                        input#profilePhone(type="text" maxlength='15' value="" placeholder='請輸入電話') 
-                    li 
-                        label#labelEmail(for="profileEmail") 信箱
-                        input#profileEmail(type="text" maxlength='40' value="" placeholder='請輸入信箱')  
-                .modifyBtn
-                    button.modifyData 修改資料
-                    button.modified 確定
-                    button.cancel 取消
-                .dataCollection 
-                template(data-collection)
-                    .collectionBlock 
-                        .collectionImg
-                        .collectionName
-                        .removeBtn
+        template(data-classroom-block)
+            .block
+                .star
+                .city
+                    img.locationLogo(src='https://frankyeah.github.io/Front-Enter/images/location_icon_one.png')
+                    .cityName 
+                .lowerBlock 
+                    .squareOuter
+                        img.squareInner(src='https://frankyeah.github.io/Front-Enter/images/2.jpg')
+                    .className 
+                    .preface 
+                    a.readmore
+                        .readmoreGuide read more
+                        .readmoreArrow
+
 
         .top
             #topwrap(onclick="toTop()") 
@@ -135,4 +134,5 @@ html(lang="en")
             #animation-blue
 
 
-// pug -w ./pug -o ./html -P
+    
+

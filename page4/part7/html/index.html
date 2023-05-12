@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>會員中心</title>
-    <link rel="stylesheet" href="../css/profile.css">
+    <title>index</title>
+    <link rel="stylesheet" href=" ../css/index.css">
     <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
     <script src="../js/login.js"></script>
     <script src="../js/all.js" defer></script>
-    <script src="../js/profile.js" defer></script>
-    <script src="../js/article.js" defer></script>
+    <script src="../js/index.js" defer></script>
   </head>
   <body> 
     <div class="header"> 
@@ -24,7 +23,7 @@
       <div id="loginContainer"> 
         <div class="loginBackground"> 
           <div class="loginBox"><img class="login" src="https://frankyeah.github.io/Front-Enter/images/FE_logo-2.png" alt="">
-            <form id="login">
+            <form>
               <input id="email" type="email" name="email" placeholder="Email" required>
               <input id="password" type="password" name="password" placeholder="******" required>
             </form><span class="forgetPW">忘記密碼？</span>
@@ -50,8 +49,12 @@
       </div>
       <div id="black-box"></div>
     </div>
-    <div id="nav-upper"><img class="nav-upper-background" src="https://frankyeah.github.io/Front-Enter/images/member-key.jpg" alt="">
-      <div class="className">會員中心</div>
+    <div class="info"> 
+      <div class="words"> 
+        <h3>FRONT-ENTER </h3>
+        <h4>前端轉職資訊</h4>
+      </div>
+      <div class="arrow"></div>
       <div class="test-go test-go-container"><img class="test-go-round" src="https://frankyeah.github.io/Front-Enter/images/FE_test_go.png"></div>
       <div class="testContainer"> 
         <div class="testBackground"> 
@@ -59,78 +62,73 @@
             <div class="testHeader">測驗說明</div>
             <div class="testIntro">點選「開始測驗」後，系統將根據你的回答，找出最適合你的學習環境，並顯示有多少百分比的合適度。</div>
             <div class="startBtn">開始測驗</div>
-            <div class="testQuestion"> </div>
-            <div class="testNumber"> </div>
-            <ul id="testList">
+            <div class="testQuestion">Question Test</div>
+            <div class="testNumber">0/5</div>
+            <ul id="testList"> 
               <li> 
                 <input class="answer" id="1" type="radio" name="answer">
-                <label id="1-text" for="1"> </label>
+                <label id="1-text" for="1">台北</label>
               </li>
               <li>
                 <input class="answer" id="2" type="radio" name="answer">
-                <label id="2-text" for="2">                           </label>
+                <label id="2-text" for="2">台北                           </label>
               </li>
               <li>
                 <input class="answer" id="3" type="radio" name="answer">
-                <label id="3-text" for="3">                           </label>
+                <label id="3-text" for="3">台北                           </label>
               </li>
               <li> 
                 <input class="answer" id="4" type="radio" name="answer">
-                <label id="4-text" for="4"> </label>
+                <label id="4-text" for="4">台北</label>
               </li>
               <li> 
                 <input class="answer" id="5" type="radio" name="answer">
-                <label id="5-text" for="5"> </label>
+                <label id="5-text" for="5">台北</label>
               </li>
             </ul>
-            <button id="newURL"> </button>
+            <button id="newURL">學校 ABC</button>
             <div class="pieContainer">
               <div class="pieChart">
-                <div class="pieNum"></div>
+                <div class="pieNum">20%</div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="navCenter">
-      <div class="buttonList">
-        <div class="line"></div>
-        <div class="buttonListDiv">
-          <button class="personalData">個人資料</button>
-          <button class="collectBtn">收藏</button>
-          <button class="logout">登出</button>
-        </div>
+    <div class="test"> 
+      <p>
+         想知道自己適合什麼學習環境嗎？<br>可以點擊按鈕測測看喔！<br></p>
+      <button class="test-go-square" type="button">測驗 GO</button>
+    </div>
+    <div class="classroom">
+      <p>教室精選</p>
+      <button class="appworks" type="button">AppWorks School</button>
+      <button class="ponpon" type="button">彭彭的課程教學</button>
+      <button class="ruby" type="button">五倍紅寶石</button>
+    </div>
+    <div class="article-skilltree">
+      <div class="box box_article"> <img class="pen" src="https://frankyeah.github.io/Front-Enter/images/FE_pen.png">
+        <h2>探索</h2>
+        <div class="line"> </div>
+        <p>
+           我們提供公正的資訊，<br>幫您順利轉職，<br>並追蹤最新的業界動態。<br></p>
+        <button class="article" type="button"> 找學校</button>
       </div>
-      <div class="displayProfile">
-        <div id="inputPhoto"> </div>
-        <ul id="profile" action="">
-          <li> 
-            <label id="labelName" for="profileName">名字</label>
-            <input id="profileName" type="text" maxlength="30" value="" placeholder="請輸入名字">
-          </li>
-          <li> 
-            <label id="labelPhone" for="profilePhone">手機</label>
-            <input id="profilePhone" type="text" maxlength="15" value="" placeholder="請輸入電話">
-          </li>
-          <li> 
-            <label id="labelEmail" for="profileEmail">信箱</label>
-            <input id="profileEmail" type="text" maxlength="40" value="" placeholder="請輸入信箱">
-          </li>
-        </ul>
-        <div class="modifyBtn">
-          <button class="modifyData">修改資料</button>
-          <button class="modified">確定</button>
-          <button class="cancel">取消</button>
-        </div>
-        <div class="dataCollection"> </div>
-        <template data-collection>
-          <div class="collectionBlock"> 
-            <div class="collectionImg"></div>
-            <div class="collectionName">台大資訊訓練班 </div>
-            <div class="removeBtn"></div>
-          </div>
-        </template>
+      <div class="box box_skilltree"> <img class="pen" src="https://frankyeah.github.io/Front-Enter/images/FE_pen.png">
+        <h2>技能樹</h2>
+        <div class="line"> </div>
+        <p>
+           前端包含哪些技術？<br>你又學會了哪些？<br>趕緊點進來試試看。<br></p>
+        <button class="article" type="button"> 技能樹</button>
+      </div>
+    </div>
+    <div class="about"> 
+      <div class="about_box">      
+        <h2>關於</h2>
+        <div class="line"></div>
+        <p>
+           近年來，社會對於軟體工程師的需求急速增加，全台各地的補習也如雨後春筍般開業， 然而人的時間有限，要如何找到適合自己的學習環境？<br><br>「Front-Enter」特別針對前端工程的學習資源，進行蒐集、分類， 期待讓有志成為前端工程師的人，找到最適合自己的學習環境。<br></p>
       </div>
     </div>
     <div class="top">
@@ -153,4 +151,3 @@
     </div>
   </body>
 </html>
-<!-- pug -w ./pug -o ./html -P-->

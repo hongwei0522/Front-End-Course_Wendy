@@ -11,12 +11,16 @@ html body {
   background-color: #f0f0f0;
 }
 
+.hide {
+  display: none;
+}
+
 .header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   top: 0;
-  z-index: 5;
+  z-index: 7;
   position: sticky;
 }
 .header #headerNav {
@@ -276,7 +280,7 @@ html body {
   color: #737373;
   margin-top: 20px;
 }
-.header #loginContainer .remindBackground .remindBox button {
+.header #loginContainer .remindBackground .remindBox .okButton {
   font-size: 16px;
   width: 100px;
   padding: 3px 10px;
@@ -402,13 +406,41 @@ html body {
     width: 80%;
   }
 }
-.info {
-  height: 400px;
-  background-image: url(https://frankyeah.github.io/Front-Enter/images/skill-tree-key.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  color: white;
+.nav-center-upper:hover .slogan {
+  opacity: 0.5;
+}
+
+#nav-upper {
+  width: 100vw;
+  height: 380px;
+  padding: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+#nav-upper .nav-upper-background {
+  position: absolute;
+  width: 100%;
+  opacity: 1;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+#nav-upper #profileHeader {
+  position: absolute;
+  background-color: rgba(128, 128, 128, 0.8);
+  border-radius: 8px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -418,30 +450,21 @@ html body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-.info .info-header {
-  font-size: 24px;
-  padding: 6px;
-  background-color: rgba(128, 128, 128, 0.7);
-  border-radius: 5px;
-  text-align: center;
   letter-spacing: 10px;
+  color: white;
+  font-size: 18pt;
+  white-space: nowrap;
+  padding: 8px 12px;
 }
-.info .test-go-container {
+#nav-upper .test-go-container {
   width: 100px;
   height: 100px;
   opacity: 0;
   bottom: 100px;
   right: -10px;
   position: fixed;
-  z-index: 1;
+  z-index: 6;
   opacity: 0.85;
-  -webkit-transition-duration: 1s;
-          transition-duration: 1s;
   -webkit-animation: testRound 1s 1.5s;
           animation: testRound 1s 1.5s;
   display: -webkit-box;
@@ -454,16 +477,20 @@ html body {
       -ms-flex-align: center;
           align-items: center;
 }
-.info .test-go-container .test-go-round:hover {
+#nav-upper .test-go-container .test-go-round:hover {
   cursor: pointer;
   opacity: 0.7;
-  -webkit-transform: translateY(-15%);
-          transform: translateY(-15%);
+  -webkit-transform: translateY(-25%);
+          transform: translateY(-25%);
 }
-.info .test-go-container .test-go-round {
+#nav-upper .test-go-container .test-go-round {
   width: 80px;
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
 }
-.info .testContainer {
+#nav-upper .testContainer {
   position: fixed;
   z-index: 9;
   top: 0;
@@ -472,7 +499,7 @@ html body {
   height: 100vh;
   display: none;
 }
-.info .testContainer .testBackground {
+#nav-upper .testContainer .testBackground {
   position: fixed;
   margin-top: 0px;
   background-color: rgba(158, 157, 157, 0.1);
@@ -493,7 +520,7 @@ html body {
   -ms-flex-line-pack: center;
       align-content: center;
 }
-.info .testContainer .testBackground .boxContainer::before {
+#nav-upper .testContainer .testBackground .boxContainer::before {
   background: url("https://frankyeah.github.io/Front-Enter/images/Staff-Selection-.jpg") no-repeat center center/cover;
   -webkit-filter: grayscale(50%);
           filter: grayscale(50%);
@@ -508,7 +535,7 @@ html body {
   left: 0;
   position: absolute;
 }
-.info .testContainer .testBackground .boxContainer {
+#nav-upper .testContainer .testBackground .boxContainer {
   width: 350px;
   height: 450px;
   opacity: 1;
@@ -532,7 +559,7 @@ html body {
           align-items: center;
   position: relative;
 }
-.info .testContainer .testBackground .boxContainer .testHeader {
+#nav-upper .testContainer .testBackground .boxContainer .testHeader {
   position: absolute;
   font-size: 24px;
   font-weight: bold;
@@ -540,7 +567,7 @@ html body {
   letter-spacing: 3px;
   margin-top: 60px;
 }
-.info .testContainer .testBackground .boxContainer .testIntro {
+#nav-upper .testContainer .testBackground .boxContainer .testIntro {
   position: absolute;
   font-size: 16px;
   color: white;
@@ -548,7 +575,7 @@ html body {
   line-height: 30px;
   margin: 120px 50px;
 }
-.info .testContainer .testBackground .boxContainer .startBtn {
+#nav-upper .testContainer .testBackground .boxContainer .startBtn {
   position: absolute;
   font-size: 18px;
   margin-top: 280px;
@@ -558,7 +585,7 @@ html body {
   background-color: white;
   letter-spacing: 3px;
 }
-.info .testContainer .testBackground .boxContainer .startBtn:hover {
+#nav-upper .testContainer .testBackground .boxContainer .startBtn:hover {
   position: absolute;
   font-size: 18px;
   margin-top: 280px;
@@ -569,22 +596,23 @@ html body {
   color: white;
   cursor: pointer;
 }
-.info .testContainer .testBackground .boxContainer .testQuestion {
+#nav-upper .testContainer .testBackground .boxContainer .testQuestion {
   font-size: 18px;
   letter-spacing: 1px;
   line-height: 20px;
   position: absolute;
   margin-top: 40px;
   display: none;
+  color: white;
 }
-.info .testContainer .testBackground .boxContainer .testNumber {
+#nav-upper .testContainer .testBackground .boxContainer .testNumber {
   color: rgba(255, 255, 255, 0.7);
   letter-spacing: 3px;
   position: absolute;
   margin-top: 90px;
   display: none;
 }
-.info .testContainer .testBackground .boxContainer ul {
+#nav-upper .testContainer .testBackground .boxContainer ul {
   margin-top: 130px;
   list-style-type: none;
   padding: 0;
@@ -603,12 +631,12 @@ html body {
           align-items: center;
   display: none;
 }
-.info .testContainer .testBackground .boxContainer ul li:hover {
+#nav-upper .testContainer .testBackground .boxContainer ul li:hover {
   color: white;
   background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
 }
-.info .testContainer .testBackground .boxContainer ul li {
+#nav-upper .testContainer .testBackground .boxContainer ul li {
   width: 180px;
   font-size: 18px;
   margin-top: 10px;
@@ -628,7 +656,7 @@ html body {
   background-color: white;
   color: #1ad8d3;
 }
-.info .testContainer .testBackground .boxContainer ul li input[type=radio] {
+#nav-upper .testContainer .testBackground .boxContainer ul li input[type=radio] {
   opacity: 0;
   position: absolute;
   left: 0;
@@ -637,7 +665,7 @@ html body {
   border-radius: 10px;
   cursor: pointer;
 }
-.info .testContainer .testBackground .boxContainer ul li label {
+#nav-upper .testContainer .testBackground .boxContainer ul li label {
   border-radius: 10px;
   width: 100%;
   height: 100%;
@@ -645,12 +673,12 @@ html body {
   margin: 0;
   word-wrap: nowrap;
 }
-.info .testContainer .testBackground .boxContainer button:hover {
+#nav-upper .testContainer .testBackground .boxContainer button:hover {
   cursor: pointer;
   color: white;
   background-color: rgba(255, 255, 255, 0.5);
 }
-.info .testContainer .testBackground .boxContainer button {
+#nav-upper .testContainer .testBackground .boxContainer button {
   width: 180px;
   background-color: white;
   position: absolute;
@@ -676,7 +704,7 @@ html body {
       -ms-flex-pack: center;
           justify-content: center;
 }
-.info .testContainer .testBackground .boxContainer .pieContainer {
+#nav-upper .testContainer .testBackground .boxContainer .pieContainer {
   width: 200px;
   height: 200px;
   position: absolute;
@@ -692,7 +720,7 @@ html body {
           transform: translateX(-50%);
   display: none;
 }
-.info .testContainer .testBackground .boxContainer .pieContainer .pieChart {
+#nav-upper .testContainer .testBackground .boxContainer .pieContainer .pieChart {
   width: 150px;
   height: 150px;
   background-color: #1cb5e0;
@@ -700,7 +728,7 @@ html body {
   border: 3px solid white;
   position: absolute;
 }
-.info .testContainer .testBackground .boxContainer .pieContainer .pieChart .pieNum {
+#nav-upper .testContainer .testBackground .boxContainer .pieContainer .pieChart .pieNum {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -724,7 +752,7 @@ html body {
           justify-content: center;
   z-index: 12;
 }
-.info .testContainer .testBackground .boxContainer .pieContainer .pieChart::before {
+#nav-upper .testContainer .testBackground .boxContainer .pieContainer .pieChart::before {
   content: "";
   position: absolute;
   width: 150px;
@@ -738,7 +766,7 @@ html body {
   -webkit-transform: rotate(var(--before-rotation, 0deg));
           transform: rotate(var(--before-rotation, 0deg));
 }
-.info .testContainer .testBackground .boxContainer .pieContainer .pieChart::after {
+#nav-upper .testContainer .testBackground .boxContainer .pieContainer .pieChart::after {
   content: "";
   position: absolute;
   background-color: var(--after-background-color, transparent);
@@ -851,7 +879,7 @@ html body {
     bottom: 800px;
   }
   100% {
-    bottom: 100px;
+    bottom: 140px;
   }
 }
 @keyframes testRound {
@@ -859,66 +887,72 @@ html body {
     bottom: 800px;
   }
   100% {
-    bottom: 100px;
+    bottom: 140px;
   }
 }
-.intro {
-  margin-top: 10px;
-  height: 600px;
-  background-color: rgba(0, 0, 0, 0.5);
-  background-blend-mode: multiply;
-  background-image: url("https://frankyeah.github.io/Front-Enter/images/second-img.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-.intro .intro-header {
-  font-size: 24px;
-  color: white;
-  letter-spacing: 3px;
-}
-.intro .bottom-line {
-  border: 1px solid white;
-  width: 15px;
-}
-.intro .intro-content {
-  width: 580px;
-  text-align: center;
-  color: white;
-  font-size: 18px;
-  line-height: 30px;
-  letter-spacing: 3px;
-}
-
-@media screen and (max-width: 650px) {
-  .intro .intro-content {
-    width: 300px;
+@media screen and (max-width: 580px) {
+  #nav-upper {
+    height: 380px;
+  }
+  #nav-upper .nav-upper-background {
+    position: absolute;
+    width: auto;
+    height: 100%;
   }
 }
-.main {
-  height: 900px;
+.navCenter {
   background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 100%;
+  width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
-.main .game {
+.navCenter .buttonList {
+  padding: 0px 40px;
+  margin-top: 140px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.navCenter .buttonList .buttonListDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.navCenter .buttonList .buttonListDiv button {
+  margin: 15px;
+  width: 105px;
+  background-color: #1ad8d3;
+  color: white;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 5px;
+  text-align: center;
+  border: none;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+.navCenter .displayProfile {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -929,147 +963,447 @@ html body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 400px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 650px;
+  height: 100%;
+  margin-top: 70px;
 }
-.main .game .box-left {
-  border: 1px solid red;
-  margin-top: 5px;
-  margin-left: 150px;
+.navCenter .displayProfile #inputPhoto {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+.navCenter .displayProfile ul#profile {
+  list-style-type: none;
+  padding: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: black;
+  width: auto;
+}
+.navCenter .displayProfile ul#profile li {
+  color: #737373;
+  font-size: 16px;
+  letter-spacing: 3px;
+  margin: 15px;
+}
+.navCenter .displayProfile ul#profile li label {
+  margin: 20px;
+  opacity: 0.8;
+}
+.navCenter .displayProfile ul#profile li input:focus {
+  outline: 1.5px solid blue;
+}
+.navCenter .displayProfile ul#profile li input {
+  font-size: 16px;
+  letter-spacing: 3px;
+  border: none;
+  padding: 1px;
+  width: 300px;
+  color: #737373;
+  line-height: 30px;
+  padding-left: 3px;
+  border-radius: 5px;
+}
+.navCenter .displayProfile ul#profile li #profileEmail:focus {
+  outline: none;
+}
+.navCenter .displayProfile .modifyBtn {
+  margin-top: 15px;
+}
+.navCenter .displayProfile .modifyBtn button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 95px;
+  background-color: #1ad8d3;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  white-space: nowrap;
+  line-height: 20px;
+  border-radius: 5px;
+  border: none;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+.navCenter .displayProfile .modifyBtn .modified, .navCenter .displayProfile .modifyBtn .cancel {
+  display: none;
+  margin: 10px;
+}
+.navCenter .displayProfile .dataCollection {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: none;
+}
+.navCenter .displayProfile .dataCollection .collectionBlock {
+  width: 180px;
+  height: 240px;
+  margin: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: none;
+}
+.navCenter .displayProfile .dataCollection .collectionBlock .collectionImg:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.12);
+          transform: scale(1.12);
+}
+.navCenter .displayProfile .dataCollection .collectionBlock .collectionImg {
+  width: 160px;
+  height: 160px;
+  border-radius: 5px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+}
+.navCenter .displayProfile .dataCollection .collectionBlock .collectionName {
+  color: #1ad8d3;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 1px;
+  margin: 10px;
+}
+.navCenter .displayProfile .dataCollection .collectionBlock .removeBtn {
+  background: url("https://frankyeah.github.io/Front-Enter/images/rubbish-bin.svg") 0% 0%/cover;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.navCenter .displayProfile .postSystem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.navCenter .displayProfile .postSystem .postArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  padding: 3px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 600px;
+  border: solid 1px #757575;
 }
-.main .game .box-left .slash {
-  width: 40px;
-  height: 40px;
-  border-left: 2.5px solid #737373;
-  -webkit-transform: rotate(45deg) translate(10px, 0px);
-          transform: rotate(45deg) translate(10px, 0px);
+.navCenter .displayProfile .postSystem .postArea .postUl:hover {
+  background-color: rgba(26, 216, 210, 0.3490196078);
+  color: #3a3a3a;
 }
-.main .game .box-right {
-  border: 1px solid red;
-  margin-top: 0px;
+.navCenter .displayProfile .postSystem .postArea .postUl {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  padding: 3px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+  color: #5f5f5f;
+  list-style-type: none;
 }
-.main .game .box-right .slash {
-  width: 40px;
-  height: 40px;
-  border-left: 2.5px solid #737373;
-  -webkit-transform: rotate(45deg) translate(10px, 0px);
-          transform: rotate(45deg) translate(10px, 0px);
-  margin-top: 10px;
-  margin-right: 50px;
-}
-.main .game .box-right .pipe {
-  height: 30px;
-  border-right: 2.5px solid #737373;
-  margin: 5px;
-  margin-right: 100px;
-}
-.main .game .box-right-second {
-  border: 1px solid red;
-  margin-top: 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  padding: 3px;
-}
-.main .game .box-right-second .slash {
-  width: 40px;
-  height: 40px;
-  border-left: 2.5px solid #737373;
-  -webkit-transform: rotate(45deg) translate(10px, 0px);
-          transform: rotate(45deg) translate(10px, 0px);
-  margin-top: 10px;
-  margin-right: 150px;
-}
-.main .game .box-evenly {
-  border: 1px solid red;
-  margin-top: 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  padding: 3px;
-}
-.main .game .box-evenly .user-icon {
-  width: 30px;
-  height: 30px;
-  background: url("https://frankyeah.github.io/Front-Enter/images/cute.svg") no-repeat center center/cover;
-}
-.main .game .box-evenly .greyBorder {
-  width: 100px;
-  height: 30px;
-  line-height: 30px;
-  font-size: 16px;
+.navCenter .displayProfile .postSystem .postArea .postUl .postHeader, .navCenter .displayProfile .postSystem .postArea .postUl .postHeader, .navCenter .displayProfile .postSystem .postArea .postUl .postTimeStamp {
   cursor: pointer;
-  border: 1px solid #737373;
-  color: #737373;
-  text-align: center;
-  padding: 2.5px;
+  color: #5f5f5f;
+  height: 50px;
+  width: 100%;
+}
+.navCenter .displayProfile .postSystem .postArea .postUl .postHeader {
+  width: 150px;
+}
+.navCenter .displayProfile .postSystem .postArea .postUl .postPreface {
+  width: 350px;
+}
+.navCenter .displayProfile .postSystem .postArea .postUl .postTimeStamp {
+  width: 100px;
+}
+.navCenter .displayProfile .postSystem .postBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+.navCenter .displayProfile .postSystem .postBtn button:hover {
+  background-color: #707070;
+}
+.navCenter .displayProfile .postSystem .postBtn button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 95px;
+  background-color: #b3b3b3;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  white-space: nowrap;
+  line-height: 20px;
+  border-radius: 5px;
+  border: none;
   letter-spacing: 3px;
-  margin-left: 30px;
+  cursor: pointer;
+  margin: 50px;
 }
-.main .game .box-evenly .slash {
-  width: 35px;
-  height: 35px;
-  border-left: 2.5px solid #737373;
-  -webkit-transform: rotate(45deg) translate(10px, 0px);
-          transform: rotate(45deg) translate(10px, 0px);
+.navCenter .displayProfile .createPost {
+  width: 600px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
-.main .game .box-evenly .horiz {
-  width: 30px;
-  border-bottom: 2.5px solid #737373;
-  -webkit-transform: translate(15px, 15px);
-          transform: translate(15px, 15px);
-  position: absolute;
+.navCenter .displayProfile .createPost .postBtnList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
 }
-.main .game .box-evenly .backslash {
-  width: 35px;
-  height: 35px;
-  border-left: 2.5px solid #737373;
-  -webkit-transform: rotate(135deg);
-          transform: rotate(135deg);
+.navCenter .displayProfile .createPost .postBtnList button:hover {
+  background-color: #707070;
 }
-.main .game .box-evenly .pipe {
-  height: 30px;
-  border-right: 2.5px solid #737373;
-  margin: 5px;
+.navCenter .displayProfile .createPost .postBtnList button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 95px;
+  background-color: #b3b3b3;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  white-space: nowrap;
+  line-height: 20px;
+  border-radius: 5px;
+  border: none;
+  letter-spacing: 3px;
+  cursor: pointer;
+  margin: 20px;
+}
+.navCenter .displayProfile .createPost ul#createPostPage {
+  list-style-type: none;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: black;
+  width: auto;
+}
+.navCenter .displayProfile .createPost ul#createPostPage li {
+  color: #737373;
+  letter-spacing: 3px;
+  margin: 15px;
+  width: 550px;
+  margin-left: 25%;
+}
+.navCenter .displayProfile .createPost ul#createPostPage li label {
+  font-size: 18px;
+}
+.navCenter .displayProfile .createPost ul#createPostPage li input, .navCenter .displayProfile .createPost ul#createPostPage li textarea {
+  line-height: 25px;
+  font-size: 16px;
+  width: 350px;
+  margin-left: 10px;
+  padding-left: 8px;
+  border-radius: 5px;
+  padding: 5px;
+  letter-spacing: 2px;
+}
+.navCenter .displayProfile .createPost ul#createPostPage .recLi {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.navCenter .displayProfile .createPost ul#createPostPage .recLi #recUrl {
+  margin-bottom: 15px;
+  margin-top: 25px;
+}
+.navCenter .displayProfile .createPost ul#createPostPage .recLi input {
+  width: 450px;
+}
+.navCenter .displayProfile .createPost ul#createPostPage .sqLi {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.navCenter .displayProfile .createPost ul#createPostPage .sqLi #sqUrl {
+  margin-bottom: 15px;
+}
+.navCenter .displayProfile .createPost ul#createPostPage .sqLi input {
+  width: 450px;
+}
+.navCenter .displayProfile .createPost ul#createPostPage .contentLi {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.navCenter .displayProfile .createPost ul#createPostPage .contentLi #cContent {
+  margin-top: 25px;
+  width: 450px;
+  height: 500px;
+  white-space: pre-wrap;
 }
 
+@media screen and (max-width: 880px) {
+  .navCenter {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100%;
+    padding: 60px 0px;
+  }
+  .navCenter .buttonList {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    width: 100%;
+    margin-top: 30px;
+    padding: 20px;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .navCenter .buttonList .line {
+    width: 380px;
+    border-top: 1px solid #737373;
+    opacity: 0.2;
+    margin-bottom: 30px;
+  }
+  .navCenter .buttonList .buttonListDiv {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+@media screen and (max-width: 630px) {
+  .navCenter .buttonList .buttonListDiv {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .navCenter .buttonList .buttonListDiv button {
+    font-size: 14px;
+  }
+  .navCenter .displayProfile #inputPhoto {
+    width: 60px;
+    height: 60px;
+  }
+  .navCenter .displayProfile ul#profile {
+    margin-top: 80px;
+  }
+  .navCenter .displayProfile ul#profile li {
+    font-size: 14px;
+  }
+  .navCenter .displayProfile ul#profile li label {
+    font-size: 14px;
+  }
+  .navCenter .displayProfile ul#profile li input {
+    font-size: 14px;
+  }
+  .navCenter .displayProfile .modifyBtn button {
+    font-size: 14px;
+  }
+}
 .top {
   height: 186px;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1263,7 +1597,7 @@ html body {
   width: 100vw;
   height: 100vh;
   top: 0;
-  z-index: 12;
+  z-index: 20;
 }
 #animation #animation-logo {
   position: absolute;
@@ -1282,4 +1616,4 @@ html body {
   width: 100vw;
   height: 15vh;
   background-color: #1ad8d3;
-}/*# sourceMappingURL=skilltree.css.map */
+}/*# sourceMappingURL=profile.css.map */

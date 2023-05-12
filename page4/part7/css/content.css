@@ -11,12 +11,16 @@ html body {
   background-color: #f0f0f0;
 }
 
+.hide {
+  display: none;
+}
+
 .header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   top: 0;
-  z-index: 5;
+  z-index: 7;
   position: sticky;
 }
 .header #headerNav {
@@ -225,68 +229,6 @@ html body {
   border: none;
   margin-top: 5px;
 }
-.header #loginContainer .remindBackground {
-  position: fixed;
-  margin-top: 0px;
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 100vw;
-  height: 100vh;
-  top: 0px;
-  left: 0px;
-  position: fixed;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.header #loginContainer .remindBackground .remindBox {
-  width: 300px;
-  height: 170px;
-  -webkit-transform: translateY(-30px);
-          transform: translateY(-30px);
-  background-color: white;
-  border-radius: 5px;
-  letter-spacing: 3px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.header #loginContainer .remindBackground .remindBox .header {
-  font-size: 20px;
-  color: #737373;
-  margin-top: 25px;
-}
-.header #loginContainer .remindBackground .remindBox .content {
-  font-size: 16px;
-  color: #737373;
-  margin-top: 20px;
-}
-.header #loginContainer .remindBackground .remindBox button {
-  font-size: 16px;
-  width: 100px;
-  padding: 3px 10px;
-  margin-top: 15px;
-  color: white;
-  background-color: #1ad8d3;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
 .header #search-box {
   position: absolute;
   background-color: #f0f0f0;
@@ -402,13 +344,41 @@ html body {
     width: 80%;
   }
 }
-.info {
-  height: 400px;
-  background-image: url(https://frankyeah.github.io/Front-Enter/images/skill-tree-key.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  color: white;
+.nav-center-upper:hover .slogan {
+  opacity: 0.5;
+}
+
+#nav-upper {
+  width: 100vw;
+  height: 380px;
+  padding: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+#nav-upper .nav-upper-background {
+  position: absolute;
+  width: 100%;
+  opacity: 1;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+#nav-upper .className {
+  position: absolute;
+  background-color: rgba(128, 128, 128, 0.8);
+  border-radius: 8px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -418,30 +388,23 @@ html body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-.info .info-header {
-  font-size: 24px;
   padding: 6px;
-  background-color: rgba(128, 128, 128, 0.7);
-  border-radius: 5px;
-  text-align: center;
   letter-spacing: 10px;
+  color: white;
+  font-size: 18pt;
+  font-weight: 650;
+  white-space: nowrap;
+  padding: 10px 15px;
 }
-.info .test-go-container {
+#nav-upper .test-go-container {
   width: 100px;
   height: 100px;
   opacity: 0;
   bottom: 100px;
   right: -10px;
   position: fixed;
-  z-index: 1;
+  z-index: 6;
   opacity: 0.85;
-  -webkit-transition-duration: 1s;
-          transition-duration: 1s;
   -webkit-animation: testRound 1s 1.5s;
           animation: testRound 1s 1.5s;
   display: -webkit-box;
@@ -454,16 +417,20 @@ html body {
       -ms-flex-align: center;
           align-items: center;
 }
-.info .test-go-container .test-go-round:hover {
+#nav-upper .test-go-container .test-go-round:hover {
   cursor: pointer;
   opacity: 0.7;
-  -webkit-transform: translateY(-15%);
-          transform: translateY(-15%);
+  -webkit-transform: translateY(-25%);
+          transform: translateY(-25%);
 }
-.info .test-go-container .test-go-round {
+#nav-upper .test-go-container .test-go-round {
   width: 80px;
+  -webkit-transition: -webkit-transform 1s ease;
+  transition: -webkit-transform 1s ease;
+  transition: transform 1s ease;
+  transition: transform 1s ease, -webkit-transform 1s ease;
 }
-.info .testContainer {
+#nav-upper .testContainer {
   position: fixed;
   z-index: 9;
   top: 0;
@@ -472,7 +439,7 @@ html body {
   height: 100vh;
   display: none;
 }
-.info .testContainer .testBackground {
+#nav-upper .testContainer .testBackground {
   position: fixed;
   margin-top: 0px;
   background-color: rgba(158, 157, 157, 0.1);
@@ -493,7 +460,7 @@ html body {
   -ms-flex-line-pack: center;
       align-content: center;
 }
-.info .testContainer .testBackground .boxContainer::before {
+#nav-upper .testContainer .testBackground .boxContainer::before {
   background: url("https://frankyeah.github.io/Front-Enter/images/Staff-Selection-.jpg") no-repeat center center/cover;
   -webkit-filter: grayscale(50%);
           filter: grayscale(50%);
@@ -508,7 +475,7 @@ html body {
   left: 0;
   position: absolute;
 }
-.info .testContainer .testBackground .boxContainer {
+#nav-upper .testContainer .testBackground .boxContainer {
   width: 350px;
   height: 450px;
   opacity: 1;
@@ -532,7 +499,7 @@ html body {
           align-items: center;
   position: relative;
 }
-.info .testContainer .testBackground .boxContainer .testHeader {
+#nav-upper .testContainer .testBackground .boxContainer .testHeader {
   position: absolute;
   font-size: 24px;
   font-weight: bold;
@@ -540,7 +507,7 @@ html body {
   letter-spacing: 3px;
   margin-top: 60px;
 }
-.info .testContainer .testBackground .boxContainer .testIntro {
+#nav-upper .testContainer .testBackground .boxContainer .testIntro {
   position: absolute;
   font-size: 16px;
   color: white;
@@ -548,7 +515,7 @@ html body {
   line-height: 30px;
   margin: 120px 50px;
 }
-.info .testContainer .testBackground .boxContainer .startBtn {
+#nav-upper .testContainer .testBackground .boxContainer .startBtn {
   position: absolute;
   font-size: 18px;
   margin-top: 280px;
@@ -558,7 +525,7 @@ html body {
   background-color: white;
   letter-spacing: 3px;
 }
-.info .testContainer .testBackground .boxContainer .startBtn:hover {
+#nav-upper .testContainer .testBackground .boxContainer .startBtn:hover {
   position: absolute;
   font-size: 18px;
   margin-top: 280px;
@@ -569,22 +536,23 @@ html body {
   color: white;
   cursor: pointer;
 }
-.info .testContainer .testBackground .boxContainer .testQuestion {
+#nav-upper .testContainer .testBackground .boxContainer .testQuestion {
   font-size: 18px;
   letter-spacing: 1px;
   line-height: 20px;
   position: absolute;
   margin-top: 40px;
   display: none;
+  color: white;
 }
-.info .testContainer .testBackground .boxContainer .testNumber {
+#nav-upper .testContainer .testBackground .boxContainer .testNumber {
   color: rgba(255, 255, 255, 0.7);
   letter-spacing: 3px;
   position: absolute;
   margin-top: 90px;
   display: none;
 }
-.info .testContainer .testBackground .boxContainer ul {
+#nav-upper .testContainer .testBackground .boxContainer ul {
   margin-top: 130px;
   list-style-type: none;
   padding: 0;
@@ -603,12 +571,12 @@ html body {
           align-items: center;
   display: none;
 }
-.info .testContainer .testBackground .boxContainer ul li:hover {
+#nav-upper .testContainer .testBackground .boxContainer ul li:hover {
   color: white;
   background-color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
 }
-.info .testContainer .testBackground .boxContainer ul li {
+#nav-upper .testContainer .testBackground .boxContainer ul li {
   width: 180px;
   font-size: 18px;
   margin-top: 10px;
@@ -628,7 +596,7 @@ html body {
   background-color: white;
   color: #1ad8d3;
 }
-.info .testContainer .testBackground .boxContainer ul li input[type=radio] {
+#nav-upper .testContainer .testBackground .boxContainer ul li input[type=radio] {
   opacity: 0;
   position: absolute;
   left: 0;
@@ -637,7 +605,7 @@ html body {
   border-radius: 10px;
   cursor: pointer;
 }
-.info .testContainer .testBackground .boxContainer ul li label {
+#nav-upper .testContainer .testBackground .boxContainer ul li label {
   border-radius: 10px;
   width: 100%;
   height: 100%;
@@ -645,12 +613,12 @@ html body {
   margin: 0;
   word-wrap: nowrap;
 }
-.info .testContainer .testBackground .boxContainer button:hover {
+#nav-upper .testContainer .testBackground .boxContainer button:hover {
   cursor: pointer;
   color: white;
   background-color: rgba(255, 255, 255, 0.5);
 }
-.info .testContainer .testBackground .boxContainer button {
+#nav-upper .testContainer .testBackground .boxContainer button {
   width: 180px;
   background-color: white;
   position: absolute;
@@ -676,7 +644,7 @@ html body {
       -ms-flex-pack: center;
           justify-content: center;
 }
-.info .testContainer .testBackground .boxContainer .pieContainer {
+#nav-upper .testContainer .testBackground .boxContainer .pieContainer {
   width: 200px;
   height: 200px;
   position: absolute;
@@ -692,7 +660,7 @@ html body {
           transform: translateX(-50%);
   display: none;
 }
-.info .testContainer .testBackground .boxContainer .pieContainer .pieChart {
+#nav-upper .testContainer .testBackground .boxContainer .pieContainer .pieChart {
   width: 150px;
   height: 150px;
   background-color: #1cb5e0;
@@ -700,7 +668,7 @@ html body {
   border: 3px solid white;
   position: absolute;
 }
-.info .testContainer .testBackground .boxContainer .pieContainer .pieChart .pieNum {
+#nav-upper .testContainer .testBackground .boxContainer .pieContainer .pieChart .pieNum {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -724,7 +692,7 @@ html body {
           justify-content: center;
   z-index: 12;
 }
-.info .testContainer .testBackground .boxContainer .pieContainer .pieChart::before {
+#nav-upper .testContainer .testBackground .boxContainer .pieContainer .pieChart::before {
   content: "";
   position: absolute;
   width: 150px;
@@ -738,7 +706,7 @@ html body {
   -webkit-transform: rotate(var(--before-rotation, 0deg));
           transform: rotate(var(--before-rotation, 0deg));
 }
-.info .testContainer .testBackground .boxContainer .pieContainer .pieChart::after {
+#nav-upper .testContainer .testBackground .boxContainer .pieContainer .pieChart::after {
   content: "";
   position: absolute;
   background-color: var(--after-background-color, transparent);
@@ -851,7 +819,7 @@ html body {
     bottom: 800px;
   }
   100% {
-    bottom: 100px;
+    bottom: 140px;
   }
 }
 @keyframes testRound {
@@ -859,18 +827,174 @@ html body {
     bottom: 800px;
   }
   100% {
-    bottom: 100px;
+    bottom: 140px;
   }
 }
-.intro {
-  margin-top: 10px;
-  height: 600px;
-  background-color: rgba(0, 0, 0, 0.5);
-  background-blend-mode: multiply;
-  background-image: url("https://frankyeah.github.io/Front-Enter/images/second-img.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+@media screen and (max-width: 580px) {
+  #nav-upper {
+    height: 380px;
+  }
+  #nav-upper .nav-upper-background {
+    position: absolute;
+    width: auto;
+    height: 100%;
+  }
+}
+.navCenter {
+  background-color: white;
+  padding: 100px 5%;
+  z-index: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.navCenter .navCenterLeft {
+  height: auto;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.navCenter .navCenterLeft .leftImg:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+  margin-bottom: 55px;
+}
+.navCenter .navCenterLeft .leftImg:not(:hover) {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  margin-bottom: 40px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  position: relative;
+}
+.navCenter .navCenterLeft .leftImg {
+  width: 400px;
+  height: 266px;
+  border-radius: 5px;
+  margin-bottom: 40px;
+  -webkit-transition: 0.6s;
+  transition: 0.6s;
+  position: relative;
+}
+.navCenter .navCenterLeft .popUpImgContainer {
+  display: none;
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.navCenter .navCenterLeft .popUpImgContainer .popUpImgBackgroud {
+  position: fixed;
+  margin-top: 0px;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+.navCenter .navCenterLeft .popUpImgContainer .popUpImgBackgroud .TriLeft {
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.navCenter .navCenterLeft .popUpImgContainer .popUpImgBackgroud .TriLeft .popUpTriLeft {
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-left: solid 12px grey;
+  border-bottom: solid 12px grey;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+.navCenter .navCenterLeft .popUpImgContainer .popUpImgBackgroud .popUpImg {
+  width: 750px;
+  height: 550px;
+}
+.navCenter .navCenterLeft .popUpImgContainer .popUpImgBackgroud .TriRight {
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.navCenter .navCenterLeft .popUpImgContainer .popUpImgBackgroud .TriRight .popUpTriRight {
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-left: solid 12px grey;
+  border-bottom: solid 12px grey;
+  -webkit-transform: rotate(225deg);
+          transform: rotate(225deg);
+}
+@media screen and (max-width: 960px) {
+  .navCenter .navCenterLeft .popUpImgContainer .popUpImgBackgroud .popUpImg {
+    width: 400px;
+    height: 400px;
+  }
+}
+@media screen and (max-width: 530px) {
+  .navCenter .navCenterLeft .popUpImgContainer .popUpImgBackgroud .popUpImg {
+    width: 300px;
+    height: 300px;
+  }
+}
+@media screen and (max-width: 410px) {
+  .navCenter .navCenterLeft .popUpImgContainer .popUpImgBackgroud .popUpImg {
+    width: 220px;
+    height: 340px;
+  }
+}
+.navCenter .navCenterRight {
+  margin-left: 60px;
+  margin-right: 80px;
+}
+.navCenter .navCenterRight .mainContent {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -881,44 +1005,22 @@ html body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
-.intro .intro-header {
-  font-size: 24px;
-  color: white;
+.navCenter .navCenterRight .mainContent #mainContentText #mainTitle {
+  font-size: 20px;
+  color: #1ad8d3;
+  line-height: 28px;
+  font-weight: bold;
   letter-spacing: 3px;
 }
-.intro .bottom-line {
-  border: 1px solid white;
-  width: 15px;
-}
-.intro .intro-content {
-  width: 580px;
-  text-align: center;
-  color: white;
-  font-size: 18px;
-  line-height: 30px;
+.navCenter .navCenterRight .mainContent #mainContentText p {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #737373;
+  line-height: 28px;
   letter-spacing: 3px;
 }
-
-@media screen and (max-width: 650px) {
-  .intro .intro-content {
-    width: 300px;
-  }
-}
-.main {
-  height: 900px;
-  background-color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-.main .game {
+.navCenter .navCenterRight .mainContent #boxTitle {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -926,68 +1028,48 @@ html body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 400px;
-}
-.main .game .user-icon {
-  width: 30px;
-  height: 30px;
-  background: url("https://frankyeah.github.io/Front-Enter/images/cute.svg") no-repeat center center/cover;
-}
-.main .game .box-left {
-  border: 1px solid red;
-  margin-top: 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  padding: 3px;
-}
-.main .game .box-left .slash {
-  width: 35px;
-  height: 35px;
-  border-left: 2.5px solid #737373;
-  -webkit-transform: rotate(45deg) translate(10px, 0px);
-          transform: rotate(45deg) translate(10px, 0px);
-}
-.main .game .box-right {
-  border: 1px solid red;
-  margin-top: 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  padding: 3px;
+  height: 140px;
 }
-.main .game .box-right .slash {
-  width: 35px;
-  height: 35px;
-  border-left: 2.5px solid #737373;
-  -webkit-transform: rotate(45deg) translate(10px, 0px);
-          transform: rotate(45deg) translate(10px, 0px);
+.navCenter .navCenterRight .mainContent #boxTitle p {
+  font-size: 18px;
+  color: #1ad8d3;
+  letter-spacing: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
-.main .game .box-right .pipe {
-  height: 30px;
-  border-right: 2.5px solid #737373;
-  margin: 5px;
+.navCenter .navCenterRight .mainContent #boxTitle .underline {
+  width: 20px;
+  border-top: 0.8px solid #1ad8d3;
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
 }
-.main .game .box-evenly {
-  border: 1px solid red;
-  margin-top: 0px;
+.navCenter .navCenterRight .mainContent #boxTable {
+  margin-top: 30px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  font-size: 16px;
+  letter-spacing: 3px;
+  width: 400px;
+}
+.navCenter .navCenterRight .mainContent #boxTable .row {
+  width: 100%;
+  border-bottom: 1px solid rgba(115, 115, 115, 0.3450980392);
+  line-height: 70px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -995,50 +1077,152 @@ html body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  padding: 3px;
 }
-.main .game .box-evenly .greyBorder {
-  width: 100px;
-  height: 30px;
-  line-height: 30px;
-  font-size: 16px;
-  cursor: pointer;
-  border: 1px solid #737373;
+.navCenter .navCenterRight .mainContent #boxTable .row .row-left {
+  color: #1ad8d3;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.navCenter .navCenterRight .mainContent #boxTable .row .row-right {
   color: #737373;
-  text-align: center;
-  padding: 2.5px;
-  letter-spacing: 3px;
-  margin-left: 30px;
-}
-.main .game .box-evenly .slash {
-  width: 35px;
-  height: 35px;
-  border-left: 2.5px solid #737373;
-  -webkit-transform: rotate(45deg) translate(10px, 0px);
-          transform: rotate(45deg) translate(10px, 0px);
-}
-.main .game .box-evenly .horiz {
-  width: 30px;
-  border-bottom: 2.5px solid #737373;
-  -webkit-transform: translate(15px, 15px);
-          transform: translate(15px, 15px);
-  position: absolute;
-}
-.main .game .box-evenly .backslash {
-  width: 35px;
-  height: 35px;
-  border-left: 2.5px solid #737373;
-  -webkit-transform: rotate(135deg);
-          transform: rotate(135deg);
-}
-.main .game .box-evenly .pipe {
-  height: 30px;
-  border-right: 2.5px solid #737373;
-  margin: 5px;
+  white-space: nowrap;
+  color: #8f8f8f;
+  margin-left: 60px;
 }
 
+@media screen and (max-width: 1200px) {
+  .navCenter {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding: 100px 0px;
+  }
+  .navCenter .navCenterLeft {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .navCenter .navCenterLeft .leftImg {
+    display: none;
+  }
+  .navCenter .navCenterLeft .leftImgOne {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+@media screen and (max-width: 700px) {
+  .navCenter .navCenterRight .mainContent #boxTable {
+    margin-top: 30px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    font-size: 14px;
+    letter-spacing: 3px;
+    width: 100%;
+  }
+  .navCenter .navCenterRight .mainContent #boxTable .row {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .navCenter .navCenterLeft .leftImg {
+    display: none;
+  }
+  .navCenter .navCenterLeft .leftImgOne {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    scale: 0.85;
+    -webkit-transform-origin: top center;
+            transform-origin: top center;
+  }
+  .navCenter .navCenterLeft .leftImgOne:hover {
+    cursor: pointer;
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+    margin-bottom: 55px;
+    -webkit-transform-origin: top center;
+            transform-origin: top center;
+  }
+  .navCenter .navCenterRight {
+    margin-top: -35px;
+  }
+}
+@media screen and (max-width: 470px) {
+  .navCenter .navCenterLeft {
+    height: auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .navCenter .navCenterLeft .leftImg:hover {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    height: 320px;
+    cursor: pointer;
+    -webkit-transform-origin: top center;
+            transform-origin: top center;
+    margin-bottom: 40px;
+  }
+  .navCenter .navCenterLeft .leftImg:not(:hover) {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    margin-bottom: 40px;
+    -webkit-transition: 0.6s;
+    transition: 0.6s;
+    position: relative;
+  }
+  .navCenter .navCenterLeft .leftImg {
+    background: url("https://frankyeah.github.io/Front-Enter/images/15.jpg") 50%/cover no-repeat;
+    width: 80%;
+    max-width: 400px;
+    height: 266px;
+    border-radius: 5px;
+    margin-bottom: 40px;
+    -webkit-transition: 0.6s;
+    transition: 0.6s;
+    position: relative;
+  }
+  .navCenter .navCenterRight {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .navCenter .navCenterRight .mainContent {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .navCenter .navCenterRight .mainContent #mainContentText {
+    margin-left: 60px;
+    margin-right: 80px;
+  }
+  .navCenter .navCenterRight .mainContent #boxTable {
+    font-size: 12px;
+    width: 80%;
+  }
+  .navCenter .navCenterRight .mainContent #boxTable .row {
+    width: 100%;
+  }
+  .navCenter .navCenterRight .mainContent #boxTable .row .row-right {
+    margin-left: 60px;
+  }
+}
 .top {
   height: 186px;
   display: -webkit-box;
@@ -1234,7 +1418,7 @@ html body {
   width: 100vw;
   height: 100vh;
   top: 0;
-  z-index: 12;
+  z-index: 20;
 }
 #animation #animation-logo {
   position: absolute;
@@ -1253,4 +1437,4 @@ html body {
   width: 100vw;
   height: 15vh;
   background-color: #1ad8d3;
-}/*# sourceMappingURL=skilltree.css.map */
+}/*# sourceMappingURL=content.css.map */

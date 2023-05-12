@@ -46,12 +46,10 @@ collection.addEventListener('click', ()=>{
 // 檢查使用者的登入狀態
 firebase.auth().onAuthStateChanged(function(user) {
   const userId = user.uid; 
-
     if (user) {
     // 使用者已登入
     firebase.database().ref('users/' + userId).on('value', (snapshot) => {
     const userData = snapshot.val(); 
-    
     profileEmail.value = user.email;
     profileName.value = userData.name;
     profilePhone.value = userData.phone;
@@ -160,6 +158,7 @@ logoutBtn.addEventListener('click', function(){
         remindBoxContent.innerText = '登出成功';
         windowClose();
         console.log('使用者已登出');
+        window.location.href = 'index.html';
     }).catch((error) => {
         // 登出失敗
         console.error('登出失敗:', error);

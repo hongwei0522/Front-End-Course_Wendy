@@ -403,8 +403,8 @@ html body {
   }
 }
 .info {
-  height: 400px;
-  background-image: url(https://frankyeah.github.io/Front-Enter/images/skill-tree-key.jpg);
+  height: 600px;
+  background-image: url(https://frankyeah.github.io/Front-Enter/images/key-visual.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -423,13 +423,41 @@ html body {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-.info .info-header {
-  font-size: 24px;
-  padding: 6px;
-  background-color: rgba(128, 128, 128, 0.7);
-  border-radius: 5px;
-  text-align: center;
-  letter-spacing: 10px;
+.info .words {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.info .words h3 {
+  font-size: 28pt;
+  letter-spacing: 2pt;
+  margin-bottom: -23px;
+}
+.info .words h3:hover {
+  -webkit-transform: rotate(-10deg);
+          transform: rotate(-10deg);
+}
+.info .words h4 {
+  font-size: 18pt;
+  letter-spacing: 7pt;
+  font-weight: 250;
+}
+.info .arrow {
+  border-top: solid 1px white;
+  border-left: solid 1px white;
+  -webkit-transform: translateY(120px) rotate(225deg);
+          transform: translateY(120px) rotate(225deg);
+  width: 12px;
+  height: 12px;
+  -webkit-animation: arrow 0.5s infinite;
+          animation: arrow 0.5s infinite;
 }
 .info .test-go-container {
   width: 100px;
@@ -846,6 +874,34 @@ html body {
             transform: rotate(20deg);
   }
 }
+@-webkit-keyframes arrow {
+  0% {
+    -webkit-transform: translateY(130px) rotate(225deg);
+            transform: translateY(130px) rotate(225deg);
+  }
+  50% {
+    -webkit-transform: translateY(120px) rotate(225deg);
+            transform: translateY(120px) rotate(225deg);
+  }
+  100% {
+    -webkit-transform: translateY(130px) rotate(225deg);
+            transform: translateY(130px) rotate(225deg);
+  }
+}
+@keyframes arrow {
+  0% {
+    -webkit-transform: translateY(130px) rotate(225deg);
+            transform: translateY(130px) rotate(225deg);
+  }
+  50% {
+    -webkit-transform: translateY(120px) rotate(225deg);
+            transform: translateY(120px) rotate(225deg);
+  }
+  100% {
+    -webkit-transform: translateY(130px) rotate(225deg);
+            transform: translateY(130px) rotate(225deg);
+  }
+}
 @-webkit-keyframes testRound {
   0% {
     bottom: 800px;
@@ -862,7 +918,11 @@ html body {
     bottom: 100px;
   }
 }
-.intro {
+.test:hover {
+  height: 660px;
+}
+
+.test {
   margin-top: 10px;
   height: 600px;
   background-color: rgba(0, 0, 0, 0.5);
@@ -871,6 +931,7 @@ html body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  background-attachment: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -884,41 +945,67 @@ html body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-transition-duration: 2s;
+          transition-duration: 2s;
 }
-.intro .intro-header {
-  font-size: 24px;
+.test p {
   color: white;
-  letter-spacing: 3px;
-}
-.intro .bottom-line {
-  border: 1px solid white;
-  width: 15px;
-}
-.intro .intro-content {
-  width: 580px;
+  font-size: 13.5pt;
+  letter-spacing: 2pt;
+  line-height: 30pt;
+  font-weight: 300;
   text-align: center;
-  color: white;
-  font-size: 18px;
-  line-height: 30px;
-  letter-spacing: 3px;
+  -webkit-box-flex: 0.025;
+      -ms-flex-positive: 0.025;
+          flex-grow: 0.025;
+}
+.test button.test-go-square {
+  border: solid 1px #1ad8d3;
+  color: #1ad8d3;
+  border-radius: 5px;
+  font-size: 13.5pt;
+  width: 130px;
+  background-color: rgba(0, 0, 0, 0);
+  -webkit-box-flex: 0.023;
+      -ms-flex-positive: 0.023;
+          flex-grow: 0.023;
+  -webkit-transition: all 1.2s ease;
+  transition: all 1.2s ease;
+}
+.test button:hover {
+  cursor: pointer;
+  -webkit-box-flex: 0.03;
+      -ms-flex-positive: 0.03;
+          flex-grow: 0.03;
+  -webkit-transform: scale(1.12);
+          transform: scale(1.12);
 }
 
-@media screen and (max-width: 650px) {
-  .intro .intro-content {
-    width: 300px;
+@media screen and (max-width: 570px) {
+  .test:hover {
+    height: 660px;
+  }
+  .test {
+    background-size: cover;
+    background-attachment: local;
   }
 }
-.main {
-  height: 900px;
-  background-color: white;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.classroom:hover {
+  height: 660px;
 }
-.main .game {
+
+.classroom {
+  -webkit-transition-duration: 2s;
+          transition-duration: 2s;
+  margin-top: 10px;
+  height: 600px;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-blend-mode: multiply;
+  background-image: url("https://frankyeah.github.io/Front-Enter/images/third-img.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -929,145 +1016,267 @@ html body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 400px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-.main .game .box-left {
-  border: 1px solid red;
-  margin-top: 5px;
-  margin-left: 150px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  padding: 3px;
+.classroom p {
+  color: white;
+  font-size: 16pt;
+  letter-spacing: 2pt;
+  font-weight: 300;
+  margin-bottom: 0pt;
+  -webkit-box-flex: 0.03;
+      -ms-flex-positive: 0.03;
+          flex-grow: 0.03;
 }
-.main .game .box-left .slash {
-  width: 40px;
-  height: 40px;
-  border-left: 2.5px solid #737373;
-  -webkit-transform: rotate(45deg) translate(10px, 0px);
-          transform: rotate(45deg) translate(10px, 0px);
-}
-.main .game .box-right {
-  border: 1px solid red;
-  margin-top: 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  padding: 3px;
-}
-.main .game .box-right .slash {
-  width: 40px;
-  height: 40px;
-  border-left: 2.5px solid #737373;
-  -webkit-transform: rotate(45deg) translate(10px, 0px);
-          transform: rotate(45deg) translate(10px, 0px);
-  margin-top: 10px;
-  margin-right: 50px;
-}
-.main .game .box-right .pipe {
-  height: 30px;
-  border-right: 2.5px solid #737373;
-  margin: 5px;
-  margin-right: 100px;
-}
-.main .game .box-right-second {
-  border: 1px solid red;
-  margin-top: 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  padding: 3px;
-}
-.main .game .box-right-second .slash {
-  width: 40px;
-  height: 40px;
-  border-left: 2.5px solid #737373;
-  -webkit-transform: rotate(45deg) translate(10px, 0px);
-          transform: rotate(45deg) translate(10px, 0px);
-  margin-top: 10px;
-  margin-right: 150px;
-}
-.main .game .box-evenly {
-  border: 1px solid red;
-  margin-top: 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  padding: 3px;
-}
-.main .game .box-evenly .user-icon {
-  width: 30px;
-  height: 30px;
-  background: url("https://frankyeah.github.io/Front-Enter/images/cute.svg") no-repeat center center/cover;
-}
-.main .game .box-evenly .greyBorder {
-  width: 100px;
-  height: 30px;
-  line-height: 30px;
-  font-size: 16px;
+.classroom button:hover {
   cursor: pointer;
-  border: 1px solid #737373;
-  color: #737373;
-  text-align: center;
-  padding: 2.5px;
-  letter-spacing: 3px;
-  margin-left: 30px;
+  -webkit-box-flex: 0.03;
+      -ms-flex-positive: 0.03;
+          flex-grow: 0.03;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
-.main .game .box-evenly .slash {
-  width: 35px;
-  height: 35px;
-  border-left: 2.5px solid #737373;
-  -webkit-transform: rotate(45deg) translate(10px, 0px);
-          transform: rotate(45deg) translate(10px, 0px);
-}
-.main .game .box-evenly .horiz {
-  width: 30px;
-  border-bottom: 2.5px solid #737373;
-  -webkit-transform: translate(15px, 15px);
-          transform: translate(15px, 15px);
-  position: absolute;
-}
-.main .game .box-evenly .backslash {
-  width: 35px;
-  height: 35px;
-  border-left: 2.5px solid #737373;
-  -webkit-transform: rotate(135deg);
-          transform: rotate(135deg);
-}
-.main .game .box-evenly .pipe {
-  height: 30px;
-  border-right: 2.5px solid #737373;
-  margin: 5px;
+.classroom button {
+  -webkit-transition-duration: 1s;
+          transition-duration: 1s;
+  -webkit-box-flex: 0.013;
+      -ms-flex-positive: 0.013;
+          flex-grow: 0.013;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  width: 230px;
+  padding: 2pt;
+  margin-top: 35px;
+  border: solid 1px #1ad8d3;
+  color: #1ad8d3;
+  font-size: 13.5pt;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0);
 }
 
+@media screen and (max-width: 570px) {
+  .classroom:hover {
+    height: 660px;
+  }
+  .classroom {
+    background-size: cover;
+    background-attachment: local;
+  }
+}
+.article-skilltree:hover {
+  height: 840px;
+}
+
+.article-skilltree {
+  -webkit-transition-duration: 2s;
+          transition-duration: 2s;
+  margin-top: 10px;
+  height: 800px;
+  background-image: url("https://frankyeah.github.io/Front-Enter/images/15.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 65px;
+}
+.article-skilltree .box {
+  width: 290px;
+  height: 420px;
+  border-radius: 3px;
+  -webkit-box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+          box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.article-skilltree .box img.pen {
+  position: absolute;
+  width: 40px;
+  top: 35px;
+}
+.article-skilltree .box h2 {
+  position: relative;
+  top: 5px;
+  font-size: 18pt;
+  color: #1ad8d3;
+  font-weight: 200;
+}
+.article-skilltree .box .line {
+  border-top: solid 2px #1ad8d3;
+  width: 50px;
+}
+.article-skilltree .box p {
+  line-height: 30px;
+  color: #272626;
+  text-align: center;
+}
+.article-skilltree .box button:hover {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+}
+.article-skilltree .box button {
+  width: 130px;
+  margin-top: 20px;
+  padding: 6px 30px;
+  color: white;
+  font-size: 13.5pt;
+  border-radius: 5px;
+  background-color: #1ad8d3;
+  border: none;
+}
+.article-skilltree .box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 30px solid #1ad8d3;
+  border-left: 30px solid white;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+@media screen and (max-width: 712px) {
+  .article-skilltree .box_skilltree {
+    -webkit-transform: translateX(-15%) scale(0.8);
+            transform: translateX(-15%) scale(0.8);
+  }
+  .article-skilltree .box_article {
+    -webkit-transform: translateX(15%) scale(0.8);
+            transform: translateX(15%) scale(0.8);
+  }
+}
+@media screen and (max-width: 570px) {
+  .article-skilltree {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: 0px;
+    background-size: cover;
+    background-attachment: local;
+  }
+  .article-skilltree .box_skilltree {
+    -webkit-transform: translateX(0%) scale(0.8);
+            transform: translateX(0%) scale(0.8);
+  }
+  .article-skilltree .box_article {
+    -webkit-transform: translateX(0%) scale(0.8);
+            transform: translateX(0%) scale(0.8);
+  }
+}
+.about:hover {
+  height: 740px;
+}
+
+.about {
+  -webkit-transition-duration: 2s;
+          transition-duration: 2s;
+  margin-top: 10px;
+  height: 700px;
+  background-image: url("https://frankyeah.github.io/Front-Enter/images/five-img.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-attachment: local;
+  color: white;
+  font-size: 14pt;
+  line-height: 22pt;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+.about .about_box {
+  width: 600px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 80px 20px;
+}
+.about .about_box h2 {
+  font-weight: 400;
+}
+.about .about_box .line {
+  margin-top: -5px;
+  border-top: solid 2px white;
+  width: 25px;
+}
+
+@media screen and (max-width: 570px) {
+  .about {
+    background-color: rgba(0, 0, 0, 0.5);
+    background-blend-mode: multiply;
+  }
+  .about h2 {
+    font-size: 16pt;
+  }
+}
+@media screen and (max-width: 420px) {
+  .about {
+    line-height: 18pt;
+  }
+  .about .about_box {
+    padding: 20px;
+  }
+  .about .about_box h2 {
+    font-size: 12pt;
+  }
+  .about .about_box p {
+    font-size: 10pt;
+  }
+}
 .top {
   height: 186px;
   display: -webkit-box;
@@ -1282,4 +1491,4 @@ html body {
   width: 100vw;
   height: 15vh;
   background-color: #1ad8d3;
-}/*# sourceMappingURL=skilltree.css.map */
+}/*# sourceMappingURL=index.css.map */

@@ -45,18 +45,20 @@ collection.addEventListener('click', ()=>{
 
 // 檢查使用者的登入狀態
 firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
+  const userId = user.uid; 
+    if (user) {
     // 使用者已登入
+    firebase.database().ref('users/' + userId).on('value', (snapshot) => {
+    const userData = snapshot.val(); 
     profileEmail.value = user.email;
+    profileName.value = userData.name;
+    profilePhone.value = userData.phone;
     // 顯示照片
     if(user.photoURL){
     inputPhoto.style.background = `url(${user.photoURL}) center/cover no-repeat`;
     }else{
       inputPhoto.style.background = `url(https://frankyeah.github.io/Front-Enter/images/profile-user-img.svg) center/cover no-repeat`;  
     }
-    const userId = user.uid; // 取得使用者的 uid
-    
-    // 更新資料
     firebase.database().ref('users/' + userId).update({
       name: profileName.value, 
       phone: profilePhone.value
@@ -67,7 +69,8 @@ firebase.auth().onAuthStateChanged(function(user) {
       });
       profileInputList.forEach((btn) => {btn.readOnly = true})
       
-      console.log("使用者已登入:", user.uid, user.name, user.photoURL);
+      console.log("使用者已登入:", user.uid);
+  })
     } else {
       // 使用者未登入
       console.log("使用者未登入");
@@ -75,6 +78,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       window.location.href = 'index.html';
     }
   })
+
 
 // edit profile
 
@@ -154,6 +158,7 @@ logoutBtn.addEventListener('click', function(){
         remindBoxContent.innerText = '登出成功';
         windowClose();
         console.log('使用者已登出');
+        window.location.href = 'index.html';
     }).catch((error) => {
         // 登出失敗
         console.error('登出失敗:', error);

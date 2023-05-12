@@ -908,6 +908,141 @@ html body {
     width: 300px;
   }
 }
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  10% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  20% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  30% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  40% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  50% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  60% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  70% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  80% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  90% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+}
+@keyframes shake {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+  10% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  20% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  30% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  40% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  50% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  60% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  70% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+  80% {
+    -webkit-transform: translateX(5px);
+            transform: translateX(5px);
+  }
+  90% {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+  }
+}
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes arrow {
+  0% {
+    -webkit-transform: translateX(130px) rotate(225deg);
+            transform: translateX(130px) rotate(225deg);
+  }
+  50% {
+    -webkit-transform: translateX(120px) rotate(225deg);
+            transform: translateX(120px) rotate(225deg);
+  }
+  100% {
+    -webkit-transform: translateX(130px) rotate(225deg);
+            transform: translateX(130px) rotate(225deg);
+  }
+}
+@keyframes arrow {
+  0% {
+    -webkit-transform: translateX(130px) rotate(225deg);
+            transform: translateX(130px) rotate(225deg);
+  }
+  50% {
+    -webkit-transform: translateX(120px) rotate(225deg);
+            transform: translateX(120px) rotate(225deg);
+  }
+  100% {
+    -webkit-transform: translateX(130px) rotate(225deg);
+            transform: translateX(130px) rotate(225deg);
+  }
+}
+.shake {
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-name: shake;
+          animation-name: shake;
+}
+
 .main {
   height: 900px;
   background-color: white;
@@ -918,7 +1053,320 @@ html body {
       -ms-flex-pack: center;
           justify-content: center;
 }
-.main .game {
+.main .gameContainer {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+}
+.main .gameContainer .gameBackground {
+  position: fixed;
+  margin-top: 0px;
+  background-color: rgba(158, 157, 157, 0.1);
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+.main .gameContainer .gameBackground .gContainer::before {
+  background: url("https://frankyeah.github.io/Front-Enter/images/Staff-Selection-.jpg") no-repeat center center/cover;
+  -webkit-filter: grayscale(50%);
+          filter: grayscale(50%);
+  opacity: 0.1;
+  content: "";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.main .gameContainer .gameBackground .gContainer {
+  width: 350px;
+  height: 450px;
+  opacity: 1;
+  background-color: #1ad8d3;
+  -webkit-filter: none;
+          filter: none;
+  border-radius: 4px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+.main .gameContainer .gameBackground .gContainer .gameHeader {
+  position: absolute;
+  font-size: 18px;
+  color: white;
+  letter-spacing: 3px;
+  margin-top: 60px;
+  z-index: 10;
+}
+.main .gameContainer .gameBackground .gContainer .firstAns {
+  margin-top: 150px;
+}
+.main .gameContainer .gameBackground .gContainer .secondAns {
+  margin-top: 200px;
+}
+.main .gameContainer .gameBackground .gContainer .thirdAns {
+  margin-top: 250px;
+}
+.main .gameContainer .gameBackground .gContainer button {
+  width: 250px;
+  background-color: white;
+  color: #1ad8d3;
+  padding: 10px 40px;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  cursor: pointer;
+  line-height: 20px;
+  border: none;
+  z-index: 10;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+}
+.main .gameContainer .gameBackground .gContainer button .cross {
+  background: url("https://frankyeah.github.io/Front-Enter/images/cancel-FC4803.svg") 0% 0%/contain no-repeat content-box;
+  width: 20px;
+  height: 20px;
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+  position: absolute;
+  margin-right: 75%;
+}
+.main .gameContainer .gameBackground .gContainer button .check {
+  background: url("https://frankyeah.github.io/Front-Enter/images/checked-FFD800.svg") 0% 0%/contain no-repeat content-box;
+  width: 20px;
+  height: 20px;
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+  position: absolute;
+  margin-right: 75%;
+}
+.main .gameContainer .gameBackground .gContainer .gArrow {
+  border-bottom: solid 1px white;
+  border-left: solid 1px white;
+  width: 12px;
+  height: 12px;
+  -webkit-animation: arrow 0.5s infinite;
+          animation: arrow 0.5s infinite;
+  position: absolute;
+  margin-top: 350px;
+  margin-right: 70%;
+  display: none;
+}
+.main .gameContainer .displayBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  jstify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 11;
+  display: none;
+}
+.main .gameContainer .displayBackground .dContainer {
+  width: 300px;
+  margin-top: 100px;
+}
+.main .gameContainer .displayBackground .dContainer p {
+  color: white;
+  font-size: 24px;
+  letter-spacing: 3px;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+.main .gameContainer .displayBackground .dContainer p::after {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-left: 3px;
+  border-bottom: 2px solid white;
+  -webkit-animation: blink 0.5s ease-in-out infinite;
+          animation: blink 0.5s ease-in-out infinite;
+}
+.main .leftBlock {
+  width: 300px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.main .leftBlock .block {
+  width: 200px;
+  background-color: rgba(194, 194, 194, 0.4);
+  padding: 10px;
+  padding-bottom: 20px;
+  color: rgba(54, 54, 54, 0.7);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  font-size: 16px;
+  -webkit-transition: 1s;
+  transition: 1s;
+  position: absolute;
+}
+.main .leftBlock .cssBlock {
+  margin-top: 260px;
+  display: none;
+}
+.main .leftBlock .jqueryBlock {
+  margin-top: 360px;
+  display: none;
+}
+.main .leftBlock .scssBlock {
+  margin-top: 560px;
+  display: none;
+}
+.main .leftBlock .bootstrapBlock {
+  margin-top: 570px;
+  display: none;
+}
+.main .rightBlock {
+  width: 300px;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.main .rightBlock .block {
+  width: 200px;
+  background-color: rgba(194, 194, 194, 0.4);
+  padding: 10px;
+  padding-bottom: 20px;
+  color: rgba(54, 54, 54, 0.7);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  font-size: 16px;
+  -webkit-transition: 1s;
+  transition: 1s;
+  position: absolute;
+  display: none;
+}
+.main .rightBlock .htmlBlock {
+  margin-top: 160px;
+  display: none;
+}
+.main .rightBlock .jsBlock {
+  margin-top: 260px;
+  display: none;
+}
+.main .rightBlock .rwdBlock {
+  margin-top: 360px;
+  display: none;
+}
+.main .rightBlock .githubBlock {
+  margin-top: 460px;
+  display: none;
+}
+.main .rightBlock .webpackBlock {
+  margin-top: 550px;
+  display: none;
+}
+.main .rightBlock .reactBlock {
+  margin-top: 570px;
+  display: none;
+}
+.main .rightBlock .unitTestBlock {
+  margin-top: 570px;
+  display: none;
+}
+.main .centerBlock {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -931,8 +1379,7 @@ html body {
           justify-content: center;
   width: 400px;
 }
-.main .game .box-left {
-  border: 1px solid red;
+.main .centerBlock .box-left {
   margin-top: 5px;
   margin-left: 150px;
   display: -webkit-box;
@@ -947,15 +1394,14 @@ html body {
           justify-content: flex-start;
   padding: 3px;
 }
-.main .game .box-left .slash {
+.main .centerBlock .box-left .slash {
   width: 40px;
   height: 40px;
   border-left: 2.5px solid #737373;
   -webkit-transform: rotate(45deg) translate(10px, 0px);
           transform: rotate(45deg) translate(10px, 0px);
 }
-.main .game .box-right {
-  border: 1px solid red;
+.main .centerBlock .box-right {
   margin-top: 0px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -969,7 +1415,7 @@ html body {
           justify-content: flex-end;
   padding: 3px;
 }
-.main .game .box-right .slash {
+.main .centerBlock .box-right .slash {
   width: 40px;
   height: 40px;
   border-left: 2.5px solid #737373;
@@ -978,14 +1424,13 @@ html body {
   margin-top: 10px;
   margin-right: 50px;
 }
-.main .game .box-right .pipe {
+.main .centerBlock .box-right .pipe {
   height: 30px;
   border-right: 2.5px solid #737373;
   margin: 5px;
   margin-right: 100px;
 }
-.main .game .box-right-second {
-  border: 1px solid red;
+.main .centerBlock .box-right-second {
   margin-top: 0px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -999,7 +1444,7 @@ html body {
           justify-content: flex-end;
   padding: 3px;
 }
-.main .game .box-right-second .slash {
+.main .centerBlock .box-right-second .slash {
   width: 40px;
   height: 40px;
   border-left: 2.5px solid #737373;
@@ -1008,8 +1453,7 @@ html body {
   margin-top: 10px;
   margin-right: 150px;
 }
-.main .game .box-evenly {
-  border: 1px solid red;
+.main .centerBlock .box-evenly {
   margin-top: 0px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1023,12 +1467,12 @@ html body {
           justify-content: space-evenly;
   padding: 3px;
 }
-.main .game .box-evenly .user-icon {
-  width: 30px;
-  height: 30px;
+.main .centerBlock .box-evenly .user-icon {
+  width: 35px;
+  height: 35px;
   background: url("https://frankyeah.github.io/Front-Enter/images/cute.svg") no-repeat center center/cover;
 }
-.main .game .box-evenly .greyBorder {
+.main .centerBlock .box-evenly .greyBorder {
   width: 100px;
   height: 30px;
   line-height: 30px;
@@ -1040,32 +1484,85 @@ html body {
   padding: 2.5px;
   letter-spacing: 3px;
   margin-left: 30px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
-.main .game .box-evenly .slash {
-  width: 35px;
-  height: 35px;
+.main .centerBlock .box-evenly .greyBorder:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+.main .centerBlock .box-evenly .slash {
+  width: 40px;
+  height: 40px;
   border-left: 2.5px solid #737373;
-  -webkit-transform: rotate(45deg) translate(10px, 0px);
-          transform: rotate(45deg) translate(10px, 0px);
+  -webkit-transform: rotate(45deg) translate(25px, -10px);
+          transform: rotate(45deg) translate(25px, -10px);
 }
-.main .game .box-evenly .horiz {
+.main .centerBlock .box-evenly .horiz {
   width: 30px;
   border-bottom: 2.5px solid #737373;
   -webkit-transform: translate(15px, 15px);
           transform: translate(15px, 15px);
   position: absolute;
 }
-.main .game .box-evenly .backslash {
-  width: 35px;
-  height: 35px;
+.main .centerBlock .box-evenly .backslash {
+  width: 40px;
+  height: 40px;
   border-left: 2.5px solid #737373;
-  -webkit-transform: rotate(135deg);
-          transform: rotate(135deg);
+  -webkit-transform: rotate(135deg) translate(5px, -10px);
+          transform: rotate(135deg) translate(5px, -10px);
 }
-.main .game .box-evenly .pipe {
+.main .centerBlock .box-evenly .pipe {
   height: 30px;
   border-right: 2.5px solid #737373;
   margin: 5px;
+}
+.main .centerBlock .box-evenly-eighth {
+  margin-top: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 3px;
+}
+.main .centerBlock .box-evenly-eighth .pipe {
+  height: 30px;
+  border-right: 2.5px solid #737373;
+  margin: 5px;
+}
+.main .centerBlock .box-evenly-eighth .pipe-one {
+  margin-right: 180px;
+}
+.main .centerBlock .box-evenly-eighth .pipe-two {
+  margin-right: 90px;
+}
+.main .centerBlock .box-right-tenth {
+  margin-top: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 3px;
+}
+.main .centerBlock .box-right-tenth .slash {
+  width: 40px;
+  height: 40px;
+  border-left: 2.5px solid #737373;
+  -webkit-transform: rotate(45deg) translate(20px, 0px);
+          transform: rotate(45deg) translate(20px, 0px);
+  margin-right: 90px;
 }
 
 .top {

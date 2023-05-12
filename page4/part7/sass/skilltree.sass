@@ -606,19 +606,274 @@ html body
     .intro-content
         width: 300px
  
+
+
+ 
+@keyframes shake 
+  0% 
+    transform: translateX(0) 
+  10% 
+    transform: translateX(-5px) 
+  20% 
+    transform: translateX(5px) 
+  30% 
+    transform: translateX(-5px) 
+  40% 
+    transform: translateX(5px) 
+  50% 
+    transform: translateX(-5px) 
+  60% 
+    transform: translateX(5px) 
+  70% 
+    transform: translateX(-5px) 
+  80% 
+    transform: translateX(5px) 
+  90% 
+    transform: translateX(-5px) 
+
+
+@keyframes blink 
+  0% 
+    opacity: 0
+  100% 
+    opacity: 1
+
+@keyframes arrow
+  0%
+    transform: translateX(130px) rotate(225deg)
+  50%
+    transform: translateX(120px) rotate(225deg)
+  100%
+    transform: translateX(130px) rotate(225deg)
+
+
+.shake        
+  animation-duration: 0.5s
+  animation-name: shake
+ 
+
 .main
   height: 900px
   background-color: white
   display: flex
   justify-content: center
-  .game 
+  .gameContainer
+    position: fixed
+    z-index: 9
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100vh
+    display: none
+    .gameBackground 
+      position: fixed
+      margin-top: 0px
+      background-color: rgba(158, 157, 157, 0.1)
+      width: 100vw
+      height: 100vh
+      top: 0px
+      left: 0px
+      position: fixed
+      display: flex
+      justify-content: center
+      align-items: center
+      align-content: center
+
+      .gContainer::before
+        background: url('https://frankyeah.github.io/Front-Enter/images/Staff-Selection-.jpg') no-repeat center center/cover
+        filter: grayscale(50%)
+        opacity: .1
+        content: ""
+        display: flex
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        position: absolute
+      .gContainer
+        width: 350px
+        height: 450px
+        opacity: 1
+        background-color: $light-blue
+        filter: none
+        border-radius: 4px
+        overflow: hidden
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        align-items: center
+        position: relative
+        .gameHeader
+          position: absolute
+          font-size: 18px
+          color: white
+          letter-spacing: 3px
+          margin-top: 60px
+          z-index: 10
+        .firstAns
+          margin-top: 150px
+        .secondAns
+          margin-top: 200px
+        .thirdAns
+          margin-top: 250px
+        button
+          width: 250px
+          background-color: white
+          color: $light-blue
+          padding: 10px 40px
+          white-space: nowrap
+          text-align: center
+          font-size: 16px
+          border-radius: 5px
+          letter-spacing: 1px
+          margin-top: 10px
+          cursor: pointer
+          line-height: 20px
+          border: none
+          z-index: 10
+          display: flex
+          flex-direction: row
+          align-items: center
+          justify-content: center
+          position: absolute
+          .cross
+            background: url("https://frankyeah.github.io/Front-Enter/images/cancel-FC4803.svg") 0% 0% / contain no-repeat content-box 
+            width: 20px
+            height: 20px
+            order: -1
+            position: absolute
+            margin-right: 75%
+          .check
+            background: url("https://frankyeah.github.io/Front-Enter/images/checked-FFD800.svg") 0% 0% / contain no-repeat content-box 
+            width: 20px
+            height: 20px
+            order: -1
+            position: absolute
+            margin-right: 75%
+        .gArrow
+          border-bottom: solid 1px white
+          border-left: solid 1px white
+          width: 12px
+          height: 12px
+          animation: arrow .5s infinite
+          position: absolute
+          margin-top: 350px
+          margin-right: 70%
+          display: none
+          
+    .displayBackground 
+      width: 100vw
+      height: 100vh 
+      background-color: rgba(0,0 ,0 ,.9 )
+      display: flex
+      flex-direction: column
+      jstify-content: flex-start
+      align-items: center
+      z-index: 11
+      display: none
+      .dContainer
+        width: 300px
+        margin-top: 100px
+        p
+          color: white
+          font-size: 24px
+          letter-spacing: 3px    
+          overflow: hidden
+          white-space: pre-wrap
+        p::after // 光標效果
+          content: ""
+          display: inline-block
+          width: 24px
+          height: 24px
+          margin-left: 3px
+          border-bottom: 2px solid white
+          animation: blink .5s ease-in-out infinite
+
+  .leftBlock
+    width: 300px
+    height: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    .block
+      width: 200px
+      background-color: rgba(194, 194, 194, 0.4)
+      padding: 10px
+      padding-bottom: 20px
+      color: rgba(54, 54, 54, .7)
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      text-align: center
+      font-size: 16px
+      transition: 1s
+      position: absolute
+    .cssBlock
+      margin-top: 260px
+      display: none
+    .jqueryBlock
+      margin-top: 360px
+      display: none
+    .scssBlock
+      margin-top: 560px
+      display: none
+    .bootstrapBlock
+      margin-top: 570px
+      display: none
+
+  .rightBlock
+    width: 300px
+    height: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: flex-start
+    .block
+      width: 200px
+      background-color: rgba(194, 194, 194, 0.4)
+      padding: 10px
+      padding-bottom: 20px
+      color: rgba(54, 54, 54, .7)
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      text-align: center
+      font-size: 16px
+      transition: 1s
+      position: absolute
+      display: none
+      
+    .htmlBlock
+      margin-top: 160px
+      display: none
+    .jsBlock
+      margin-top: 260px
+      display: none
+    .rwdBlock
+      margin-top: 360px
+      display: none
+    .githubBlock
+      margin-top: 460px
+      display: none
+    .webpackBlock
+      margin-top: 550px
+      display: none
+    .reactBlock
+      margin-top: 570px
+      display: none
+    .unitTestBlock
+      margin-top: 570px
+      display: none
+  .centerBlock
     display: flex
     flex-direction: column
     justify-content: center
     width: 400px
-
+    // border: 1px solid red
     .box-left 
-      border: 1px solid red
+      // border: 1px solid red
       margin-top: 5px
       margin-left: 150px
       display: flex
@@ -631,7 +886,7 @@ html body
         border-left: 2.5px solid $grey
         transform: rotate(45deg) translate(10px, 0px)
     .box-right
-      border: 1px solid red
+      // border: 1px solid red
       margin-top: 0px
       display: flex
       flex-direction: row
@@ -650,7 +905,7 @@ html body
         margin: 5px
         margin-right: 100px
     .box-right-second
-      border: 1px solid red
+      // border: 1px solid red
       margin-top: 0px
       display: flex
       flex-direction: row
@@ -664,49 +919,82 @@ html body
         margin-top: 10px
         margin-right: 150px
     .box-evenly
-        border: 1px solid red
-        margin-top: 0px
-        display: flex
-        flex-direction: row
-        justify-content: space-evenly
-        padding: 3px
-        .user-icon
-          width: 30px
-          height: 30px
-          background: url("https://frankyeah.github.io/Front-Enter/images/cute.svg")no-repeat center center/cover
+      // border: 1px solid red
+      margin-top: 0px
+      display: flex
+      flex-direction: row
+      justify-content: space-evenly
+      padding: 3px
+      .user-icon
+        width: 35px
+        height: 35px
+        background: url("https://frankyeah.github.io/Front-Enter/images/cute.svg")no-repeat center center/cover
 
-        .greyBorder
-          width: 100px
-          height: 30px
-          line-height: 30px
-          font-size: 16px
-          cursor: pointer
-          border: 1px solid $grey
-          color: $grey
-          text-align: center
-          padding: 2.5px
-          letter-spacing: 3px
-          margin-left: 30px
-        .slash
-          width: 35px
-          height: 35px
-          border-left: 2.5px solid $grey
-          transform: rotate(45deg) translate(10px, 0px)
-            
-        .horiz
-          width: 30px
-          border-bottom: 2.5px solid $grey
-          transform: translate(15px, 15px)
-          position: absolute
-        .backslash
-          width: 35px
-          height: 35px
-          border-left: 2.5px solid $grey
-          transform: rotate(135deg)
-        .pipe
-          height: 30px
-          border-right: 2.5px solid $grey
-          margin: 5px
+      .greyBorder
+        width: 100px
+        height: 30px
+        line-height: 30px
+        font-size: 16px
+        cursor: pointer
+        border: 1px solid $grey
+        color: $grey
+        text-align: center
+        padding: 2.5px
+        letter-spacing: 3px
+        margin-left: 30px
+        transition: .5s
+      .greyBorder:hover
+        transform: scale(1.1)
+      .slash
+        width: 40px
+        height: 40px
+        border-left: 2.5px solid $grey
+        transform: rotate(45deg) translate(25px, -10px)
+          
+      .horiz
+        width: 30px
+        border-bottom: 2.5px solid $grey
+        transform: translate(15px, 15px)
+        position: absolute
+      .backslash
+        width: 40px
+        height: 40px
+        border-left: 2.5px solid $grey
+        transform: rotate(135deg) translate(5px, -10px)
+
+      .pipe
+        height: 30px
+        border-right: 2.5px solid $grey
+        margin: 5px
+
+    .box-evenly-eighth
+      // border: 1px solid red
+      margin-top: 0px
+      display: flex
+      flex-direction: row
+      justify-content: flex-end
+      padding: 3px
+      .pipe
+        height: 30px
+        border-right: 2.5px solid $grey
+        margin: 5px
+      .pipe-one
+        margin-right: 180px
+      .pipe-two
+        margin-right: 90px
+    .box-right-tenth
+      // border: 1px solid red
+      margin-top: 0px
+      display: flex
+      flex-direction: row
+      justify-content: flex-end
+      padding: 3px
+      .slash
+        width: 40px
+        height: 40px
+        border-left: 2.5px solid $grey
+        transform: rotate(45deg) translate(20px, 0px)
+        margin-right: 90px
 
 .top
   height: 186px

@@ -1,22 +1,27 @@
-*
-    font-family: 微軟正黑體
-    // border: solid 1px black
 
 $dark-blue: #1cb5e0
 $light-blue: #1ad8d3
 $grey: #737373
-
+$darkGrey: #808080cc
   
+*
+    font-family: 微軟正黑體
+    // border: solid 1px #b3b3b3
+
+
 html body
   padding: 0px
   margin: 0px
   box-sizing: border-box
   background-color: #f0f0f0
 
+.hide
+  display: none
+
 .header 
   display: flex
   top: 0
-  z-index: 5
+  z-index: 7
   position: sticky
   #headerNav
     width: 100vw
@@ -66,7 +71,6 @@ html body
         width: 20px
         cursor: pointer
         transition: .5s
-
   #loginContainer 
     position: fixed
     z-index: 9
@@ -176,7 +180,6 @@ html body
         flex-direction: column
         justify-content: flex-start
         align-items: center
-
         .header
           font-size: 20px
           color: $grey
@@ -185,7 +188,7 @@ html body
           font-size: 16px
           color: $grey
           margin-top: 20px
-        button
+        .okButton
           font-size: 16px
           width: 100px
           padding: 3px 10px
@@ -197,6 +200,7 @@ html body
           cursor: pointer
 
 
+      
   #search-box
     position: absolute
     background-color: #f0f0f0
@@ -214,30 +218,30 @@ html body
       letter-spacing: 2px
       font-size: 15pt
     #searchBar
-        width: 60%
-        height: 50px
-        background-color: white
-        border-radius: 20px
+      width: 60%
+      height: 50px
+      background-color: white
+      border-radius: 20px
+      border: none
+      display: flex
+      align-items: center
+      justify-content: space-evenly
+      input#search
+        width: 90%
+        height: 60%
+        border-radius: 10px
         border: none
-        display: flex
-        align-items: center
-        justify-content: space-evenly
-        input#search
-          width: 90%
-          height: 60%
-          border-radius: 10px
-          border: none
-          font-size: 12pt
-          letter-spacing: 2pt
-          padding: 5px
-        input::placeholder
-          color: #929292
-        .voice
-          width: 22px
-          cursor: pointer
-        .search-glass
-          width: 22px
-          cursor: pointer  
+        font-size: 12pt
+        letter-spacing: 2pt
+        padding: 5px
+      input::placeholder
+        color: #929292
+      .voice
+        width: 22px
+        cursor: pointer
+      .search-glass
+        width: 22px
+        cursor: pointer  
 
         
   #black-box
@@ -282,26 +286,40 @@ html body
         width: 90vw
         input#search
           width: 80%
-        
-.info
-  height: 400px
-  background-image: url(https://frankyeah.github.io/Front-Enter/images/skill-tree-key.jpg)
-  background-size: cover
-  background-repeat: no-repeat
-  background-position: center
-  color: white
+
+
+.nav-center-upper:hover
+  .slogan
+    opacity: 0.5
+
+#nav-upper
+  width: 100vw
+  height: 380px
+  padding: 0px
   display: flex
+  flex-direction: row
   justify-content: center
   align-items: center
-  flex-direction: column
-
-  .info-header
-    font-size: 24px
-    padding: 6px
-    background-color: rgba(128,128,128,0.7)
-    border-radius: 5px
-    text-align: center
+  position: relative
+  overflow: hidden
+  .nav-upper-background
+    position: absolute
+    width: 100%
+    opacity: 1
+    transition: opacity 1s
+  #profileHeader
+    position: absolute
+    background-color: $darkGrey
+    border-radius: 8px
+    display: flex
+    justify-content: center
+    align-items: center
     letter-spacing: 10px
+    color: white
+    font-size: 18pt
+    // font-weight: 650
+    white-space: nowrap 
+    padding: 8px 12px
   .test-go-container
     width: 100px
     height: 100px
@@ -309,9 +327,8 @@ html body
     bottom: 100px
     right: -10px
     position: fixed
-    z-index: 1
+    z-index: 6
     opacity: 0.85
-    transition-duration: 1s
     animation: testRound 1s 1.5s
     display: flex
     justify-content: center
@@ -319,10 +336,10 @@ html body
     .test-go-round:hover
       cursor: pointer
       opacity: 0.7
-      transform: translateY(-15%)
+      transform: translateY(-25%)
     .test-go-round
       width: 80px
-
+      transition: transform 1s ease
 
   .testContainer
     position: fixed
@@ -377,7 +394,6 @@ html body
           color: white
           letter-spacing: 3px
           margin-top: 60px
-          // display: none
         .testIntro
           position: absolute
           font-size: 16px
@@ -385,7 +401,6 @@ html body
           letter-spacing: 1px
           line-height: 30px
           margin: 120px 50px
-          // display: none
         .startBtn
           position: absolute
           font-size: 18px
@@ -395,7 +410,6 @@ html body
           color: $light-blue
           background-color: white
           letter-spacing: 3px
-          // display: none
         .startBtn:hover
           position: absolute
           font-size: 18px
@@ -413,6 +427,7 @@ html body
           position: absolute
           margin-top: 40px
           display: none
+          color: white
         .testNumber
           color: rgba(255, 255, 255,.7)
           letter-spacing: 3px
@@ -452,7 +467,6 @@ html body
               left: 0
               top: 0
               width: 100%
-              // height: 100%
               border-radius: 10px
               cursor: pointer
             label
@@ -538,7 +552,7 @@ html body
             transform-origin: 75px 75px 
             animation: rotate-circle 4s linear
             transform: rotate(var(--after-rotation, 0deg))
-            
+
 
 @keyframes rotate-circle
   0%
@@ -563,153 +577,335 @@ html body
     transform: rotate(50deg)
   100%
     transform: rotate(20deg)
-
-    
+  
 
 @keyframes testRound 
-  0% 
-    bottom: 800px
-  100%
-    bottom: 100px
+    0% 
+        bottom: 800px
+    100%
+        bottom: 140px
 
-.intro
-    margin-top: 10px
-    height: 600px
-    background-color: rgba(0,0,0,0.5)
-    background-blend-mode: multiply
-    background-image: url("https://frankyeah.github.io/Front-Enter/images/second-img.jpg") 
-    background-size: cover
-    background-repeat: no-repeat
-    background-position: center
+@media screen and (max-width: 580px)
+  #nav-upper
+    height: 380px
+    .nav-upper-background
+      position: absolute
+      width: auto
+      height: 100%
 
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    .intro-header
-        font-size: 24px
-        color: white
-        letter-spacing: 3px
-    .bottom-line
-        border: 1px solid white
-        width: 15px
-    .intro-content
-        width: 580px
-        text-align: center
-        color: white
-        font-size: 18px
-        line-height: 30px
-        letter-spacing: 3px
 
-@media screen and (max-width: 650px)
-  .intro
-    .intro-content
-        width: 300px
- 
-.main
-  height: 900px
+.navCenter
   background-color: white
   display: flex
+  height: 100%
+  width: 100%
+  flex-direction: row
   justify-content: center
-  .game 
+  .buttonList 
+    padding: 0px 40px
+    margin-top: 140px
+    display: flex
+    height: 100%
+    flex-direction: column 
+    justify-content: center
+    // border: 1px solid black
+    .buttonListDiv
+      display: flex
+      flex-direction: column 
+      button
+        margin: 15px
+        width: 105px
+        background-color: $light-blue
+        color: white
+        font-size: 16px
+        padding: 8px
+        border-radius: 5px
+        text-align: center
+        border: none
+        letter-spacing: 3px
+        cursor: pointer
+  .displayProfile      
     display: flex
     flex-direction: column
     justify-content: center
-    width: 400px
+    align-items: center
+    width: 650px
+    height: 100%
+    margin-top: 70px
+    // border: 1px solid red
+    #inputPhoto
+      width: 120px
+      height: 120px
+      border-radius: 50%
+    ul#profile
+      list-style-type: none
+      padding: 0
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      color: black 
+      width: auto
+      li 
+        color: $grey
+        font-size: 16px
+        letter-spacing: 3px
+        margin: 15px
+        label
+          margin: 20px
+          opacity: .8
+        input:focus
+          outline: 1.5px solid blue
+        input 
+          font-size: 16px
+          letter-spacing: 3px                
+          border: none
+          padding: 1px
+          width: 300px
+          color: $grey
+          line-height: 30px
+          padding-left: 3px
+          border-radius: 5px 
+        #profileEmail:focus
+          outline: none
 
-    .box-left 
-      border: 1px solid red
-      margin-top: 5px
-      margin-left: 150px
+    .modifyBtn
+      margin-top: 15px
+      button
+        display: flex
+        justify-content: center
+        width: 95px
+        background-color: $light-blue
+        color: white
+        font-size: 16px
+        padding: 10px
+        white-space: nowrap
+        line-height: 20px
+        border-radius: 5px
+        border: none
+        letter-spacing: 3px
+        cursor: pointer
+      .modified, .cancel
+        display: none
+        margin: 10px
+    .dataCollection
+      // display: flex
+      flex-wrap: wrap
+      justify-content: center
+      display: none
+      .collectionBlock
+        width: 180px
+        height: 240px
+        margin: 10px
+        // display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
+        display: none
+        .collectionImg:hover
+          cursor: pointer
+          transform: scale(1.12)
+        .collectionImg
+          width: 160px
+          height: 160px
+          border-radius: 5px
+          transition: .6s
+        .collectionName
+          color: $light-blue
+          font-size: 16px
+          line-height: 20px
+          letter-spacing: 1px
+          margin: 10px
+        .removeBtn
+          background: url("https://frankyeah.github.io/Front-Enter/images/rubbish-bin.svg") 0% 0% / cover
+          width: 20px
+          height: 20px
+          cursor: pointer
+
+    .postSystem
       display: flex
-      flex-direction: row
-      justify-content: flex-start
-      padding: 3px
-      .slash
-        width: 40px
-        height: 40px
-        border-left: 2.5px solid $grey
-        transform: rotate(45deg) translate(10px, 0px)
-    .box-right
-      border: 1px solid red
-      margin-top: 0px
-      display: flex
-      flex-direction: row
-      justify-content: flex-end
-      padding: 3px
-      .slash
-        width: 40px
-        height: 40px
-        border-left: 2.5px solid $grey
-        transform: rotate(45deg) translate(10px, 0px)
-        margin-top: 10px
-        margin-right: 50px
-      .pipe
-        height: 30px
-        border-right: 2.5px solid $grey
-        margin: 5px
-        margin-right: 100px
-    .box-right-second
-      border: 1px solid red
-      margin-top: 0px
-      display: flex
-      flex-direction: row
-      justify-content: flex-end
-      padding: 3px
-      .slash
-        width: 40px
-        height: 40px
-        border-left: 2.5px solid $grey
-        transform: rotate(45deg) translate(10px, 0px)
-        margin-top: 10px
-        margin-right: 150px
-    .box-evenly
-        border: 1px solid red
-        margin-top: 0px
+      flex-direction: column
+      .postArea
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
+        align-items: flex-start
+        width: 600px
+        border: solid 1px #757575
+        .postUl:hover
+          background-color: #1ad8d259
+          color: #3a3a3a
+        .postUl
+          display: flex
+          justify-content: flex-start
+          height: 100%
+          width: 100%
+          color: #5f5f5f
+          list-style-type: none
+          .postHeader, .postHeader, .postTimeStamp
+            cursor: pointer
+            color: #5f5f5f
+            height: 50px
+            width: 100%
+          .postHeader
+            width: 150px
+          .postPreface
+            width: 350px
+          .postTimeStamp
+            width: 100px
+      .postBtn
         display: flex
         flex-direction: row
-        justify-content: space-evenly
-        padding: 3px
-        .user-icon
-          width: 30px
-          height: 30px
-          background: url("https://frankyeah.github.io/Front-Enter/images/cute.svg")no-repeat center center/cover
-
-        .greyBorder
-          width: 100px
-          height: 30px
-          line-height: 30px
+        justify-content: center
+        width: 100%
+        button:hover
+          background-color: #707070
+        button
+          display: flex
+          justify-content: center
+          width: 95px
+          background-color: #b3b3b3
+          color: white
           font-size: 16px
-          cursor: pointer
-          border: 1px solid $grey
-          color: $grey
-          text-align: center
-          padding: 2.5px
+          padding: 10px
+          white-space: nowrap
+          line-height: 20px
+          border-radius: 5px
+          border: none
           letter-spacing: 3px
-          margin-left: 30px
-        .slash
-          width: 35px
-          height: 35px
-          border-left: 2.5px solid $grey
-          transform: rotate(45deg) translate(10px, 0px)
-            
-        .horiz
-          width: 30px
-          border-bottom: 2.5px solid $grey
-          transform: translate(15px, 15px)
-          position: absolute
-        .backslash
-          width: 35px
-          height: 35px
-          border-left: 2.5px solid $grey
-          transform: rotate(135deg)
-        .pipe
-          height: 30px
-          border-right: 2.5px solid $grey
-          margin: 5px
+          cursor: pointer
+          margin: 50px
+    .createPost
+      // border: 1px solid red
+      width: 600px
+      display: flex
+      flex-direction: column
+      .postBtnList
+        display: flex
+        flex-direction: row
+        justify-content: center
+        width: 100%
+        button:hover
+          background-color: #707070
+        button
+          display: flex
+          justify-content: center
+          width: 95px
+          background-color: #b3b3b3
+          color: white
+          font-size: 16px
+          padding: 10px
+          white-space: nowrap
+          line-height: 20px
+          border-radius: 5px
+          border: none
+          letter-spacing: 3px
+          cursor: pointer
+          margin: 20px      
+      ul#createPostPage 
+        list-style-type: none
+        padding: 0
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        color: black 
+        width: auto
+        li
+          color: $grey
+          letter-spacing: 3px
+          margin: 15px
+          width: 550px
+          margin-left: 25%
+          label 
+            font-size: 18px
+          input, textarea
+            line-height: 25px
+            font-size: 16px
+            width: 350px
+            margin-left: 10px 
+            padding-left: 8px
+            border-radius: 5px 
+            padding: 5px
+            letter-spacing: 2px
+        .recLi
+          display: flex
+          flex-direction: column
+          #recUrl
+            margin-bottom: 15px
+            margin-top: 25px
+          input 
+            width: 450px
+        .sqLi 
+          display: flex
+          flex-direction: column
+          #sqUrl
+            margin-bottom: 15px
+          input 
+            width: 450px
+        .contentLi
+          margin-top: 30px
+          display: flex
+          flex-direction: column
+          align-items: flex-start
+          #cContent
+            margin-top: 25px
+            width: 450px
+            height: 500px
+            white-space: pre-wrap
+                      
+@media screen and (max-width: 880px)
+  .navCenter
+    flex-direction: column
+    align-items: center
+    
+    width: 100%
+    padding: 60px 0px
+    .buttonList
+      flex-direction: column
+      order: 2
+      width: 100%
+      margin-top: 30px
+      padding: 20px
+      justify-content: flex-start
+      align-items: center
+      .line
+        width: 380px
+        border-top: 1px solid $grey 
+        opacity: .2
+        margin-bottom: 30px
+      .buttonListDiv
+        flex-direction: row
+    // .displayProfile
+    //   width: 100%
+
+@media screen and (max-width: 630px)
+  .navCenter
+    .buttonList
+      .buttonListDiv
+        display: flex
+        flex-direction: column
+        button
+          font-size: 14px
+    .displayProfile
+      #inputPhoto 
+        width: 60px
+        height: 60px
+      ul#profile
+        margin-top: 80px
+        li
+          font-size: 14px
+          label
+            font-size: 14px
+          input
+            font-size: 14px
+      .modifyBtn
+        button
+          font-size: 14px
 
 .top
   height: 186px
+  width: 100%
   display: flex
   justify-content: center
   align-items: center
@@ -751,7 +947,6 @@ html body
         color:$light-blue
         font-size: 8pt
 
-    
 .footer
   display: flex
   flex-direction: row
@@ -832,7 +1027,7 @@ html body
   width: 100vw
   height: 100vh
   top: 0
-  z-index: 12
+  z-index: 20
   #animation-logo
     position: absolute
     display: flex

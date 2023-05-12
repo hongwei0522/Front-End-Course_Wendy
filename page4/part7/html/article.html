@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>skilltree</title>
-    <link rel="stylesheet" href=" ../css/skilltree.css">
+    <title>article</title>
+    <link rel="stylesheet" href="../css/article.css">
     <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
     <script src="../js/login.js"></script>
     <script src="../js/all.js" defer></script>
-    <script src="../js/skilltree.js" defer></script>
+    <script src="../js/article.js" defer></script>
+    <script src="../js/profile.js" defer></script>
   </head>
   <body> 
     <div class="header"> 
@@ -49,8 +50,12 @@
       </div>
       <div id="black-box"></div>
     </div>
-    <div class="info"> 
-      <div class="info-header">技能樹</div>
+    <div id="nav-center-upper"><img class="slide1" src="https://firebasestorage.googleapis.com/v0/b/front-enter.appspot.com/o/images%2Frotate-img-2.jpg?alt=media&amp;token=f28dbea4-af0c-4743-a75a-426198fe409e" alt=""><img class="slide2" src="https://firebasestorage.googleapis.com/v0/b/front-enter.appspot.com/o/images%2Frotate-img-1.jpg?alt=media&amp;token=059f5677-409b-4fc1-a772-baf1dece5063" alt=""><img class="slide3" src="https://firebasestorage.googleapis.com/v0/b/front-enter.appspot.com/o/images%2Frotate-img-3.jpg?alt=media&amp;token=8f7f8f02-5066-452a-863c-a4e715d2657a" alt="">
+      <div class="slogan">
+        <p>蒐羅前端學校 </p>
+      </div>
+    </div>
+    <div class="nav-center-lower"><span id="allClass">全部</span><span id="smallClass">小班制</span><span id="freeRange">放養制</span><span id="oneOnOne">一對一</span>
       <div class="test-go test-go-container"><img class="test-go-round" src="https://frankyeah.github.io/Front-Enter/images/FE_test_go.png"></div>
       <div class="testContainer"> 
         <div class="testBackground"> 
@@ -92,65 +97,22 @@
         </div>
       </div>
     </div>
-    <div class="intro"> 
-      <p class="intro-header">技能樹說明</p>
-      <div class="bottom-line"> </div>
-      <p class="intro-content">要成為一名稱職的前端，需要學會哪些技能呢？您不仿親自測試看看，自己已掌握了哪些能力。遊戲中，只需點擊按鈕回答問題，答對了，即能接續挑戰。</p>
-    </div>
-    <div class="main">
-      <div class="game"> 
-        <div class="box-evenly">
-          <div class="user-icon"></div>
+    <div class="navCenter"></div>
+    <template data-classroom-block>
+      <div class="block">
+        <div class="star"></div>
+        <div class="city"><img class="locationLogo" src="https://frankyeah.github.io/Front-Enter/images/location_icon_one.png">
+          <div class="cityName"> </div>
         </div>
-        <div class="box-evenly"> 
-          <div class="html greyBorder">HTML</div>
-        </div>
-        <div class="box-left"> 
-          <div class="slash"></div>
-        </div>
-        <div class="box-evenly"> 
-          <div class="css greyBorder">CSS </div>
-          <div class="horiz"></div>
-          <div class="js greyBorder">JS</div>
-        </div>
-        <div class="box-right"> 
-          <div class="slash"></div>
-          <div class="pipe"></div>
-        </div>
-        <div class="box-evenly"> 
-          <div class="jquery greyBorder">jQuery </div>
-          <div class="rwd greyBorder">RWD</div>
-        </div>
-        <div class="box-right-second">
-          <div class="slash"></div>
-        </div>
-        <div class="box-evenly"> 
-          <div class="github greyBorder">GitHub</div>
-        </div>
-        <div class="box-evenly"> 
-          <div class="slash"></div>
-          <div class="backslash"></div>
-        </div>
-        <div class="box-evenly"> 
-          <div class="scss greyBorder">SCSS</div>
-          <div class="webpack greyBorder">Webpack</div>
-        </div>
-        <div class="box-evenly"> 
-          <div class="pipe"></div>
-          <div class="pipe"></div>
-        </div>
-        <div class="box-evenly"> 
-          <div class="bootstrap greyBorder">Bootstrap</div>
-          <div class="react greyBorder">React</div>
-        </div>
-        <div class="box-right">
-          <div class="slash"></div>
-        </div>
-        <div class="box-evenly"> 
-          <div class="unitTest greyBorder">Unit Test</div>
+        <div class="lowerBlock"> 
+          <div class="squareOuter"><img class="squareInner" src="https://frankyeah.github.io/Front-Enter/images/2.jpg"></div>
+          <div class="className"> </div>
+          <div class="preface"> </div><a class="readmore">
+            <div class="readmoreGuide">read more</div>
+            <div class="readmoreArrow"></div></a>
         </div>
       </div>
-    </div>
+    </template>
     <div class="top">
       <div id="topwrap" onclick="toTop()"> 
         <div class="top-arrow"></div>

@@ -138,6 +138,7 @@ loginBackground.addEventListener('click', function(event){
         firebase.auth().currentUser.sendEmailVerification();
         remindBackground.style.display = 'flex'; 
         remindBoxContent.innerText = '驗證信已寄出';
+
         forceLogout();
     }).catch((error) => {
       if(error.code === "auth/invalid-email"){
@@ -160,14 +161,25 @@ loginBackground.addEventListener('click', function(event){
   });
 
 
+
 // log in, sign in  
   loginBtn.addEventListener("click", function(e){
     e.preventDefault();
     firebase.auth().signInWithEmailAndPassword(inputEmail.value, inputPW.value)
     .then((userCredential) => {
+
       const user = userCredential.user;
       detectLogin(user);
+       // 檢查 "isAdmin" 屬性，如果是管理員，則執行相應的操作
+      if (user && user.displayName && user.isAdmin) {
+        console.log("管理員登錄成功");
+        // 執行管理員相應的操作
+      } else {
+        console.log("使用者登錄成功");
+        // 執行使用者相應的操作
+      }
     })
+
     .catch((error) => {
       if(error.code === "auth/invalid-email"){
         console.error("註冊失敗:", error);
@@ -199,14 +211,27 @@ loginBackground.addEventListener('click', function(event){
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         // User is signed in.
+
         if (user.emailVerified) { // 登入且有通過驗證
+
+
           const userId = firebase.auth().currentUser.uid; 
-          firebase.database().ref('users/' + userId).set({
+
+          if (userId !== '087QEay3uSdaxSQVNKlkCITGFti1'){
+            firebase.database().ref('users/' + user.uid).update({
+              isAdmin: false
+            })
+          }else{
+            firebase.database().ref('users/' + user.uid).update({
+              isAdmin: true
+            })
+          }
+
+          firebase.database().ref('users/' + userId).update({
             email: inputEmail.value, 
             password: inputPW.value
-
           })
-          
+
           console.log("登入成功:", 'uid:', user.uid, 'display name:', user.displayName, 'photoURL:', user.photoURL, 'emailVerified:', user.emailVerified)
 
           remindBackground.style.display = 'flex';
@@ -260,6 +285,17 @@ loginBackground.addEventListener('click', function(event){
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     console.log("使用者已登入:", user.uid, user.name, user.photoURL);
+          
+    if (user.uid !== '087QEay3uSdaxSQVNKlkCITGFti1'){
+      firebase.database().ref('users/' + user.uid).update({
+        isAdmin: false
+      })
+    }else{
+      firebase.database().ref('users/' + user.uid).update({
+        isAdmin: true
+      })
+    }
+    
     if(user.photoURL){
       headerLogin.innerHTML = `<img src="${user.photoURL}" alt="會員照片" style="width: 40px; height: 40px; border-radius: 50%;"/>`;
       headerProfile();
@@ -270,7 +306,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 })
 
-  // Gmail 登入
+  // Gmail 登入（直接註冊成功，不用驗證信）
   loginGmail.addEventListener("click", function(e){
     e.preventDefault();
     const provider = new firebase.auth.GoogleAuthProvider(); 
@@ -303,14 +339,21 @@ firebase.auth().onAuthStateChanged(function(user) {
     window.location.href = 'index.html';
   });
 
-// 導回 article.html
+// 導至 article.html
 
-const searchButton = document.getElementById('search-button');
+  const searchButton = document.getElementById('search-button');
 
-searchButton.addEventListener('click', function() {
-  window.location.href = 'article.html';
-});
+  searchButton.addEventListener('click', function() {
+    window.location.href = 'article.html';
+  });
 
+// 導至 skilltree.html
+
+  const skilltreeBtn = document.getElementById('skilltree-button')
+
+  skilltreeBtn.addEventListener('click', function() {
+    window.location.href = 'skilltree.html';
+  });
 
 // Top Button
 
@@ -427,63 +470,48 @@ let quizData = [
 ];
 
 
-const url = '../json/front-enter-export.json'; 
+// const url = '../json/front-enter-export.json'; 
 
-// 將資料上傳 firebase realtime database
+// // 將資料上傳 firebase realtime database
 
-fetch(url)
-  .then(response => response.json())
-  .then(jsonData => {
-    firebase.database().ref('front-enter-json/').set(jsonData);
-  })
-  .catch(error => {
-    console.error('Error fetching JSON data:', error);
-  });
+// fetch(url)
+//   .then(response => response.json())
+//   .then(jsonData => {
+//     firebase.database().ref('front-enter-json/').set(jsonData);
+//   })
+//   .catch(error => {
+//     console.error('Error fetching JSON data:', error);
+//   });
 
 // 從 firebase 獲取 json 檔案
 
+firebase.database().ref('front-enter-json/article/').on('value', (snapshot) => {
+  const articles = Object.values(snapshot.val());
+  // console.log(articles);
 
-firebase.database().ref('front-enter-json/').on('value', (snapshot) => {
-  const data = snapshot.val(); 
-  const articles = Object.values(data.article).map(object => {
-    return {
-      className: object.name,
-      cityName: object.city,
-      fee: object.fee, 
-      weekHour: object.weekHour, 
-      classType: object.classType, 
-      teachWay: object.teachWay,
-      id: object.creatTime,
-      squareUrl: object.squareUrl,
-      preface: object.preface,
-      clicked: false
-    };  
-  });
-  
   compareSchools(quizData, articles); // 比較屬性與題目的相符程度
   let answerData = compareSchools(quizData, articles);
   dispalyQuiz(answerData, articles);
   changePercentage(articles)
   
-  firebase.database().ref('front-enter-json/update-article').set(articles);
-});
-
+  // firebase.database().ref('front-enter-json/article/').set(articles);
+})
 
 
 function compareSchools(quizData, articles) {
   let answerData = [];
-  articles.forEach(school => {
+  articles.forEach(article => {
     let answers = []; 
     quizData.forEach(question => {
       if (question.questionNum === '1/5') {
-        let option = Object.keys(question).find(key => question[key] === school.cityName);
+        let option = Object.keys(question).find(key => question[key] === article.city);
         answers.push(option);
       }
     });
     quizData.forEach(question => {
       if (question.questionNum === '2/5') {
         let option;
-        let fee = parseInt(school.fee);
+        let fee = parseInt(article.fee);
         if (fee<= 3000) {
           option = "1";
         } else if (fee > 3000 && fee <= 6000) {
@@ -499,7 +527,7 @@ function compareSchools(quizData, articles) {
     quizData.forEach(question => {
       if (question.questionNum === '3/5') {
         let option;
-        let weekHour = parseInt(school.weekHour);
+        let weekHour = parseInt(article.weekHour);
         if (weekHour<= 16) {
           option = "1";
         } else if (weekHour > 16 && weekHour <= 30) {
@@ -514,18 +542,19 @@ function compareSchools(quizData, articles) {
     });
     quizData.forEach(question => {
       if (question.questionNum === '4/5') {
-        let option = Object.keys(question).find(key => question[key] === school.classType);
+        let option = Object.keys(question).find(key => question[key] === article.classType);
         answers.push(option);
       }
     });
     quizData.forEach(question => {
       if (question.questionNum === '5/5') {
-        let option = Object.keys(question).find(key => question[key] === school.teachWay);
+        let option = Object.keys(question).find(key => question[key] === article.teachWay);
         answers.push(option);
       }
     });
     // 將 options 結果加入 answerData
-    answerData.push({ className: school.className, options: answers, id: school.id });
+    answerData.push({ name: article.name, options: answers, id: article.creatTime });
+    
   });
   return answerData;
 }
@@ -670,7 +699,7 @@ function compareSchools(quizData, articles) {
     function changePercentage(articles) {
       var intervalId = setInterval(function() {
         pieNum.textContent = randomPercentage(); 
-        urlButton.textContent = articles[randomClassNum()].className
+        urlButton.textContent = articles[randomClassNum()].name
       }, 250); // 每 0.3 秒變換一次數字
       setTimeout(function() {
         clearInterval(intervalId); 
@@ -713,6 +742,7 @@ function compareSchools(quizData, articles) {
         testList.style.display = 'none';
         pieContainer.style.display = 'flex';
         urlButton.style.display = 'flex';
+
         answerData.forEach((school) => {
           let score = 0;
           
@@ -723,7 +753,7 @@ function compareSchools(quizData, articles) {
           }
             if (score > maxScore) {
             maxScore = score;
-            matchedSchool = school.className;
+            matchedSchool = school.name;
             id = school.id;
             newURL = `content.html?id=${id}`;
             percentage = ((score / answers.length) * 100).toFixed(0);
